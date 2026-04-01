@@ -15,24 +15,80 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TabControl SelectedIndex="{Binding SecilenSekme}">
-        <TabItem Header="Personel">
-            <views:PersonelView DataContext="{Binding PersonelVM}"/>
-        </TabItem>
-        <TabItem Header="PDF Aktar">
-            <views:PdfAktarView DataContext="{Binding PdfAktarVM}"/>
-        </TabItem>
-        <TabItem Header="Puantaj">
-            <views:PuantajView DataContext="{Binding PuantajVM}"/>
-        </TabItem>
-        <TabItem Header="Hakedis">
-            <views:HakedisView DataContext="{Binding HakedisVM}"/>
-        </TabItem>
-        <TabItem Header="Excel Cikti">
-            <views:ExcelCiktiView DataContext="{Binding ExcelCiktiVM}"/>
-        </TabItem>
-        <TabItem Header="Belgeler">
-            <views:BelgeView DataContext="{Binding BelgeVM}"/>
-        </TabItem>
-    </TabControl>
+    <Grid RowDefinitions="Auto,*">
+        <!-- Ust Bar -->
+        <Border Grid.Row="0" Background="{StaticResource CardBgBrush}"
+                BorderBrush="{StaticResource SectionBorderBrush}" BorderThickness="0,0,0,1"
+                Padding="20,12">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="&#x1F4CB;" FontSize="22" VerticalAlignment="Center"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Puantaj &amp; Hakedis" FontSize="16" FontWeight="Bold"
+                                   Foreground="{StaticResource HeaderTextBrush}"/>
+                        <TextBlock Text="NVI TD Altyuklenici Yonetimi" FontSize="11"
+                                   Foreground="{StaticResource SubtleTextBrush}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Tab Alani -->
+        <TabControl Grid.Row="1" SelectedIndex="{Binding SecilenSekme}" Margin="0">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="&#x1F465;" FontSize="14"/>
+                        <TextBlock Text="Personel"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <views:PersonelView DataContext="{Binding PersonelVM}"/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="&#x1F4C4;" FontSize="14"/>
+                        <TextBlock Text="PDF Aktar"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <views:PdfAktarView DataContext="{Binding PdfAktarVM}"/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="&#x1F4C5;" FontSize="14"/>
+                        <TextBlock Text="Puantaj"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <views:PuantajView DataContext="{Binding PuantajVM}"/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="&#x1F4B0;" FontSize="14"/>
+                        <TextBlock Text="Hakedis"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <views:HakedisView DataContext="{Binding HakedisVM}"/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="&#x1F4CA;" FontSize="14"/>
+                        <TextBlock Text="Excel Cikti"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <views:ExcelCiktiView DataContext="{Binding ExcelCiktiVM}"/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="&#x1F4C1;" FontSize="14"/>
+                        <TextBlock Text="Belgeler"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <views:BelgeView DataContext="{Binding BelgeVM}"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>

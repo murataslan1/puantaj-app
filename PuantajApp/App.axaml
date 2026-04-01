@@ -2,14 +2,148 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="PuantajApp.App"
              xmlns:local="using:PuantajApp"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Dark">
 
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
 
+    <Application.Resources>
+        <!-- Renk Paleti -->
+        <SolidColorBrush x:Key="AccentBrush" Color="#2563EB"/>
+        <SolidColorBrush x:Key="AccentHoverBrush" Color="#3B82F6"/>
+        <SolidColorBrush x:Key="AccentLightBrush" Color="#1E3A5F"/>
+        <SolidColorBrush x:Key="SuccessBrush" Color="#22C55E"/>
+        <SolidColorBrush x:Key="ErrorBrush" Color="#EF4444"/>
+        <SolidColorBrush x:Key="WarningBrush" Color="#F59E0B"/>
+        <SolidColorBrush x:Key="SubtleTextBrush" Color="#94A3B8"/>
+        <SolidColorBrush x:Key="CardBgBrush" Color="#1E293B"/>
+        <SolidColorBrush x:Key="CardBgLighterBrush" Color="#253349"/>
+        <SolidColorBrush x:Key="SectionBorderBrush" Color="#334155"/>
+        <SolidColorBrush x:Key="PageBgBrush" Color="#0F172A"/>
+        <SolidColorBrush x:Key="HeaderTextBrush" Color="#F1F5F9"/>
+        <SolidColorBrush x:Key="BodyTextBrush" Color="#CBD5E1"/>
+        <CornerRadius x:Key="CardRadius">8</CornerRadius>
+        <CornerRadius x:Key="ButtonRadius">6</CornerRadius>
+    </Application.Resources>
+
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+
+        <!-- Window arka plan -->
+        <Style Selector="Window">
+            <Setter Property="Background" Value="{StaticResource PageBgBrush}"/>
+        </Style>
+
+        <!-- Primary Button -->
+        <Style Selector="Button.primary">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CornerRadius" Value="{StaticResource ButtonRadius}"/>
+            <Setter Property="Padding" Value="16,8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{StaticResource AccentHoverBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!-- Secondary Button -->
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource BodyTextBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource SectionBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="{StaticResource ButtonRadius}"/>
+            <Setter Property="Padding" Value="16,8"/>
+        </Style>
+        <Style Selector="Button.secondary:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{StaticResource CardBgLighterBrush}"/>
+        </Style>
+
+        <!-- Danger Button -->
+        <Style Selector="Button.danger">
+            <Setter Property="Background" Value="#7F1D1D"/>
+            <Setter Property="Foreground" Value="#FCA5A5"/>
+            <Setter Property="CornerRadius" Value="{StaticResource ButtonRadius}"/>
+            <Setter Property="Padding" Value="16,8"/>
+        </Style>
+        <Style Selector="Button.danger:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{StaticResource ErrorBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!-- Card Border -->
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="{StaticResource CardBgBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource SectionBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="{StaticResource CardRadius}"/>
+            <Setter Property="Padding" Value="16"/>
+        </Style>
+
+        <!-- Section header -->
+        <Style Selector="TextBlock.sectionHeader">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource HeaderTextBrush}"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+        </Style>
+
+        <!-- Subtle label -->
+        <Style Selector="TextBlock.label">
+            <Setter Property="Foreground" Value="{StaticResource SubtleTextBrush}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Status text variants -->
+        <Style Selector="TextBlock.statusInfo">
+            <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+        </Style>
+        <Style Selector="TextBlock.statusSuccess">
+            <Setter Property="Foreground" Value="{StaticResource SuccessBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style Selector="TextBlock.statusError">
+            <Setter Property="Foreground" Value="{StaticResource ErrorBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <!-- Stat value (big numbers) -->
+        <Style Selector="TextBlock.statValue">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource HeaderTextBrush}"/>
+        </Style>
+        <Style Selector="TextBlock.statLabel">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="{StaticResource SubtleTextBrush}"/>
+        </Style>
+
+        <!-- DataGrid iyilestirme -->
+        <Style Selector="DataGrid">
+            <Setter Property="BorderBrush" Value="{StaticResource SectionBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource CardBgBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource SubtleTextBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="12,8"/>
+        </Style>
+        <Style Selector="DataGridRow:nth-child(even)">
+            <Setter Property="Background" Value="#0D1E293B"/>
+        </Style>
+
+        <!-- TabItem stili -->
+        <Style Selector="TabItem">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="16,10"/>
+        </Style>
+
     </Application.Styles>
 </Application>

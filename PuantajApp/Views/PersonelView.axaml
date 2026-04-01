@@ -4,22 +4,28 @@
              x:Class="PuantajApp.Views.PersonelView"
              x:DataType="vm:PersonelViewModel">
 
-    <Grid RowDefinitions="Auto,*,Auto" Margin="8">
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="16">
+        <!-- Baslik -->
+        <TextBlock Grid.Row="0" Text="Personel Yonetimi" Classes="sectionHeader"/>
+
         <!-- Toolbar -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
-            <Button Content="Excel'den Import" Command="{Binding ExcelImportCommand}" Name="BtnExcelImport"/>
-            <Button Content="Yeni Ekle" Command="{Binding TemizleCommand}"/>
-            <Button Content="Sil" Command="{Binding SilCommand}" IsEnabled="{Binding SecilenPersonel, Converter={x:Static ObjectConverters.IsNotNull}}"/>
-            <TextBlock Text="{Binding Durum}" VerticalAlignment="Center" Foreground="Blue"/>
-        </StackPanel>
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="&#x1F4C2; Excel'den Import" Classes="primary" Command="{Binding ExcelImportCommand}" Name="BtnExcelImport"/>
+                <Button Content="&#x2795; Yeni Ekle" Classes="secondary" Command="{Binding TemizleCommand}"/>
+                <Button Content="&#x1F5D1; Sil" Classes="danger" Command="{Binding SilCommand}"
+                        IsEnabled="{Binding SecilenPersonel, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                <TextBlock Text="{Binding Durum}" Classes="statusInfo" VerticalAlignment="Center" Margin="12,0,0,0"/>
+            </StackPanel>
+        </Border>
 
         <!-- Liste -->
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="2"
                   ItemsSource="{Binding Personeller}"
                   SelectedItem="{Binding SecilenPersonel}"
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
-                  GridLinesVisibility="All"
+                  GridLinesVisibility="Horizontal"
                   CanUserResizeColumns="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="No" Binding="{Binding Id}" Width="50"/>
@@ -33,30 +39,30 @@
         </DataGrid>
 
         <!-- Form -->
-        <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Padding="8" Margin="0,8,0,0">
+        <Border Grid.Row="3" Classes="card" Margin="0,12,0,0">
             <Grid ColumnDefinitions="Auto,*,Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" HorizontalAlignment="Stretch">
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Ad Soyad:" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding AdSoyad}" Margin="0,0,16,4"/>
-                <TextBlock Grid.Row="0" Grid.Column="2" Text="TC:" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding TcNo}" Margin="0,0,0,4"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Ad Soyad" Classes="label" Margin="0,0,8,8"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding AdSoyad}" Margin="0,0,16,8"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="TC" Classes="label" Margin="0,0,8,8"/>
+                <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding TcNo}" Margin="0,0,0,8"/>
 
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Unvan:" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Unvan}" Margin="0,0,16,4"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" Text="Birim:" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Birim}" Margin="0,0,0,4"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Unvan" Classes="label" Margin="0,0,8,8"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Unvan}" Margin="0,0,16,8"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="Birim" Classes="label" Margin="0,0,8,8"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Birim}" Margin="0,0,0,8"/>
 
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Baslama:" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding BaslamaTarihi}" Watermark="gg/aa/yyyy" Margin="0,0,16,4"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" Text="Birim Ucreti:" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding BirimUcreti}" Margin="0,0,0,4"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Baslama" Classes="label" Margin="0,0,8,8"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding BaslamaTarihi}" Watermark="gg/aa/yyyy" Margin="0,0,16,8"/>
+                <TextBlock Grid.Row="2" Grid.Column="2" Text="Birim Ucreti" Classes="label" Margin="0,0,8,8"/>
+                <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding BirimUcreti}" Margin="0,0,0,8"/>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Yillik Izin:" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding YillikIzinHakki}" Margin="0,0,16,4"/>
-                <CheckBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Content="Gececi" IsChecked="{Binding Gececi}" Margin="0,0,0,4"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Yillik Izin" Classes="label" Margin="0,0,8,8"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding YillikIzinHakki}" Margin="0,0,16,8"/>
+                <CheckBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Content="Gececi" IsChecked="{Binding Gececi}" Margin="0,0,0,8"/>
 
                 <StackPanel Grid.Row="4" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
-                    <Button Content="Kaydet" Command="{Binding KaydetCommand}"/>
-                    <Button Content="Iptal" Command="{Binding TemizleCommand}"/>
+                    <Button Content="Kaydet" Classes="primary" Command="{Binding KaydetCommand}"/>
+                    <Button Content="Iptal" Classes="secondary" Command="{Binding TemizleCommand}"/>
                 </StackPanel>
             </Grid>
         </Border>

@@ -6,34 +6,42 @@
 
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" Margin="16">
         <!-- Baslik -->
-        <TextBlock Grid.Row="0" Text="EXCEL CIKTI OLUSTUR" FontSize="14" FontWeight="Bold" Margin="0,0,0,16"/>
+        <TextBlock Grid.Row="0" Text="Excel Cikti Olustur" Classes="sectionHeader"/>
 
         <!-- Parametreler -->
-        <Grid Grid.Row="1" ColumnDefinitions="Auto,90,Auto,90,Auto,90,Auto,120" Margin="0,0,0,16">
-            <TextBlock Grid.Column="0" Text="Ay:" VerticalAlignment="Center" Margin="0,0,4,0"/>
-            <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
-            <TextBlock Grid.Column="2" Text="Yil:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
-            <TextBlock Grid.Column="4" Text="Is Gunu:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="5" Value="{Binding IsGunu}" Minimum="1" Maximum="31"/>
-            <TextBlock Grid.Column="6" Text="Yemek Br:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="7" Value="{Binding YemekBirimUcreti}" Minimum="0" Maximum="9999"/>
-        </Grid>
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,16">
+            <Grid ColumnDefinitions="Auto,90,Auto,90,Auto,90,Auto,120">
+                <TextBlock Grid.Column="0" Text="Ay" Classes="label" Margin="0,0,8,0"/>
+                <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+                <TextBlock Grid.Column="2" Text="Yil" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+                <TextBlock Grid.Column="4" Text="Is Gunu" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="5" Value="{Binding IsGunu}" Minimum="1" Maximum="31"/>
+                <TextBlock Grid.Column="6" Text="Yemek Br" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="7" Value="{Binding YemekBirimUcreti}" Minimum="0" Maximum="9999"/>
+            </Grid>
+        </Border>
 
         <!-- Kayit Yolu -->
-        <Grid Grid.Row="2" ColumnDefinitions="Auto,*,Auto" Margin="0,0,0,16">
-            <TextBlock Grid.Column="0" Text="Kayit Yeri:" VerticalAlignment="Center" Margin="0,0,8,0"/>
-            <TextBox Grid.Column="1" Text="{Binding KayitYolu}"/>
-            <Button Grid.Column="2" Content="Sec..." Name="BtnKayitYoluSec" Margin="8,0,0,0"/>
-        </Grid>
+        <Border Grid.Row="2" Classes="card" Margin="0,0,0,16">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <TextBlock Grid.Column="0" Text="&#x1F4C1; Kayit Yeri" Classes="label" Margin="0,0,12,0"/>
+                <TextBox Grid.Column="1" Text="{Binding KayitYolu}"/>
+                <Button Grid.Column="2" Content="&#x1F50D; Sec..." Classes="secondary" Name="BtnKayitYoluSec" Margin="8,0,0,0"/>
+            </Grid>
+        </Border>
 
         <!-- Butonlar -->
-        <StackPanel Grid.Row="3" Spacing="16" Margin="0,0,0,8">
-            <Button Content="Puantaj Excel Olustur" Command="{Binding PuantajExcelOlusturCommand}" Width="200"/>
-            <Button Content="Hakedis Kapak Excel Olustur" Command="{Binding HakedisExcelOlusturCommand}" Width="220"/>
-        </StackPanel>
+        <Border Grid.Row="3" Classes="card" Margin="0,0,0,12">
+            <StackPanel Spacing="12">
+                <Button Content="&#x1F4CA; Puantaj Excel Olustur" Classes="primary"
+                        Command="{Binding PuantajExcelOlusturCommand}" HorizontalAlignment="Left"/>
+                <Button Content="&#x1F4B0; Hakedis Kapak Excel Olustur" Classes="primary"
+                        Command="{Binding HakedisExcelOlusturCommand}" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </Border>
 
         <!-- Durum -->
-        <TextBlock Grid.Row="4" Text="{Binding Durum}" Foreground="Blue" Margin="0,8,0,0"/>
+        <TextBlock Grid.Row="4" Text="{Binding Durum}" Classes="statusInfo" Margin="0,4,0,0"/>
     </Grid>
 </UserControl>

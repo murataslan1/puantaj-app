@@ -4,25 +4,30 @@
              x:Class="PuantajApp.Views.PuantajView"
              x:DataType="vm:PuantajViewModel">
 
-    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="8">
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="16">
+        <!-- Baslik -->
+        <TextBlock Grid.Row="0" Text="Puantaj Girisi" Classes="sectionHeader"/>
+
         <!-- Filtre -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto,90,Auto,90,Auto,*" Margin="0,0,0,8">
-            <TextBlock Grid.Column="0" Text="Ay:" VerticalAlignment="Center" Margin="0,0,4,0"/>
-            <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
-            <TextBlock Grid.Column="2" Text="Yil:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
-            <TextBlock Grid.Column="4" Text="Personel:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <ComboBox Grid.Column="5"
-                      ItemsSource="{Binding Personeller}"
-                      SelectedItem="{Binding SecilenPersonel}"
-                      DisplayMemberBinding="{Binding AdSoyad}"/>
-        </Grid>
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">
+            <Grid ColumnDefinitions="Auto,90,Auto,90,Auto,*">
+                <TextBlock Grid.Column="0" Text="Ay" Classes="label" Margin="0,0,8,0"/>
+                <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+                <TextBlock Grid.Column="2" Text="Yil" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+                <TextBlock Grid.Column="4" Text="Personel" Classes="label" Margin="12,0,8,0"/>
+                <ComboBox Grid.Column="5"
+                          ItemsSource="{Binding Personeller}"
+                          SelectedItem="{Binding SecilenPersonel}"
+                          DisplayMemberBinding="{Binding AdSoyad}"/>
+            </Grid>
+        </Border>
 
         <!-- Puantaj Tablosu -->
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="2"
                   ItemsSource="{Binding Satirlar}"
                   AutoGenerateColumns="False"
-                  GridLinesVisibility="All"
+                  GridLinesVisibility="Horizontal"
                   IsReadOnly="False"
                   CanUserResizeColumns="True">
             <DataGrid.Columns>
@@ -40,18 +45,32 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Ozet -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="24" Margin="0,4,0,4">
-            <TextBlock Text="{Binding ToplamSure, StringFormat='Toplam Sure: {0:F2} saat'}"/>
-            <TextBlock Text="{Binding ToplamYemek, StringFormat='Yemek: {0} gun'}"/>
-            <TextBlock Text="{Binding ToplamFm, StringFormat='FM: {0:F2} saat'}"/>
-            <TextBlock Text="{Binding ToplamRtFm, StringFormat='RT FM: {0:F2} saat'}"/>
-        </StackPanel>
+        <!-- Ozet kartlari -->
+        <Border Grid.Row="3" Classes="card" Margin="0,12,0,0">
+            <Grid ColumnDefinitions="*,*,*,*">
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding ToplamSure, StringFormat='{}{0:F2}'}" Classes="statValue"/>
+                    <TextBlock Text="Toplam Sure (saat)" Classes="statLabel"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding ToplamYemek}" Classes="statValue"/>
+                    <TextBlock Text="Yemek (gun)" Classes="statLabel"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding ToplamFm, StringFormat='{}{0:F2}'}" Classes="statValue"/>
+                    <TextBlock Text="FM (saat)" Classes="statLabel"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding ToplamRtFm, StringFormat='{}{0:F2}'}" Classes="statValue"/>
+                    <TextBlock Text="RT FM (saat)" Classes="statLabel"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
         <!-- Alt bar -->
-        <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto">
-            <TextBlock Grid.Column="0" Text="{Binding Durum}" Foreground="Blue" VerticalAlignment="Center"/>
-            <Button Grid.Column="2" Content="Kaydet" Command="{Binding KaydetCommand}" Margin="8,0,0,0"/>
+        <Grid Grid.Row="4" ColumnDefinitions="*,Auto" Margin="0,12,0,0">
+            <TextBlock Grid.Column="0" Text="{Binding Durum}" Classes="statusInfo" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Content="&#x1F4BE; Kaydet" Classes="primary" Command="{Binding KaydetCommand}"/>
         </Grid>
     </Grid>
 </UserControl>

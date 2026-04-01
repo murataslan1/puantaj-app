@@ -5,47 +5,52 @@
              x:Class="PuantajApp.Views.BelgeView"
              x:DataType="vm:BelgeViewModel">
 
-    <Grid RowDefinitions="Auto,*,Auto" Margin="8">
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="16">
+        <!-- Baslik -->
+        <TextBlock Grid.Row="0" Text="Belge Yonetimi" Classes="sectionHeader"/>
+
         <!-- Filtre -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto,90,Auto,90,Auto,140,Auto,*" Margin="0,0,0,8">
-            <TextBlock Grid.Column="0" Text="Personel:" VerticalAlignment="Center" Margin="0,0,4,0"/>
-            <ComboBox Grid.Column="1"
-                      ItemsSource="{Binding Personeller}"
-                      SelectedItem="{Binding SecilenPersonel}"
-                      DisplayMemberBinding="{Binding AdSoyad}"/>
-            <TextBlock Grid.Column="2" Text="Ay:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="3" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
-            <TextBlock Grid.Column="4" Text="Yil:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="5" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
-            <TextBlock Grid.Column="6" Text="Belge Tipi:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <ComboBox Grid.Column="7" SelectedItem="{Binding BelgeTipi}">
-                <ComboBox.Items>
-                    <x:String>devam_takip</x:String>
-                    <x:String>izin_formu</x:String>
-                    <x:String>rapor</x:String>
-                </ComboBox.Items>
-            </ComboBox>
-            <Button Grid.Column="9" Content="PDF/Resim Yukle" Name="BtnBelgeYukle" Margin="8,0,0,0"/>
-        </Grid>
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">
+            <Grid ColumnDefinitions="Auto,*,Auto,90,Auto,90,Auto,140,*,Auto">
+                <TextBlock Grid.Column="0" Text="Personel" Classes="label" Margin="0,0,8,0"/>
+                <ComboBox Grid.Column="1"
+                          ItemsSource="{Binding Personeller}"
+                          SelectedItem="{Binding SecilenPersonel}"
+                          DisplayMemberBinding="{Binding AdSoyad}"/>
+                <TextBlock Grid.Column="2" Text="Ay" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="3" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+                <TextBlock Grid.Column="4" Text="Yil" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="5" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+                <TextBlock Grid.Column="6" Text="Belge Tipi" Classes="label" Margin="12,0,8,0"/>
+                <ComboBox Grid.Column="7" SelectedItem="{Binding BelgeTipi}">
+                    <ComboBox.Items>
+                        <x:String>devam_takip</x:String>
+                        <x:String>izin_formu</x:String>
+                        <x:String>rapor</x:String>
+                    </ComboBox.Items>
+                </ComboBox>
+                <Button Grid.Column="9" Content="&#x1F4CE; PDF/Resim Yukle" Classes="primary" Name="BtnBelgeYukle"/>
+            </Grid>
+        </Border>
 
         <!-- Belge Listesi -->
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="2"
                   ItemsSource="{Binding Belgeler}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
-                  GridLinesVisibility="All">
+                  GridLinesVisibility="Horizontal">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tarih" Binding="{Binding YuklenmeTarihi, StringFormat={}{0:dd.MM.yyyy}}" Width="100"/>
                 <DataGridTextColumn Header="Belge Tipi" Binding="{Binding BelgeTipi}" Width="120"/>
                 <DataGridTextColumn Header="Dosya Adi" Binding="{Binding DosyaAdi}" Width="*"/>
-                <DataGridTemplateColumn Header="Islem" Width="150">
+                <DataGridTemplateColumn Header="Islem" Width="180">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate x:DataType="models:Belge">
-                            <StackPanel Orientation="Horizontal" Spacing="4">
-                                <Button Content="Ac"
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <Button Content="&#x1F4C2; Ac" Classes="secondary" FontSize="11" Padding="8,4"
                                         Command="{Binding $parent[DataGrid].((vm:BelgeViewModel)DataContext).BelgeAcCommand}"
                                         CommandParameter="{Binding}"/>
-                                <Button Content="Sil"
+                                <Button Content="&#x1F5D1; Sil" Classes="danger" FontSize="11" Padding="8,4"
                                         Command="{Binding $parent[DataGrid].((vm:BelgeViewModel)DataContext).BelgeSilCommand}"
                                         CommandParameter="{Binding}"/>
                             </StackPanel>
@@ -56,6 +61,6 @@
         </DataGrid>
 
         <!-- Durum -->
-        <TextBlock Grid.Row="2" Text="{Binding Durum}" Foreground="Blue" Margin="0,4,0,0"/>
+        <TextBlock Grid.Row="3" Text="{Binding Durum}" Classes="statusInfo" Margin="0,8,0,0"/>
     </Grid>
 </UserControl>

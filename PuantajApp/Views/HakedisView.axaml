@@ -4,27 +4,32 @@
              x:Class="PuantajApp.Views.HakedisView"
              x:DataType="vm:HakedisViewModel">
 
-    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="8">
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="16">
+        <!-- Baslik -->
+        <TextBlock Grid.Row="0" Text="Hakedis Hesaplama" Classes="sectionHeader"/>
+
         <!-- Filtre -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto,90,Auto,90,Auto,90,Auto,120,Auto,*" Margin="0,0,0,8">
-            <TextBlock Grid.Column="0" Text="Ay:" VerticalAlignment="Center" Margin="0,0,4,0"/>
-            <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
-            <TextBlock Grid.Column="2" Text="Yil:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
-            <TextBlock Grid.Column="4" Text="Is Gunu:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="5" Value="{Binding IsGunu}" Minimum="1" Maximum="31"/>
-            <TextBlock Grid.Column="6" Text="Yemek Br:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="7" Value="{Binding YemekBirimUcreti}" Minimum="0" Maximum="9999" FormatString="F2"/>
-            <Button Grid.Column="9" Content="Hesapla" Command="{Binding HesaplaCommand}" Margin="8,0,0,0"/>
-        </Grid>
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">
+            <Grid ColumnDefinitions="Auto,90,Auto,90,Auto,90,Auto,120,*,Auto">
+                <TextBlock Grid.Column="0" Text="Ay" Classes="label" Margin="0,0,8,0"/>
+                <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+                <TextBlock Grid.Column="2" Text="Yil" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+                <TextBlock Grid.Column="4" Text="Is Gunu" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="5" Value="{Binding IsGunu}" Minimum="1" Maximum="31"/>
+                <TextBlock Grid.Column="6" Text="Yemek Br" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="7" Value="{Binding YemekBirimUcreti}" Minimum="0" Maximum="9999" FormatString="F2"/>
+                <Button Grid.Column="9" Content="&#x1F9EE; Hesapla" Classes="primary" Command="{Binding HesaplaCommand}"/>
+            </Grid>
+        </Border>
 
         <!-- Liste -->
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="2"
                   ItemsSource="{Binding Satirlar}"
                   SelectedItem="{Binding SecilenSatir}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
-                  GridLinesVisibility="All">
+                  GridLinesVisibility="Horizontal">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ad Soyad" Binding="{Binding AdSoyad}" Width="180"/>
                 <DataGridTextColumn Header="Hak.Gun" Binding="{Binding HakedisGun}" Width="70"/>
@@ -39,29 +44,40 @@
         </DataGrid>
 
         <!-- Manuel degerler (secili personel) -->
-        <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Padding="8" Margin="0,8,0,0"
+        <Border Grid.Row="3" Classes="card" Margin="0,12,0,0"
+                Background="{StaticResource AccentLightBrush}"
                 IsVisible="{Binding SecilenSatir, Converter={x:Static ObjectConverters.IsNotNull}}">
             <Grid ColumnDefinitions="Auto,120,Auto,120,Auto,120,Auto,120,Auto,*" RowDefinitions="Auto,Auto">
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Secili:" FontWeight="Bold" Margin="0,0,8,4" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7" Text="{Binding SecilenSatir.AdSoyad}" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="&#x1F464; Secili:" FontWeight="Bold" Margin="0,0,8,8"
+                           VerticalAlignment="Center" Foreground="{StaticResource HeaderTextBrush}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7" Text="{Binding SecilenSatir.AdSoyad}"
+                           FontWeight="Bold" FontSize="14" VerticalAlignment="Center"
+                           Foreground="{StaticResource HeaderTextBrush}"/>
 
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Vergi Matr:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Vergi Matr" Classes="label" Margin="0,0,8,0"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SecilenSatir.VergiMatrahi}" Margin="0,0,8,0"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" Text="TSS-GSS:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="TSS-GSS" Classes="label" Margin="0,0,8,0"/>
                 <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SecilenSatir.TssGssFarki}" Margin="0,0,8,0"/>
-                <TextBlock Grid.Row="1" Grid.Column="4" Text="Kantin:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="4" Text="Kantin" Classes="label" Margin="0,0,8,0"/>
                 <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding SecilenSatir.KantinUcreti}" Margin="0,0,8,0"/>
-                <TextBlock Grid.Row="1" Grid.Column="6" Text="Kesilecek:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="6" Text="Kesilecek" Classes="label" Margin="0,0,8,0"/>
                 <TextBox Grid.Row="1" Grid.Column="7" Text="{Binding SecilenSatir.HakedistenKesilecek}" Margin="0,0,8,0"/>
-                <Button Grid.Row="1" Grid.Column="8" Content="Kaydet" Command="{Binding ManuelKaydetCommand}" Margin="4,0,0,0"/>
+                <Button Grid.Row="1" Grid.Column="8" Content="&#x1F4BE; Kaydet" Classes="primary" Command="{Binding ManuelKaydetCommand}"/>
             </Grid>
         </Border>
 
-        <!-- Alt bar -->
-        <Grid Grid.Row="3" ColumnDefinitions="*,Auto" Margin="0,4,0,0">
-            <TextBlock Grid.Column="0" Text="{Binding Durum}" Foreground="Blue" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Text="{Binding ToplamHakedis, StringFormat='TOPLAM HAKEDİŞ: {0:N2} TL'}"
-                       FontWeight="Bold" FontSize="14" Foreground="DarkGreen"/>
-        </Grid>
+        <!-- Alt bar — Toplam Hakedis -->
+        <Border Grid.Row="4" Classes="card" Margin="0,12,0,0"
+                Background="{StaticResource AccentLightBrush}">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Grid.Column="0" Text="{Binding Durum}" Classes="statusInfo" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="TOPLAM HAKEDIS:" FontWeight="SemiBold" FontSize="14"
+                               Foreground="{StaticResource SubtleTextBrush}" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding ToplamHakedis, StringFormat='{}{0:N2} TL'}"
+                               FontWeight="Bold" FontSize="22" Foreground="{StaticResource SuccessBrush}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

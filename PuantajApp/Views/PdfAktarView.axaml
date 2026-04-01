@@ -4,26 +4,27 @@
              x:Class="PuantajApp.Views.PdfAktarView"
              x:DataType="vm:PdfAktarViewModel">
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="8">
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="16">
         <!-- Baslik -->
-        <TextBlock Grid.Row="0" Text="GEMINI VISION AI - PDF OTOMATIK PARSE"
-                   FontSize="14" FontWeight="Bold" Margin="0,0,0,8"/>
+        <TextBlock Grid.Row="0" Text="&#x1F916; Gemini Vision AI — PDF Otomatik Parse" Classes="sectionHeader"/>
 
         <!-- Ayarlar -->
-        <Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto,80,Auto,80,Auto,*,Auto,*" Margin="0,0,0,8">
-            <TextBlock Grid.Column="0" Text="Ay:" VerticalAlignment="Center" Margin="0,0,4,0"/>
-            <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12" Width="80"/>
-            <TextBlock Grid.Column="2" Text="Yil:" VerticalAlignment="Center" Margin="8,0,4,0"/>
-            <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030" Width="90"/>
-            <TextBlock Grid.Column="4" Text="API Key:" VerticalAlignment="Center" Margin="16,0,4,0"/>
-            <TextBox Grid.Column="5" Grid.ColumnSpan="3" Text="{Binding GeminiApiKey}"
-                     Watermark="Gemini API Key girin (aistudio.google.com/apikey)" PasswordChar="*" Width="350"/>
-            <Button Grid.Column="8" Content="PDF Sec..." Name="BtnPdfSec" Margin="8,0,0,0"/>
-            <Button Grid.Column="9" Content="Tumu Parse Et"
-                    Command="{Binding TumunuParseEtCommand}"
-                    IsEnabled="{Binding !Isleniyor}"
-                    Margin="8,0,0,0"/>
-        </Grid>
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">
+            <Grid ColumnDefinitions="Auto,80,Auto,90,Auto,*,Auto,Auto" RowDefinitions="Auto">
+                <TextBlock Grid.Column="0" Text="Ay" Classes="label" Margin="0,0,8,0"/>
+                <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+                <TextBlock Grid.Column="2" Text="Yil" Classes="label" Margin="12,0,8,0"/>
+                <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+                <TextBlock Grid.Column="4" Text="&#x1F511; API Key" Classes="label" Margin="16,0,8,0"/>
+                <TextBox Grid.Column="5" Text="{Binding GeminiApiKey}"
+                         Watermark="Gemini API Key girin (aistudio.google.com/apikey)" PasswordChar="*"/>
+                <Button Grid.Column="6" Content="&#x1F4C2; PDF Sec..." Classes="secondary" Name="BtnPdfSec" Margin="8,0,0,0"/>
+                <Button Grid.Column="7" Content="&#x25B6; Tumu Parse Et" Classes="primary"
+                        Command="{Binding TumunuParseEtCommand}"
+                        IsEnabled="{Binding !Isleniyor}"
+                        Margin="8,0,0,0"/>
+            </Grid>
+        </Border>
 
         <!-- PDF Listesi -->
         <DataGrid Grid.Row="2"
@@ -31,35 +32,41 @@
                   SelectedItem="{Binding SecilenPdf}"
                   IsReadOnly="False"
                   AutoGenerateColumns="False"
-                  GridLinesVisibility="All">
+                  GridLinesVisibility="Horizontal">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Sec" Binding="{Binding Secili}" Width="50"/>
                 <DataGridTextColumn Header="Dosya Adi" Binding="{Binding DosyaAdi}" Width="250" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Durum" Binding="{Binding Durum}" Width="120" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Durum" Binding="{Binding Durum}" Width="180" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Eslesen Personel" Binding="{Binding EslesenPersonel}" Width="200" IsReadOnly="True"/>
-                <DataGridTemplateColumn Header="Islem" Width="200">
+                <DataGridTemplateColumn Header="Islem" Width="160">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate x:DataType="vm:PdfOgesiViewModel">
-                            <StackPanel Orientation="Horizontal" Spacing="4">
-                                <Button Content="Onayla+Kaydet"
-                                        Command="{Binding $parent[DataGrid].((vm:PdfAktarViewModel)DataContext).OnaylaVeKaydetCommand}"
-                                        CommandParameter="{Binding}"
-                                        FontSize="11"/>
-                            </StackPanel>
+                            <Button Content="&#x2705; Onayla+Kaydet" Classes="primary" FontSize="11" Padding="8,4"
+                                    Command="{Binding $parent[DataGrid].((vm:PdfAktarViewModel)DataContext).OnaylaVeKaydetCommand}"
+                                    CommandParameter="{Binding}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Durum -->
-        <TextBlock Grid.Row="3" Text="{Binding Durum}" Margin="0,4,0,0" Foreground="Blue"/>
-
-        <!-- Ozet -->
-        <StackPanel Grid.Row="4" Orientation="Horizontal" Spacing="16" Margin="0,4,0,0">
-            <TextBlock Text="{Binding Pdfler.Count, StringFormat='Toplam: {0} PDF'}"/>
-            <TextBlock Text="{Binding Basarili, StringFormat='Basarili: {0}'}" Foreground="Green"/>
-            <TextBlock Text="{Binding Hata, StringFormat='Hata: {0}'}" Foreground="Red"/>
-        </StackPanel>
+        <!-- Progress + Durum -->
+        <Border Grid.Row="3" Classes="card" Margin="0,12,0,0">
+            <Grid ColumnDefinitions="*,Auto,Auto,Auto">
+                <TextBlock Grid.Column="0" Text="{Binding Durum}" Classes="statusInfo" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" Margin="16,0,0,0">
+                    <TextBlock Text="Toplam:" Classes="label"/>
+                    <TextBlock Text="{Binding Pdfler.Count}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="4" Margin="16,0,0,0">
+                    <TextBlock Text="&#x2705;" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Basarili}" Classes="statusSuccess" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="4" Margin="16,0,0,0">
+                    <TextBlock Text="&#x274C;" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Hata}" Classes="statusError" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
