@@ -2,14 +2,18 @@
 
 NVI TD projesi icin altyuklenici personel puantaj takip ve hakedis hesaplama uygulamasi.
 
-PDF devam takip formlarindaki el yazisi giris/cikis saatlerini **Google Gemini AI** ile otomatik okur, puantaj ve hakedis hesaplamalarini yapar, Excel ciktisi uretir.
+PDF devam takip formlarindaki el yazisi giris/cikis saatlerini **AI** ile otomatik okur, puantaj ve hakedis hesaplamalarini yapar, Excel ciktisi uretir.
+
+**Iki AI backend destegi:**
+- **Ollama (Yerel)** — Limitsiz, ucretsiz, internet gerekmez, API key gerekmez
+- **Google Gemini (Bulut)** — Hizli, free tier mevcut, API key gerekir
 
 ---
 
 ## Ozellikler
 
 - **Personel yonetimi** — Excel'den toplu import veya manuel ekleme
-- **PDF otomatik okuma** — Gemini Vision AI ile devam takip formlarini parse etme
+- **PDF otomatik okuma** — Ollama (yerel) veya Gemini (bulut) Vision AI ile devam takip formlarini parse etme
 - **Puantaj girisi** — PDF'den gelen verileri gorup manuel duzenleme
 - **Hakedis hesaplama** — FM/RT ucreti, yemek hakki otomatik; vergi, GSS, kantin manuel
 - **Excel cikti** — Puantaj ve Hakedis kapak Excel dosyalari
@@ -37,9 +41,29 @@ dotnet --version
 # 9.0.xxx gibi bir cikti gormelisiniz
 ```
 
-### 2. Gemini API Key (Ucretsiz)
+### 2. AI Backend (Birini Secin)
 
-PDF otomatik okuma icin Google Gemini API anahtari gereklidir.
+#### Secenek A: Ollama — Yerel AI (Onerilen)
+
+Tamamen ucretsiz, limitsiz, API key gerekmez. Bir kere kurulur, sonsuza kadar calisir.
+
+**Windows:**
+```bash
+winget install Ollama.Ollama
+ollama pull llama3.2-vision:11b
+```
+
+**macOS:**
+```bash
+brew install ollama
+ollama pull llama3.2-vision:11b
+```
+
+> **Not:** Model indirme ~7GB. Bir kere indirilir. Ollama arka planda calisirken uygulama otomatik olarak yerel AI kullanir.
+
+#### Secenek B: Gemini API — Bulut AI
+
+Daha hizli ama API key ve internet gerektirir.
 
 1. https://aistudio.google.com/apikey adresine gidin
 2. Google hesabinizla giris yapin
@@ -47,6 +71,17 @@ PDF otomatik okuma icin Google Gemini API anahtari gereklidir.
 4. Olusturulan anahtari kopyalayin
 
 > **Not:** Free tier dakikada 15 istek (RPM) ve gunluk 1500 istek sinirina sahiptir. 159 personel icin yeterlidir.
+
+#### Karsilastirma
+
+| | Ollama (Yerel) | Gemini (Bulut) |
+|---|---|---|
+| API Key | Gerekmez | Gerekli |
+| Internet | Gerekmez | Gerekli |
+| Kota/Limit | Limitsiz | 1500/gun |
+| Hiz | ~5-10s/PDF | ~2-3s/PDF |
+| Model degisikligi | Siz kontrol edersiniz | Google degistirebilir |
+| Kurulum | ~7GB model indirme | Sadece API key |
 
 ---
 
@@ -71,7 +106,8 @@ dotnet run
 Ilk calistirmada NuGet paketleri otomatik indirilir (internet gerekir, 1-2 dakika surebilir).
 Uygulama penceresi acilacaktir.
 
-> **Not:** API key'i ayrica bir dosyaya yazmaniza gerek yok. Uygulama icinden gireceksiniz ve otomatik kaydedilecek.
+> **Not:** Ollama kuruluysa API key girmenize gerek yok. Uygulama otomatik olarak yerel AI kullanir.
+> Gemini kullanacaksaniz, API key'i uygulama icinden gireceksiniz ve otomatik kaydedilecek.
 
 ---
 
@@ -124,15 +160,17 @@ Bu adimda devam takip formu PDF'lerini AI ile okutursunuz.
 
 1. **PDF Aktar** sekmesine gidin
 2. **Ay** ve **Yil** degerlerini ayarlayin (hangi ayin puantaji?)
-3. **API Key** alanina Gemini API anahtarinizi yapisitirin
-   - Ilk giriste elle yazin, sonraki acilislarda otomatik hatirlanir
-   - Key, uygulamanin `.env` dosyasina guvenli sekilde kaydedilir
+3. **AI Backend** kontrolu:
+   - Sag ustte aktif backend gorunur: "Ollama (Yerel AI - Limitsiz)" veya "Gemini API (Bulut)"
+   - **Ollama kuruluysa:** API Key alanini bos birakabilirsiniz, otomatik yerel AI kullanilir
+   - **Gemini kullaniyorsaniz:** API Key alanina anahtarinizi yapisitirin (otomatik kaydedilir)
 4. **"PDF Sec..."** butonuyla devam takip formu PDF'lerini secin
    - Birden fazla PDF secebilirsiniz (Ctrl+Click veya Shift+Click)
 5. **"Tumu Parse Et"** butonuna tiklayin
-6. Bekleme suresi: Her PDF arasi ~4.5 saniye (API limiti icin)
-   - 159 PDF icin toplam ~12 dakika
-   - 429 hatasi alirsa otomatik bekleyip tekrar dener
+6. Bekleme suresi:
+   - **Ollama:** Rate limit yok, art arda isler (~5-10s/PDF, donanima bagli)
+   - **Gemini:** Her PDF arasi ~4.5 saniye (API limiti icin), 159 PDF icin ~12 dakika
+   - Gemini 429 hatasi alirsa otomatik bekleyip tekrar dener (3 deneme, exponential backoff)
 
 **Parse Sonuclari:**
 - **Eslesti** — PDF'deki isim veritabanindaki bir personelle eslestirildi
@@ -285,25 +323,37 @@ Personellere ait PDF/resim belgelerini arsivleyebilirsiniz.
 ```
 puantaj-app/
   README.md                  <- Bu dosya
-  PuantajApp/
+  PuantajApp/                <- Ana uygulama
     PuantajApp.csproj        <- Proje dosyasi
     Program.cs               <- Giris noktasi
-    App.axaml                <- Tema ve global stiller
+    App.axaml                <- Tema ve global stiller (koyu tema)
     .env                     <- Gemini API Key (otomatik kaydedilir, repo'ya girmez)
     .gitignore
     Data/
-      AppDbContext.cs         <- Veritabani (SQLite)
+      AppDbContext.cs         <- Veritabani (SQLite + EF Core)
     Models/                  <- Veri modelleri
+      Personel.cs            <- Personel entity
+      PuantajKayit.cs        <- Puantaj kayit entity
+      HakedisEkVeri.cs       <- Hakedis ek veri entity
+      PuantajParseResult.cs  <- AI parse sonuc modeli
+      Belge.cs               <- Belge entity
+      HakedisParametre.cs    <- Hakedis parametre entity
     Services/                <- Is mantigi servisleri
-      GeminiService.cs       <- Gemini AI entegrasyonu
-      ExcelImportService.cs  <- Excel import
-      ExcelExportService.cs  <- Excel export
-      HesaplamaService.cs   <- Hakedis hesaplama
-      EnvService.cs          <- .env dosya yonetimi
+      GeminiService.cs       <- Google Gemini API entegrasyonu
+      OllamaService.cs       <- Ollama yerel AI entegrasyonu
+      AiParseHelper.cs       <- Ortak AI JSON parse yardimcilari
+      ExcelImportService.cs  <- Excel'den personel import (otomatik sutun tespiti)
+      ExcelExportService.cs  <- Puantaj/Hakedis Excel cikti
+      HesaplamaService.cs    <- Hakedis hesaplama formulleri
+      EnvService.cs          <- .env dosya okuma/yazma
       BelgeService.cs        <- Belge arsivleme
     Views/                   <- Ekran tasarimlari (AXAML)
-    ViewModels/              <- Ekran mantiklari
+    ViewModels/              <- Ekran mantiklari (MVVM)
     puantaj.db               <- Veritabani dosyasi (otomatik olusur)
+  PuantajApp.Tests/          <- Unit testler (xUnit)
+    AiParseHelperTests.cs    <- AI parse testleri (38 test)
+    HesaplamaServiceTests.cs <- Hesaplama testleri (30 test)
+    EnvServiceTests.cs       <- Env servis testleri (19 test)
 ```
 
 ---
@@ -337,6 +387,12 @@ C: `PuantajApp/puantaj.db` dosyasini silip uygulamayi yeniden baslatin. Bos veri
 **S: API key'imi nereye giriyorum?**
 C: PDF Aktar sekmesindeki "API Key" alanina yapisitirin. Otomatik olarak `.env` dosyasina kaydedilir. Bir dahaki acilista tekrar girmenize gerek kalmaz.
 
+**S: Ollama kurdum ama uygulama "Gemini API (Bulut)" diyor.**
+C: Ollama'nin arka planda calistigindan emin olun (`ollama serve`). Ayrica `llama3.2-vision:11b` modelinin yuklu oldugunu kontrol edin (`ollama list`).
+
+**S: Ollama ile Gemini arasinda nasil gecis yaparim?**
+C: Uygulama otomatik secer. Ollama calisiyorsa onu kullanir, degilse Gemini'ye duser. Ollama'yi durdurmak (`ollama stop`) Gemini'ye gecis yapar.
+
 **S: macOS'ta dosya izin hatasi aliyorum.**
 C: Terminal'de `chmod +x` gerekebilir veya System Preferences > Privacy'den izin verin.
 
@@ -345,11 +401,31 @@ C: Terminal'de `chmod +x` gerekebilir veya System Preferences > Privacy'den izin
 ## Teknolojiler
 
 - **C# / .NET 9** — Uygulama platformu
-- **Avalonia UI** — Cross-platform masaustu UI framework
+- **Avalonia UI** — Cross-platform masaustu UI framework (koyu tema)
 - **SQLite** — Yerel veritabani (Entity Framework Core)
-- **Google Gemini 2.5 Flash Lite** — PDF Vision AI
+- **Ollama + Llama 3.2 Vision** — Yerel AI PDF parse (limitsiz, ucretsiz)
+- **Google Gemini 2.5 Flash Lite** — Bulut AI PDF parse (fallback)
+- **PDFtoImage** — PDF'den goruntu donusumu (Ollama icin)
 - **ClosedXML** — Excel okuma/yazma
 - **CommunityToolkit.Mvvm** — MVVM pattern
+- **xUnit** — Unit test framework
+
+---
+
+## Testler
+
+Proje 87 unit test icerir. Testleri calistirmak icin:
+
+```bash
+cd PuantajApp.Tests
+dotnet test
+```
+
+| Test Sinifi | Test Sayisi | Kapsam |
+|---|---|---|
+| `AiParseHelperTests` | 38 | JSON parse, saat normalize, Turkce ay parse, MiYiR, code block temizleme |
+| `HesaplamaServiceTests` | 30 | Net calisma suresi, dinlenme dusumu, yemek hakki, FM/RT ucreti, hakedis, gece yarisi gecisi |
+| `EnvServiceTests` | 19 | .env okuma/yazma, yorum satiri, bos satir, mevcut key guncelleme, dosya olusturma |
 
 ---
 
@@ -381,6 +457,8 @@ graph TB
 
     subgraph SVC["Servis Katmani"]
         GS[GeminiService]
+        OS[OllamaService]
+        APH[AiParseHelper]
         EIS[ExcelImportService]
         EES[ExcelExportService]
         HS[HesaplamaService]
@@ -394,6 +472,7 @@ graph TB
     end
 
     subgraph EXT["Dis Servisler"]
+        OLLAMA[Ollama Yerel AI<br/>llama3.2-vision:11b]
         GEMINI[Google Gemini API<br/>gemini-2.5-flash-lite]
         EXCEL[Excel Dosyalari<br/>.xlsx]
         PDF[PDF Dosyalari<br/>Devam Takip Formu]
@@ -409,16 +488,21 @@ graph TB
     BV --> BVM
 
     PAVM --> GS
+    PAVM --> OS
+    GS --> APH
+    OS --> APH
     PVM --> EIS
     ECVM --> EES
     HVM --> HS
     BVM --> BS
     PAVM --> ES
 
+    OS --> OLLAMA
     GS --> GEMINI
+    OS --> PDF
+    GS --> PDF
     EIS --> EXCEL
     EES --> EXCEL
-    GS --> PDF
     ES --> ENV
 
     PVM --> CTX
@@ -440,7 +524,7 @@ graph TB
 ```mermaid
 flowchart LR
     A[Excel Dosyasi<br/>Personel Listesi] -->|ExcelImportService| B[(SQLite DB<br/>Personeller)]
-    C[PDF Dosyalari<br/>Devam Takip Formu] -->|GeminiService| D[PuantajParseResult<br/>JSON]
+    C[PDF Dosyalari<br/>Devam Takip Formu] -->|OllamaService<br/>veya GeminiService| D[PuantajParseResult<br/>JSON]
     D -->|Eslestirme + Onay| E[(SQLite DB<br/>PuantajKayitlar)]
     B --> F{HesaplamaService}
     E --> F
@@ -459,32 +543,40 @@ flowchart LR
     style I fill:#EF4444,stroke:#DC2626,color:#fff
 ```
 
-### Gemini AI PDF Parse Akisi
+### AI PDF Parse Akisi
 
 ```mermaid
 sequenceDiagram
     participant U as Kullanici
     participant App as PdfAktarViewModel
+    participant OS as OllamaService
     participant GS as GeminiService
-    participant API as Gemini API
+    participant APH as AiParseHelper
     participant DB as SQLite
 
     U->>App: PDF Sec + "Tumu Parse Et"
+    App->>App: Ollama aktif mi?
+
     loop Her PDF icin
-        App->>GS: ParsePdfAsync(pdfBytes)
-        GS->>GS: PDF → Base64 donusum
-        GS->>API: POST /generateContent<br/>(PDF + Prompt)
-        alt Basarili (200)
-            API-->>GS: JSON yanit
-            GS->>GS: JSON parse → PuantajParseResult
-            GS-->>App: ParseResult
-            App->>App: Personel eslestirme
-        else Rate Limit (429)
-            API-->>GS: 429 Hata
-            GS->>GS: Exponential Backoff<br/>(5s → 15s → 45s)
-            GS->>API: Retry
+        alt Ollama Aktif
+            App->>OS: ParsePdfAsync(pdfBytes)
+            OS->>OS: PDF → PNG donusum (PDFtoImage)
+            OS->>OS: PNG → Base64
+            OS->>OS: POST localhost:11434/api/generate
+            OS->>APH: JSON parse
+            APH-->>App: PuantajParseResult
+        else Gemini Fallback
+            App->>GS: ParsePdfAsync(pdfBytes)
+            GS->>GS: PDF → Base64
+            GS->>GS: POST Gemini API
+            alt 429 Rate Limit
+                GS->>GS: Exponential Backoff<br/>(5s → 15s → 45s)
+            end
+            GS->>APH: JSON parse
+            APH-->>App: PuantajParseResult
+            App->>App: 4.5s bekleme (Rate Limit)
         end
-        App->>App: 4.5s bekleme (Rate Limit)
+        App->>App: Personel eslestirme
     end
     U->>App: "Onayla+Kaydet"
     App->>DB: PuantajKayit INSERT
