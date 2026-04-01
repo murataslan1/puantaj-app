@@ -1,6 +1,6 @@
 # Puantaj & Hakedis Uygulamasi
 
-NVi TD projesi icin altyuklenici personel puantaj takip ve hakedis hesaplama uygulamasi.
+NVI TD projesi icin altyuklenici personel puantaj takip ve hakedis hesaplama uygulamasi.
 
 PDF devam takip formlarindaki el yazisi giris/cikis saatlerini **Google Gemini AI** ile otomatik okur, puantaj ve hakedis hesaplamalarini yapar, Excel ciktisi uretir.
 
@@ -46,7 +46,7 @@ PDF otomatik okuma icin Google Gemini API anahtari gereklidir.
 3. **"Create API Key"** butonuna tiklayin
 4. Olusturulan anahtari kopyalayin
 
-> **Not:** Free tier gunluk 250 istek sinirina sahiptir. 159 personel icin yeterlidir.
+> **Not:** Free tier dakikada 15 istek (RPM) ve gunluk 1500 istek sinirina sahiptir. 159 personel icin yeterlidir.
 
 ---
 
@@ -54,103 +54,207 @@ PDF otomatik okuma icin Google Gemini API anahtari gereklidir.
 
 ### 1. Projeyi indirin
 
-Proje klasorunu bilgisayariniza kopyalayin veya ZIP olarak indirip acin.
-
-### 2. Gemini API Key'i ayarlayin
-
-`PuantajApp/` klasoru icinde `.env` dosyasini acin ve API anahtarinizi yapisitirin:
-
-```
-GEMINI_API_KEY=buraya_api_anahtarinizi_yapisitirin
+```bash
+git clone https://github.com/murataslan1/puantaj-app.git
+cd puantaj-app/PuantajApp
 ```
 
-> `.env` dosyasi gizli bir dosyadir. macOS'ta Finder'da gormek icin `Cmd+Shift+.` tuslayin.
-> Windows'ta Notepad ile acabilirsiniz.
+Veya ZIP olarak indirip acin.
 
-### 3. Uygulamayi calistirin
-
-Terminal (macOS) veya Komut Satiri (Windows) acin, proje klasorune gidin ve calistirin:
+### 2. Uygulamayi calistirin
 
 ```bash
-cd /yol/klasor/puantaj_app/PuantajApp
+cd PuantajApp
 dotnet run
 ```
 
 Ilk calistirmada NuGet paketleri otomatik indirilir (internet gerekir, 1-2 dakika surebilir).
 Uygulama penceresi acilacaktir.
 
+> **Not:** API key'i ayrica bir dosyaya yazmaniza gerek yok. Uygulama icinden gireceksiniz ve otomatik kaydedilecek.
+
 ---
 
-## Kullanim
+## Kullanim Kilavuzu (Adim Adim)
 
-### Adim 1: Personel Ekleme
+Uygulama 6 sekmeden olusur. Islemleri asagidaki siraya gore yapin:
+
+```
+Personel Import → PDF Parse → Onayla → Puantaj Kontrol → Hakedis Hesapla → Excel Cikti
+```
+
+---
+
+### ADIM 1: Personel Ekleme (Personel Sekmesi)
+
+Bu adimda calisanlari sisteme tanimlarsiniz. Iki yontem vardir:
+
+#### Yontem A: Excel'den Toplu Import (Onerilen)
 
 1. **Personel** sekmesine gidin
-2. Iki yontemle personel ekleyebilirsiniz:
-   - **Excel'den Import:** "Excel'den Import" butonuna tiklayin, personel listesini iceren `.xlsx` dosyasini secin
-   - **Manuel:** Formu doldurup "Kaydet" butonuna tiklayin
+2. **"Excel'den Import"** butonuna tiklayin
+3. Personel listesini iceren `.xlsx` dosyasini secin
+4. Personeller tabloya yuklenecektir
 
-**Excel Import Formati:**
+**Excel Format Gereksinimleri:**
+- Ilk satir baslik satiri olmalidir
+- Uygulama sutunlari otomatik tanir (Ad Soyad, TC, Unvan, Birim, vb.)
+- Sira numarasi (No) sutunu varsa otomatik atlanir
+- Ornek format:
 
-| A (Ad Soyad) | B (TC) | C (Unvan) | D (Birim) | E (Baslama) | F (Birim Ucreti) | G (Yillik Izin) | H (Gececi) |
-|---|---|---|---|---|---|---|---|
-| AYSEL KOKSALDI | 12345678901 | Kisisel.Op. | Pasaport | 01.01.2024 | 15000 | 14 | 0 |
+| No | Ad Soyad | TC | Unvan | Birim | Baslama | Birim Ucreti | Yillik Izin | Gececi |
+|---|---|---|---|---|---|---|---|---|
+| 1 | AYSEL KOKSALDI | 12345678901 | Kisisel.Op. | Pasaport | 01.01.2024 | 15000 | 14 | 0 |
 
-Ilk satir baslik satiridir, veriler 2. satirdan baslar.
+#### Yontem B: Manuel Ekleme
 
-### Adim 2: PDF Okuma (Gemini AI)
+1. **Personel** sekmesindeki formu doldurun (Ad Soyad, TC, Unvan, Birim, Birim Ucreti vb.)
+2. **"Kaydet"** butonuna tiklayin
+
+#### Personel Silme
+
+1. Tablodan silmek istediginiz personeli secin (satirina tiklayin)
+2. **"Sil"** butonuna tiklayin
+
+---
+
+### ADIM 2: PDF Okuma / Gemini AI Parse (PDF Aktar Sekmesi)
+
+Bu adimda devam takip formu PDF'lerini AI ile okutursunuz.
 
 1. **PDF Aktar** sekmesine gidin
-2. **Ay** ve **Yil** degerlerini ayarlayin
-3. **API Key** alaninda anahtarinizin gorundugundan emin olun (`.env`'den otomatik okunur)
-4. **"PDF Sec..."** butonuyla devam takip formu PDF'lerini secin (birden fazla secebilirsiniz)
+2. **Ay** ve **Yil** degerlerini ayarlayin (hangi ayin puantaji?)
+3. **API Key** alanina Gemini API anahtarinizi yapisitirin
+   - Ilk giriste elle yazin, sonraki acilislarda otomatik hatirlanir
+   - Key, uygulamanin `.env` dosyasina guvenli sekilde kaydedilir
+4. **"PDF Sec..."** butonuyla devam takip formu PDF'lerini secin
+   - Birden fazla PDF secebilirsiniz (Ctrl+Click veya Shift+Click)
 5. **"Tumu Parse Et"** butonuna tiklayin
-6. Gemini AI her PDF'i okuyup personelle eslestirecektir
-7. Sonuclari kontrol edin, dogru olanlarda **"Onayla+Kaydet"** butonuna tiklayin
+6. Bekleme suresi: Her PDF arasi ~4.5 saniye (API limiti icin)
+   - 159 PDF icin toplam ~12 dakika
+   - 429 hatasi alirsa otomatik bekleyip tekrar dener
 
-> **Ipucu:** 159 PDF icin yaklasik 15-20 dakika surer (API rate limiti nedeniyle).
+**Parse Sonuclari:**
+- **Eslesti** — PDF'deki isim veritabanindaki bir personelle eslestirildi
+- **Eslesmedi** — Isim bulunamadi (personel import edilmemis olabilir)
+- **Hata** — PDF okunamiyor veya API hatasi
 
-### Adim 3: Puantaj Kontrolu
+> **Onemli:** Parse isleminden ONCE personellerin import edilmis olmasi gerekir. Aksi takdirde eslestirme yapilamaz.
+
+---
+
+### ADIM 3: Parse Sonuclarini Onaylama (PDF Aktar Sekmesi)
+
+Parse tamamlandiktan sonra her PDF'i tek tek onaylamaniz gerekir.
+
+1. PDF listesinde "Eslesti" yazan satirlari kontrol edin
+2. **Eslesen Personel** kolonundaki ismin dogru oldugunu dogrulayin
+3. Her satir icin **"Onayla+Kaydet"** butonuna tiklayin
+4. Durum "Onaylandi" olarak degisecektir
+
+> **Onemli:** "Onayla+Kaydet" tiklamadan puantaj kaydi olusturulmaz. Bu adimi ATLAMAYIN.
+
+**Onaylama ne yapar?**
+- PDF'den okunan giris/cikis saatlerini veritabanina yazar
+- Ilgili personelin o ay icin puantaj kayitlarini olusturur
+- Puantaj ve Hakedis sekmelerinde gorunur hale getirir
+
+---
+
+### ADIM 4: Puantaj Kontrolu (Puantaj Sekmesi)
+
+Bu adimda PDF'den okunan verileri kontrol edip gerekirse duzeltirsiniz.
 
 1. **Puantaj** sekmesine gidin
-2. Ay, Yil ve Personel secin
-3. PDF'den okunan veriler tabloda gorunur
-4. Gerekirse satirlari duzenleyin (giris/cikis saatleri, izin tipi, fazla mesai vb.)
-5. **"Kaydet"** butonuna tiklayin
+2. **Ay** ve **Yil** secin
+3. **Personel** dropdown'undan bir personel secin
+4. Tabloda o personelin gunluk giris/cikis saatleri gorunur
 
-**Kolon Aciklamalari:**
-- **Tip:** Hi = Hafta ici, HS = Hafta sonu, RT = Resmi tatil
-- **Mi/Yi/R:** mi = Mazeret izni, yi = Yillik izin, r = Rapor
-- **FM Grs/Cks:** Fazla mesai giris/cikis saati
-- **FM St:** Fazla mesai saat (otomatik hesaplanir)
-- **Sure:** Dinlenme dusulmus net calisma suresi (otomatik)
+**Tablo Kolonlari:**
+| Kolon | Aciklama |
+|---|---|
+| Gun | Gun numarasi (1-31) |
+| Tip | Hi = Hafta ici, HS = Hafta sonu, RT = Resmi tatil |
+| Giris | Ise giris saati (ornek: 09:00) |
+| Cikis | Isten cikis saati (ornek: 18:00) |
+| Mi/Yi/R | mi = Mazeret izni, yi = Yillik izin, r = Rapor |
+| FM Grs | Fazla mesai giris saati |
+| FM Cks | Fazla mesai cikis saati |
+| FM St | Fazla mesai suresi (saat, otomatik hesaplanir) |
+| Sure | Net calisma suresi (dinlenme dusulmus, otomatik) |
+| Yemek | Yemek hakki (3+ saat calisma = 1 yemek) |
+| Aciklama | Ek not |
 
-### Adim 4: Hakedis Hesaplama
+5. Gerekirse satirlari duzeltebilirsiniz (giris/cikis saatleri, izin tipi, FM vb.)
+6. **"Kaydet"** butonuna tiklayin
+
+**Alt paneldeki ozet kartlari:**
+- Toplam Sure (saat) — o aydaki toplam calisma suresi
+- Yemek (gun) — yemek hakki gun sayisi
+- FM (saat) — toplam fazla mesai
+- RT FM (saat) — resmi tatil fazla mesai
+
+---
+
+### ADIM 5: Hakedis Hesaplama (Hakedis Sekmesi)
+
+Bu adimda tum personellerin hakedisini hesaplarsiniz.
 
 1. **Hakedis** sekmesine gidin
-2. Ay, Yil, Is Gunu ve Yemek Birim Ucreti ayarlayin
-3. **"Hesapla"** butonuna tiklayin — tum personelin hakedisi hesaplanir
-4. Bir personel secin, alt panelde **manuel alanlari** girin:
-   - Vergi Matrahi
-   - TSS-GSS Farki
-   - Kantin Ucreti
-   - Hakedisten Kesilecek
-5. **"Kaydet"** butonuna tiklayin
+2. Parametreleri girin:
+   - **Ay** / **Yil** — hesaplanacak donem
+   - **Is Gunu** — o aydaki is gunu sayisi (ornek: 21)
+   - **Yemek Br** — gunluk yemek birim ucreti (ornek: 150.00)
+3. **"Hesapla"** butonuna tiklayin
+4. Tum personellerin hakedisi tabloda gorunur
 
-### Adim 5: Excel Cikti
+**Tablo Kolonlari:**
+| Kolon | Aciklama |
+|---|---|
+| Ad Soyad | Personel adi |
+| Hak.Gun | Hakedis gun sayisi |
+| FM Saat / FM Ucr | Fazla mesai suresi ve ucreti |
+| RT Saat / RT Ucr | Resmi tatil FM suresi ve ucreti |
+| Yemek | Yemek hakki tutari |
+| FM Ym | Fazla mesai yemek tutari |
+| Hakedis | Faturalanacak toplam hakedis |
+
+5. Bir personeli secin, alt panelde **manuel degerler** girin:
+   - **Vergi Matrahi** — vergi matrahi tutari
+   - **TSS-GSS** — TSS-GSS farki
+   - **Kantin** — kantin ucreti
+   - **Kesilecek** — hakedisten kesilecek tutar
+6. **"Kaydet"** butonuna tiklayin
+
+**Sag altta TOPLAM HAKEDIS tutari (TL) gorunur.**
+
+---
+
+### ADIM 6: Excel Cikti Olusturma (Excel Cikti Sekmesi)
+
+Bu adimda puantaj ve hakedis verilerini Excel dosyasina aktarirsiniz.
 
 1. **Excel Cikti** sekmesine gidin
-2. Ay, Yil, Is Gunu, Yemek Birim Ucretini ayarlayin
-3. Kayit yerini secin (varsayilan: Masaustu)
-4. **"Puantaj Excel Olustur"** → `Puantaj_OCAK_2026_Mesai.xlsx`
-5. **"Hakedis Kapak Excel Olustur"** → `NVI_TD_OCAK_2026_HAKEDIS.xlsx`
+2. Parametreleri girin: Ay, Yil, Is Gunu, Yemek Br
+3. **Kayit Yeri** alaninda dosyanin kaydedilecegi klasoru secin ("Sec..." butonu ile)
+4. Iki tur cikti olusturabilirsiniz:
+   - **"Puantaj Excel Olustur"** → `Puantaj_OCAK_2026_Mesai.xlsx`
+   - **"Hakedis Kapak Excel Olustur"** → `NVI_TD_OCAK_2026_HAKEDIS.xlsx`
+5. Dosyalar sectiginiz klasore kaydedilir
 
-### Adim 6: Belge Yonetimi (Opsiyonel)
+---
+
+### ADIM 7: Belge Yonetimi (Belgeler Sekmesi) — Opsiyonel
+
+Personellere ait PDF/resim belgelerini arsivleyebilirsiniz.
 
 1. **Belgeler** sekmesine gidin
-2. Personel, Ay, Yil secin
-3. Belge tipini secin (devam_takip, izin_formu, rapor)
-4. **"PDF/Resim Yukle"** ile belgeyi ekleyin
+2. **Personel**, **Ay**, **Yil** ve **Belge Tipi** secin:
+   - `devam_takip` — devam takip formu
+   - `izin_formu` — izin formu
+   - `rapor` — saglik raporu
+3. **"PDF/Resim Yukle"** ile belgeyi ekleyin
+4. Yuklenen belgeler listede gorunur
 5. **"Ac"** ile goruntuleyin, **"Sil"** ile kaldirin
 
 ---
@@ -166,52 +270,83 @@ Ilk satir baslik satiridir, veriler 2. satirdan baslar.
 | Faturalanacak Hakedis | Temel + FM + RT + Yemek + Kantin + Vergi + GSS - Kesilecek |
 
 **Dinlenme suresi dusumu:**
-- 4 saate kadar: 0.25 saat
-- 4-7.5 saat: 0.5 saat
-- 7.5-11 saat: 1 saat
-- 11-15 saat: 1.5 saat
-- 15 saat ustu: 2 saat
+| Calisma Suresi | Dinlenme |
+|---|---|
+| 0 - 4 saat | 0.25 saat |
+| 4 - 7.5 saat | 0.5 saat |
+| 7.5 - 11 saat | 1 saat |
+| 11 - 15 saat | 1.5 saat |
+| 15+ saat | 2 saat |
 
 ---
 
 ## Dosya Yapisi
 
 ```
-puantaj_app/
-  README.md                  ← Bu dosya
-  PLAN.md                    ← Teknik plan dokumani
+puantaj-app/
+  README.md                  <- Bu dosya
   PuantajApp/
-    PuantajApp.csproj        ← Proje dosyasi
-    Program.cs               ← Giris noktasi
-    .env                     ← Gemini API Key (gizli)
+    PuantajApp.csproj        <- Proje dosyasi
+    Program.cs               <- Giris noktasi
+    App.axaml                <- Tema ve global stiller
+    .env                     <- Gemini API Key (otomatik kaydedilir, repo'ya girmez)
     .gitignore
     Data/
-      AppDbContext.cs         ← Veritabani (SQLite)
-    Models/                  ← Veri modelleri
-    Services/                ← Is mantigi servisleri
-    Views/                   ← Ekran tasarimlari (AXAML)
-    ViewModels/              ← Ekran mantiklari
-    puantaj.db               ← Veritabani dosyasi (otomatik olusur)
+      AppDbContext.cs         <- Veritabani (SQLite)
+    Models/                  <- Veri modelleri
+    Services/                <- Is mantigi servisleri
+      GeminiService.cs       <- Gemini AI entegrasyonu
+      ExcelImportService.cs  <- Excel import
+      ExcelExportService.cs  <- Excel export
+      HesaplamaService.cs   <- Hakedis hesaplama
+      EnvService.cs          <- .env dosya yonetimi
+      BelgeService.cs        <- Belge arsivleme
+    Views/                   <- Ekran tasarimlari (AXAML)
+    ViewModels/              <- Ekran mantiklari
+    puantaj.db               <- Veritabani dosyasi (otomatik olusur)
 ```
 
 ---
 
-## Sik Sorulan Sorular
+## Sorun Giderme
 
-**S: Uygulama acilmiyor, hata alirim.**
+**S: Uygulama acilmiyor.**
 C: `dotnet --version` komutuyla .NET 9 kurulu oldugundan emin olun. 9.0.x olmalidir.
 
-**S: PDF parse "API Hatasi 400" diyor.**
-C: `.env` dosyasindaki API key'i kontrol edin. Eksik veya hatali olabilir.
+**S: PDF parse "API Hatasi 404" diyor.**
+C: Gemini modeli degismis olabilir. `GeminiService.cs` dosyasindaki `MODEL` degerini kontrol edin. Mevcut: `gemini-2.5-flash-lite`.
+
+**S: PDF parse "API Hatasi 429" diyor.**
+C: API kota limiti doldu. Uygulama otomatik olarak bekleyip tekrar dener (3 deneme). Cok fazla 429 aliyorsaniz birkac dakika bekleyin veya https://aistudio.google.com/apikey adresinden yeni bir API key olusturun.
 
 **S: PDF parse ediliyor ama personelle eslesmedi.**
-C: Oncelikle Personel sekmesinden personelleri import edin. PDF'deki isimler veritabanindaki isimlerle eslestirilir.
+C: Once Personel sekmesinden personelleri import edin. PDF'deki isimler veritabanindaki isimlerle eslestirilir.
+
+**S: Puantaj sekmesinde veri gorunmuyor.**
+C: PDF Aktar sekmesinde parse sonuclarini "Onayla+Kaydet" ile onayladiniz mi? Onaylanmadan puantaj kaydi olusturulmaz.
+
+**S: Hakedis sekmesinde liste bos.**
+C: Once puantaj kayitlarinin oldugundan emin olun (Adim 4). Sonra "Hesapla" butonuna tiklayin.
+
+**S: Excel'den import yanlis isimler getiriyor.**
+C: Excel dosyanizin ilk satirinin baslik satiri oldugundan emin olun. Uygulama "Ad Soyad", "TC", "Unvan" gibi basliklari otomatik tanir.
 
 **S: Veritabanini sifirlamak istiyorum.**
-C: `PuantajApp/puantaj.db` dosyasini silip uygulamayi yeniden baslatin. Bos veritabani olusur.
+C: `PuantajApp/puantaj.db` dosyasini silip uygulamayi yeniden baslatin. Bos veritabani otomatik olusur.
 
-**S: Excel ciktisini nereye kaydediyor?**
-C: Excel Cikti sekmesindeki "Kayit Yeri" alaninda gosterilen klasore kaydeder. "Sec..." ile degistirebilirsiniz.
+**S: API key'imi nereye giriyorum?**
+C: PDF Aktar sekmesindeki "API Key" alanina yapisitirin. Otomatik olarak `.env` dosyasina kaydedilir. Bir dahaki acilista tekrar girmenize gerek kalmaz.
 
-**S: macOS'ta dosya izin hatasi alirim.**
+**S: macOS'ta dosya izin hatasi aliyorum.**
 C: Terminal'de `chmod +x` gerekebilir veya System Preferences > Privacy'den izin verin.
+
+---
+
+## Teknolojiler
+
+- **C# / .NET 9** — Uygulama platformu
+- **Avalonia UI** — Cross-platform masaustu UI framework
+- **SQLite** — Yerel veritabani (Entity Framework Core)
+- **Google Gemini 2.5 Flash Lite** — PDF Vision AI
+- **ClosedXML** — Excel okuma/yazma
+- **CommunityToolkit.Mvvm** — MVVM pattern
