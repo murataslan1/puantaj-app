@@ -16,7 +16,7 @@ public class GeminiService
     private readonly HttpClient _http = new();
     private string? _apiKey;
 
-    private const string MODEL = "gemini-2.0-flash";
+    private const string MODEL = "gemini-2.5-flash-lite";
 
     private const string PROMPT = """
         Bu bir TÜRKSAT Devam Takip Formudur. Formdaki bilgileri asagidaki JSON formatinda cikar.
