@@ -5,8 +5,15 @@
              x:DataType="vm:PdfAktarViewModel">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="16">
-        <!-- Baslik -->
-        <TextBlock Grid.Row="0" Text="&#x1F916; Gemini Vision AI — PDF Otomatik Parse" Classes="sectionHeader"/>
+        <!-- Baslik + AI Backend Bilgisi -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,4">
+            <TextBlock Grid.Column="0" Text="&#x1F916; AI PDF Otomatik Parse" Classes="sectionHeader"/>
+            <Border Grid.Column="1" Background="{StaticResource AccentLightBrush}"
+                    CornerRadius="4" Padding="8,4" VerticalAlignment="Center">
+                <TextBlock Text="{Binding AiBackend}" FontSize="11" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentHoverBrush}"/>
+            </Border>
+        </Grid>
 
         <!-- Ayarlar -->
         <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">

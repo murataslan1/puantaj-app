@@ -35,8 +35,11 @@ public partial class PdfAktarViewModel : ViewModelBase
     [ObservableProperty] private int _hata = 0;
     [ObservableProperty] private bool _isleniyor = false;
     [ObservableProperty] private PdfOgesiViewModel? _secilenPdf;
+    [ObservableProperty] private string _aiBackend = "Kontrol ediliyor...";
+    [ObservableProperty] private bool _ollamaAktif = false;
 
     private readonly GeminiService _gemini = new();
+    private readonly OllamaService _ollama = new();
 
     public PdfAktarViewModel()
     {
@@ -47,13 +50,36 @@ public partial class PdfAktarViewModel : ViewModelBase
             GeminiApiKey = key;
             _gemini.SetApiKey(key);
         }
+
+        // Ollama kontrolu (arka planda)
+        _ = CheckOllamaAsync();
+    }
+
+    private async Task CheckOllamaAsync()
+    {
+        try
+        {
+            OllamaAktif = await _ollama.IsAvailableAsync();
+            AiBackend = OllamaAktif
+                ? "Ollama (Yerel AI - Limitsiz)"
+                : _gemini.HasApiKey ? "Gemini API (Bulut)" : "API Key gerekli";
+        }
+        catch
+        {
+            OllamaAktif = false;
+            AiBackend = _gemini.HasApiKey ? "Gemini API (Bulut)" : "API Key gerekli";
+        }
     }
 
     partial void OnGeminiApiKeyChanged(string value)
     {
         _gemini.SetApiKey(value);
         if (!string.IsNullOrWhiteSpace(value))
+        {
             EnvService.Set("GEMINI_API_KEY", value);
+            if (!OllamaAktif)
+                AiBackend = "Gemini API (Bulut)";
+        }
     }
 
     public void PdfEkle(string[] dosyaYollari)
@@ -75,9 +101,10 @@ public partial class PdfAktarViewModel : ViewModelBase
     [RelayCommand]
     private async Task TumunuParseEtAsync()
     {
-        if (!_gemini.HasApiKey)
+        // Ollama veya Gemini hazir mi kontrol et
+        if (!OllamaAktif && !_gemini.HasApiKey)
         {
-            Durum = "Gemini API key girilmedi!";
+            Durum = "Ollama kurulu degil ve Gemini API key girilmedi!";
             return;
         }
 
@@ -90,7 +117,8 @@ public partial class PdfAktarViewModel : ViewModelBase
 
         Isleniyor = true;
         Basarili = Hata = 0;
-        Durum = $"0/{seciliPdfler.Count} isleniyor...";
+        var backend = OllamaAktif ? "Ollama" : "Gemini";
+        Durum = $"0/{seciliPdfler.Count} isleniyor ({backend})...";
 
         using var db = new AppDbContext();
         var personeller = await db.Personeller.ToListAsync();
@@ -98,15 +126,20 @@ public partial class PdfAktarViewModel : ViewModelBase
         for (int i = 0; i < seciliPdfler.Count; i++)
         {
             var pdf = seciliPdfler[i];
-            pdf.Durum = "Isleniyor...";
+            pdf.Durum = $"Isleniyor ({backend})...";
 
             try
             {
-                var result = await _gemini.ParsePdfAsync(pdf.DosyaBytes, pdf.DosyaAdi);
+                PuantajParseResult? result;
+
+                if (OllamaAktif)
+                    result = await _ollama.ParsePdfAsync(pdf.DosyaBytes, pdf.DosyaAdi);
+                else
+                    result = await _gemini.ParsePdfAsync(pdf.DosyaBytes, pdf.DosyaAdi);
+
                 if (result != null)
                 {
                     pdf.ParseResult = result;
-                    // Personel eslesme
                     var eslesen = BulEnEslesenPersonel(result.AdSoyad, personeller);
                     pdf.EslesenPersonel = eslesen?.AdSoyad ?? "Eslesmedi";
                     pdf.Durum = eslesen != null ? "Eslesti" : "Eslesmedi";
@@ -128,12 +161,15 @@ public partial class PdfAktarViewModel : ViewModelBase
                 Hata++;
             }
 
-            Durum = $"{i + 1}/{seciliPdfler.Count} islendi. Basarili: {Basarili}, Hata: {Hata}";
-            await Task.Delay(4500); // Rate limiting - free tier 15 RPM
+            Durum = $"{i + 1}/{seciliPdfler.Count} islendi ({backend}). Basarili: {Basarili}, Hata: {Hata}";
+
+            // Gemini icin rate limiting, Ollama icin gerekmez
+            if (!OllamaAktif)
+                await Task.Delay(4500);
         }
 
         Isleniyor = false;
-        Durum = $"Tamamlandi. Basarili: {Basarili}, Hata: {Hata}";
+        Durum = $"Tamamlandi ({backend}). Basarili: {Basarili}, Hata: {Hata}";
     }
 
     [RelayCommand]
@@ -152,7 +188,6 @@ public partial class PdfAktarViewModel : ViewModelBase
             return;
         }
 
-        // Mevcut kayitlari sil, yenileri ekle
         var mevcutKayitlar = db.PuantajKayitlar
             .Where(k => k.PersonelId == eslesen.Id && k.Yil == Yil && k.Ay == Ay);
         db.PuantajKayitlar.RemoveRange(mevcutKayitlar);
@@ -166,7 +201,6 @@ public partial class PdfAktarViewModel : ViewModelBase
             var gunTipi = tarih.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday
                 ? "hafta_sonu" : "hafta_ici";
 
-            // FM aralik parse
             string? fmGiris = null, fmCikis = null;
             if (!string.IsNullOrEmpty(gun.FazlaMesai))
             {
@@ -202,12 +236,10 @@ public partial class PdfAktarViewModel : ViewModelBase
         if (string.IsNullOrWhiteSpace(adSoyad)) return null;
         var aranan = adSoyad.Trim().ToUpperInvariant();
 
-        // Tam esleme
         var tam = personeller.FirstOrDefault(p =>
             p.AdSoyad.ToUpperInvariant() == aranan);
         if (tam != null) return tam;
 
-        // Kismi esleme - en cok kelime esleyen
         var arananKelimeler = aranan.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         return personeller
             .Select(p => new
