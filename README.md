@@ -350,3 +350,243 @@ C: Terminal'de `chmod +x` gerekebilir veya System Preferences > Privacy'den izin
 - **Google Gemini 2.5 Flash Lite** — PDF Vision AI
 - **ClosedXML** — Excel okuma/yazma
 - **CommunityToolkit.Mvvm** — MVVM pattern
+
+---
+
+## Teknik Mimari
+
+### Uygulama Katmanlari
+
+```mermaid
+graph TB
+    subgraph UI["UI Katmani (Views - AXAML)"]
+        MW[MainWindow]
+        PV[PersonelView]
+        PAV[PdfAktarView]
+        PTV[PuantajView]
+        HV[HakedisView]
+        ECV[ExcelCiktiView]
+        BV[BelgeView]
+    end
+
+    subgraph VM["ViewModel Katmani (MVVM)"]
+        MVM[MainWindowViewModel]
+        PVM[PersonelViewModel]
+        PAVM[PdfAktarViewModel]
+        PTVM[PuantajViewModel]
+        HVM[HakedisViewModel]
+        ECVM[ExcelCiktiViewModel]
+        BVM[BelgeViewModel]
+    end
+
+    subgraph SVC["Servis Katmani"]
+        GS[GeminiService]
+        EIS[ExcelImportService]
+        EES[ExcelExportService]
+        HS[HesaplamaService]
+        BS[BelgeService]
+        ES[EnvService]
+    end
+
+    subgraph DATA["Veri Katmani"]
+        DB[(SQLite - puantaj.db)]
+        CTX[AppDbContext<br/>Entity Framework Core]
+    end
+
+    subgraph EXT["Dis Servisler"]
+        GEMINI[Google Gemini API<br/>gemini-2.5-flash-lite]
+        EXCEL[Excel Dosyalari<br/>.xlsx]
+        PDF[PDF Dosyalari<br/>Devam Takip Formu]
+        ENV[.env Dosyasi<br/>API Key]
+    end
+
+    MW --> MVM
+    PV --> PVM
+    PAV --> PAVM
+    PTV --> PTVM
+    HV --> HVM
+    ECV --> ECVM
+    BV --> BVM
+
+    PAVM --> GS
+    PVM --> EIS
+    ECVM --> EES
+    HVM --> HS
+    BVM --> BS
+    PAVM --> ES
+
+    GS --> GEMINI
+    EIS --> EXCEL
+    EES --> EXCEL
+    GS --> PDF
+    ES --> ENV
+
+    PVM --> CTX
+    PAVM --> CTX
+    PTVM --> CTX
+    HVM --> CTX
+    BVM --> CTX
+    CTX --> DB
+
+    style UI fill:#1E3A5F,stroke:#2563EB,color:#F1F5F9
+    style VM fill:#1E293B,stroke:#334155,color:#CBD5E1
+    style SVC fill:#1E293B,stroke:#334155,color:#CBD5E1
+    style DATA fill:#14532D,stroke:#22C55E,color:#F1F5F9
+    style EXT fill:#7F1D1D,stroke:#EF4444,color:#FCA5A5
+```
+
+### Veri Akisi (Is Sureci)
+
+```mermaid
+flowchart LR
+    A[Excel Dosyasi<br/>Personel Listesi] -->|ExcelImportService| B[(SQLite DB<br/>Personeller)]
+    C[PDF Dosyalari<br/>Devam Takip Formu] -->|GeminiService| D[PuantajParseResult<br/>JSON]
+    D -->|Eslestirme + Onay| E[(SQLite DB<br/>PuantajKayitlar)]
+    B --> F{HesaplamaService}
+    E --> F
+    F -->|Hesapla| G[(SQLite DB<br/>HakedisEkVeri)]
+    E -->|ExcelExportService| H[Puantaj.xlsx]
+    G -->|ExcelExportService| I[Hakedis.xlsx]
+
+    style A fill:#2563EB,stroke:#3B82F6,color:#fff
+    style C fill:#2563EB,stroke:#3B82F6,color:#fff
+    style B fill:#22C55E,stroke:#16A34A,color:#fff
+    style E fill:#22C55E,stroke:#16A34A,color:#fff
+    style G fill:#22C55E,stroke:#16A34A,color:#fff
+    style D fill:#F59E0B,stroke:#D97706,color:#fff
+    style F fill:#8B5CF6,stroke:#7C3AED,color:#fff
+    style H fill:#EF4444,stroke:#DC2626,color:#fff
+    style I fill:#EF4444,stroke:#DC2626,color:#fff
+```
+
+### Gemini AI PDF Parse Akisi
+
+```mermaid
+sequenceDiagram
+    participant U as Kullanici
+    participant App as PdfAktarViewModel
+    participant GS as GeminiService
+    participant API as Gemini API
+    participant DB as SQLite
+
+    U->>App: PDF Sec + "Tumu Parse Et"
+    loop Her PDF icin
+        App->>GS: ParsePdfAsync(pdfBytes)
+        GS->>GS: PDF → Base64 donusum
+        GS->>API: POST /generateContent<br/>(PDF + Prompt)
+        alt Basarili (200)
+            API-->>GS: JSON yanit
+            GS->>GS: JSON parse → PuantajParseResult
+            GS-->>App: ParseResult
+            App->>App: Personel eslestirme
+        else Rate Limit (429)
+            API-->>GS: 429 Hata
+            GS->>GS: Exponential Backoff<br/>(5s → 15s → 45s)
+            GS->>API: Retry
+        end
+        App->>App: 4.5s bekleme (Rate Limit)
+    end
+    U->>App: "Onayla+Kaydet"
+    App->>DB: PuantajKayit INSERT
+```
+
+### Veritabani Semasi
+
+```mermaid
+erDiagram
+    Personeller {
+        int Id PK
+        string AdSoyad
+        string TC
+        string Unvan
+        string Birim
+        datetime BaslamaTarihi
+        decimal BirimUcreti
+        decimal YillikIzinHakki
+        int Gececi
+    }
+
+    PuantajKayitlar {
+        int Id PK
+        int PersonelId FK
+        int Yil
+        int Ay
+        int Gun
+        string GunTipi
+        string GirisSaati
+        string CikisSaati
+        string IzinTipi
+        string FmGiris
+        string FmCikis
+        decimal FmSaat
+        string Aciklama
+    }
+
+    HakedisEkVeri {
+        int Id PK
+        int PersonelId FK
+        int Yil
+        int Ay
+        decimal VergiMatrahi
+        decimal TssGssFarki
+        decimal KantinUcreti
+        decimal HakedistenKesilecek
+    }
+
+    Belgeler {
+        int Id PK
+        int PersonelId FK
+        int Yil
+        int Ay
+        string BelgeTipi
+        string DosyaAdi
+        string DosyaYolu
+        datetime YuklenmeTarihi
+    }
+
+    HakedisParametre {
+        int Id PK
+        int Yil
+        int Ay
+        int IsGunu
+        decimal YemekBirimUcreti
+    }
+
+    Personeller ||--o{ PuantajKayitlar : "puantaj kayitlari"
+    Personeller ||--o{ HakedisEkVeri : "hakedis ek verileri"
+    Personeller ||--o{ Belgeler : "belgeler"
+```
+
+### MVVM Mimari Deseni
+
+```mermaid
+graph LR
+    subgraph View["View (AXAML)"]
+        V1[".axaml dosyalari<br/>UI tanimlamalari"]
+        V2["Data Binding<br/>{Binding Property}"]
+        V3["Command Binding<br/>{Binding XCommand}"]
+    end
+
+    subgraph ViewModel["ViewModel (C#)"]
+        VM1["ObservableProperty<br/>UI state"]
+        VM2["RelayCommand<br/>UI aksiyonlari"]
+        VM3["Servis cagrilari"]
+    end
+
+    subgraph Model["Model + Services"]
+        M1["Entity modelleri<br/>Personel, PuantajKayit..."]
+        M2["Servisler<br/>GeminiService, HesaplamaService..."]
+        M3["AppDbContext<br/>EF Core"]
+    end
+
+    V2 -->|TwoWay Binding| VM1
+    V3 -->|Command| VM2
+    VM2 --> VM3
+    VM3 --> M2
+    VM3 --> M3
+    M3 --> M1
+
+    style View fill:#1E3A5F,stroke:#2563EB,color:#F1F5F9
+    style ViewModel fill:#1E293B,stroke:#334155,color:#CBD5E1
+    style Model fill:#14532D,stroke:#22C55E,color:#F1F5F9
+```
