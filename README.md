@@ -649,6 +649,131 @@ erDiagram
     Personeller ||--o{ Belgeler : "belgeler"
 ```
 
+### AI Backend Otomatik Secim
+
+```mermaid
+flowchart TD
+    START([Uygulama Baslatildi]) --> CHECK{Ollama calistiyor mu?<br/>localhost:11434/api/tags}
+    CHECK -->|Evet| MODEL{llama3.2-vision<br/>modeli yuklu mu?}
+    CHECK -->|Hayir / Timeout| GEMINI_CHECK{Gemini API Key<br/>var mi?}
+    MODEL -->|Evet| OLLAMA[Ollama Yerel AI<br/>Limitsiz - Key Gerekmez]
+    MODEL -->|Hayir| GEMINI_CHECK
+    GEMINI_CHECK -->|Evet .env| GEMINI[Gemini Bulut API<br/>Rate Limited]
+    GEMINI_CHECK -->|Hayir| MANUAL[Kullanicidan API Key iste<br/>veya Ollama kur]
+
+    OLLAMA --> UI_BADGE["UI Badge:<br/>Ollama Yerel AI - Limitsiz"]
+    GEMINI --> UI_BADGE2["UI Badge:<br/>Gemini API Bulut"]
+    MANUAL --> UI_BADGE3["UI Badge:<br/>API Key gerekli"]
+
+    style OLLAMA fill:#22C55E,stroke:#16A34A,color:#fff
+    style GEMINI fill:#2563EB,stroke:#3B82F6,color:#fff
+    style MANUAL fill:#F59E0B,stroke:#D97706,color:#fff
+    style START fill:#8B5CF6,stroke:#7C3AED,color:#fff
+```
+
+### Excel Import Akisi (Otomatik Sutun Tespiti)
+
+```mermaid
+flowchart TD
+    A[Excel Dosyasi Secildi] --> B[Satir 1 Baslik Oku]
+    B --> C{A1 = No / Sira / # ?}
+    C -->|Evet| D[Ad Soyad = B kolonu<br/>Diger kolonlar kaydirilir]
+    C -->|Hayir| E[Ad Soyad = A kolonu<br/>Standart pozisyonlar]
+
+    D --> F[Baslik Tarama]
+    E --> F
+    F --> G["Otomatik kolon tespiti:<br/>AD/SOYAD → colAdSoyad<br/>T.C/TC → colTc<br/>UNVAN → colUnvan<br/>BIRIM → colBirim<br/>UCRET/MAAS → colUcret<br/>IZIN → colIzin"]
+
+    G --> H[Satir 2'den itibaren oku]
+    H --> I{Gecerli satir mi?}
+    I -->|Sayisal / Bos / TOPLAM<br/>AYI / GUNU / SAATI| J[Atla]
+    I -->|Gecerli isim| K[Personel olarak ekle]
+    J --> H
+    K --> H
+
+    style A fill:#2563EB,stroke:#3B82F6,color:#fff
+    style G fill:#F59E0B,stroke:#D97706,color:#fff
+    style K fill:#22C55E,stroke:#16A34A,color:#fff
+    style J fill:#EF4444,stroke:#DC2626,color:#fff
+```
+
+### Hakedis Hesaplama Akisi
+
+```mermaid
+flowchart LR
+    subgraph INPUT["Girdi"]
+        P[Personel<br/>BirimUcreti]
+        PK[PuantajKayitlar<br/>GirisSaati, CikisSaati<br/>FmGiris, FmCikis]
+        PARAM[Parametreler<br/>IsGunu, YemekBr]
+    end
+
+    subgraph CALC["HesaplamaService"]
+        S["HesaplaSure()<br/>Net calisma suresi<br/>- Dinlenme dusumu"]
+        Y["YemekHakki()<br/>3+ saat = 1 yemek"]
+        FM["HesaplaFmUcreti()<br/>FM x Ucret/225 x 1.5"]
+        RT["HesaplaRtFmUcreti()<br/>RT x Ucret/225 x 2"]
+        HAK["HesaplaFaturalanacak<br/>Hakedis()<br/>Temel + FM + RT + Yemek<br/>+ Kantin + Vergi + GSS<br/>- Kesilecek"]
+    end
+
+    subgraph OUTPUT["Cikti"]
+        TABLO[Hakedis Tablosu]
+        TOPLAM[Toplam Hakedis TL]
+        EXCEL[Excel Cikti]
+    end
+
+    P --> FM
+    P --> RT
+    P --> HAK
+    PK --> S
+    PK --> Y
+    PARAM --> HAK
+    S --> FM
+    S --> RT
+    Y --> HAK
+    FM --> HAK
+    RT --> HAK
+    HAK --> TABLO
+    TABLO --> TOPLAM
+    TABLO --> EXCEL
+
+    style INPUT fill:#1E3A5F,stroke:#2563EB,color:#F1F5F9
+    style CALC fill:#8B5CF6,stroke:#7C3AED,color:#fff
+    style OUTPUT fill:#22C55E,stroke:#16A34A,color:#fff
+```
+
+### UI Tema Yapisi
+
+```mermaid
+graph TD
+    subgraph THEME["App.axaml - Global Tema"]
+        DM["RequestedThemeVariant = Dark"]
+        subgraph COLORS["Renk Paleti"]
+            AC["AccentBrush #2563EB"]
+            SC["SuccessBrush #22C55E"]
+            EC["ErrorBrush #EF4444"]
+            WC["WarningBrush #F59E0B"]
+            CB["CardBgBrush #1E293B"]
+            PB["PageBgBrush #0F172A"]
+        end
+        subgraph STYLES["Stil Siniflari"]
+            S1["Button.primary<br/>Mavi arka plan, beyaz yazi"]
+            S2["Button.secondary<br/>Seffaf, gri border"]
+            S3["Button.danger<br/>Kirmizi, tehlike aksiyonu"]
+            S4["Border.card<br/>Koyu kart, yuvarlatilmis kose"]
+            S5["TextBlock.sectionHeader<br/>18px, SemiBold"]
+            S6["TextBlock.statValue<br/>20px, Bold, buyuk rakam"]
+            S7["TextBlock.label<br/>12px, gri, form etiketi"]
+        end
+    end
+
+    DM --> COLORS
+    COLORS --> STYLES
+
+    style THEME fill:#0F172A,stroke:#334155,color:#F1F5F9
+    style COLORS fill:#1E293B,stroke:#334155,color:#CBD5E1
+    style STYLES fill:#1E293B,stroke:#334155,color:#CBD5E1
+```
+
 ### MVVM Mimari Deseni
 
 ```mermaid
@@ -666,9 +791,10 @@ graph LR
     end
 
     subgraph Model["Model + Services"]
-        M1["Entity modelleri<br/>Personel, PuantajKayit..."]
-        M2["Servisler<br/>GeminiService, HesaplamaService..."]
-        M3["AppDbContext<br/>EF Core"]
+        M1["Entity modelleri<br/>Personel, PuantajKayit<br/>HakedisEkVeri, Belge"]
+        M2["AI Servisler<br/>OllamaService, GeminiService<br/>AiParseHelper"]
+        M3["Is Mantigi<br/>HesaplamaService<br/>ExcelImport/ExportService<br/>EnvService, BelgeService"]
+        M4["Veri Erisim<br/>AppDbContext (EF Core)<br/>SQLite"]
     end
 
     V2 -->|TwoWay Binding| VM1
@@ -676,9 +802,43 @@ graph LR
     VM2 --> VM3
     VM3 --> M2
     VM3 --> M3
-    M3 --> M1
+    VM3 --> M4
+    M4 --> M1
 
     style View fill:#1E3A5F,stroke:#2563EB,color:#F1F5F9
     style ViewModel fill:#1E293B,stroke:#334155,color:#CBD5E1
     style Model fill:#14532D,stroke:#22C55E,color:#F1F5F9
+```
+
+### Test Kapsami
+
+```mermaid
+graph TD
+    subgraph TESTS["PuantajApp.Tests - 87 Unit Test"]
+        subgraph T1["AiParseHelperTests - 38 test"]
+            T1A["TemizleJson<br/>Code block temizleme"]
+            T1B["NormalizeSaat<br/>HH:mm format dogrulama"]
+            T1C["NormalizeMiYiR<br/>mi/yi/r validasyon"]
+            T1D["ParseAy<br/>Turkce ay adi → sayi"]
+            T1E["ParseGunNumarasi<br/>Gun extract"]
+            T1F["ParseJsonResponse<br/>Tam JSON parse"]
+        end
+        subgraph T2["HesaplamaServiceTests - 30 test"]
+            T2A["HesaplaSure<br/>Dinlenme dusumu<br/>0.25/0.5/1/1.5/2 saat"]
+            T2B["YemekHakki<br/>3+ saat = 1 yemek"]
+            T2C["FM/RT Ucreti<br/>x1.5 ve x2 carpanlari"]
+            T2D["FaturalanacakHakedis<br/>Toplam hesaplama"]
+            T2E["ParseFmAralik<br/>Gece yarisi gecisi"]
+        end
+        subgraph T3["EnvServiceTests - 19 test"]
+            T3A["Load<br/>Dosya okuma, yorum atlama"]
+            T3B["Get/Set<br/>Ortam degiskeni yonetimi"]
+            T3C["Dosya olusturma<br/>Var olan key guncelleme"]
+        end
+    end
+
+    style TESTS fill:#0F172A,stroke:#334155,color:#F1F5F9
+    style T1 fill:#2563EB,stroke:#3B82F6,color:#fff
+    style T2 fill:#8B5CF6,stroke:#7C3AED,color:#fff
+    style T3 fill:#22C55E,stroke:#16A34A,color:#fff
 ```
