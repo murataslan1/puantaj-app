@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PuantajApp.ViewModels"
+             x:Class="PuantajApp.Views.PuantajView"
+             x:DataType="vm:PuantajViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="8">
+        <!-- Filtre -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,90,Auto,90,Auto,*" Margin="0,0,0,8">
+            <TextBlock Grid.Column="0" Text="Ay:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+            <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+            <TextBlock Grid.Column="2" Text="Yil:" VerticalAlignment="Center" Margin="8,0,4,0"/>
+            <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+            <TextBlock Grid.Column="4" Text="Personel:" VerticalAlignment="Center" Margin="8,0,4,0"/>
+            <ComboBox Grid.Column="5"
+                      ItemsSource="{Binding Personeller}"
+                      SelectedItem="{Binding SecilenPersonel}"
+                      DisplayMemberBinding="{Binding AdSoyad}"/>
+        </Grid>
+
+        <!-- Puantaj Tablosu -->
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Satirlar}"
+                  AutoGenerateColumns="False"
+                  GridLinesVisibility="All"
+                  IsReadOnly="False"
+                  CanUserResizeColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Gun" Binding="{Binding Gun}" Width="45" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Tip" Binding="{Binding GunTipiGoster}" Width="40" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Giris" Binding="{Binding GirisSaati}" Width="65"/>
+                <DataGridTextColumn Header="Cikis" Binding="{Binding CikisSaati}" Width="65"/>
+                <DataGridTextColumn Header="Mi/Yi/R" Binding="{Binding IzinTipi}" Width="60"/>
+                <DataGridTextColumn Header="FM Grs" Binding="{Binding FmGiris}" Width="65"/>
+                <DataGridTextColumn Header="FM Cks" Binding="{Binding FmCikis}" Width="65"/>
+                <DataGridTextColumn Header="FM St" Binding="{Binding FmSaat, StringFormat={}{0:F2}}" Width="60"/>
+                <DataGridTextColumn Header="Sure" Binding="{Binding HesaplananSure, StringFormat={}{0:F2}}" Width="55" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Yemek" Binding="{Binding YemekHakki}" Width="55" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Aciklama" Binding="{Binding Aciklama}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Ozet -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="24" Margin="0,4,0,4">
+            <TextBlock Text="{Binding ToplamSure, StringFormat='Toplam Sure: {0:F2} saat'}"/>
+            <TextBlock Text="{Binding ToplamYemek, StringFormat='Yemek: {0} gun'}"/>
+            <TextBlock Text="{Binding ToplamFm, StringFormat='FM: {0:F2} saat'}"/>
+            <TextBlock Text="{Binding ToplamRtFm, StringFormat='RT FM: {0:F2} saat'}"/>
+        </StackPanel>
+
+        <!-- Alt bar -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto">
+            <TextBlock Grid.Column="0" Text="{Binding Durum}" Foreground="Blue" VerticalAlignment="Center"/>
+            <Button Grid.Column="2" Content="Kaydet" Command="{Binding KaydetCommand}" Margin="8,0,0,0"/>
+        </Grid>
+    </Grid>
+</UserControl>

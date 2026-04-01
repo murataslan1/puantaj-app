@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PuantajApp.ViewModels"
+             x:Class="PuantajApp.Views.HakedisView"
+             x:DataType="vm:HakedisViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="8">
+        <!-- Filtre -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,90,Auto,90,Auto,90,Auto,120,Auto,*" Margin="0,0,0,8">
+            <TextBlock Grid.Column="0" Text="Ay:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+            <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+            <TextBlock Grid.Column="2" Text="Yil:" VerticalAlignment="Center" Margin="8,0,4,0"/>
+            <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+            <TextBlock Grid.Column="4" Text="Is Gunu:" VerticalAlignment="Center" Margin="8,0,4,0"/>
+            <NumericUpDown Grid.Column="5" Value="{Binding IsGunu}" Minimum="1" Maximum="31"/>
+            <TextBlock Grid.Column="6" Text="Yemek Br:" VerticalAlignment="Center" Margin="8,0,4,0"/>
+            <NumericUpDown Grid.Column="7" Value="{Binding YemekBirimUcreti}" Minimum="0" Maximum="9999" FormatString="F2"/>
+            <Button Grid.Column="9" Content="Hesapla" Command="{Binding HesaplaCommand}" Margin="8,0,0,0"/>
+        </Grid>
+
+        <!-- Liste -->
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Satirlar}"
+                  SelectedItem="{Binding SecilenSatir}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  GridLinesVisibility="All">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ad Soyad" Binding="{Binding AdSoyad}" Width="180"/>
+                <DataGridTextColumn Header="Hak.Gun" Binding="{Binding HakedisGun}" Width="70"/>
+                <DataGridTextColumn Header="FM Saat" Binding="{Binding FmSaat, StringFormat={}{0:F2}}" Width="75"/>
+                <DataGridTextColumn Header="FM Ucr" Binding="{Binding FmUcret, StringFormat={}{0:F2}}" Width="80"/>
+                <DataGridTextColumn Header="RT Saat" Binding="{Binding RtFmSaat, StringFormat={}{0:F2}}" Width="75"/>
+                <DataGridTextColumn Header="RT Ucr" Binding="{Binding RtFmUcret, StringFormat={}{0:F2}}" Width="80"/>
+                <DataGridTextColumn Header="Yemek" Binding="{Binding YemekUcret, StringFormat={}{0:F2}}" Width="80"/>
+                <DataGridTextColumn Header="FM Ym" Binding="{Binding FmYemekUcret, StringFormat={}{0:F2}}" Width="75"/>
+                <DataGridTextColumn Header="Hakedis" Binding="{Binding FaturalanacakHakedis, StringFormat={}{0:F2}}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Manuel degerler (secili personel) -->
+        <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Padding="8" Margin="0,8,0,0"
+                IsVisible="{Binding SecilenSatir, Converter={x:Static ObjectConverters.IsNotNull}}">
+            <Grid ColumnDefinitions="Auto,120,Auto,120,Auto,120,Auto,120,Auto,*" RowDefinitions="Auto,Auto">
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Secili:" FontWeight="Bold" Margin="0,0,8,4" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7" Text="{Binding SecilenSatir.AdSoyad}" FontWeight="Bold" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Vergi Matr:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SecilenSatir.VergiMatrahi}" Margin="0,0,8,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="TSS-GSS:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SecilenSatir.TssGssFarki}" Margin="0,0,8,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="4" Text="Kantin:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding SecilenSatir.KantinUcreti}" Margin="0,0,8,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="6" Text="Kesilecek:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <TextBox Grid.Row="1" Grid.Column="7" Text="{Binding SecilenSatir.HakedistenKesilecek}" Margin="0,0,8,0"/>
+                <Button Grid.Row="1" Grid.Column="8" Content="Kaydet" Command="{Binding ManuelKaydetCommand}" Margin="4,0,0,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Alt bar -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto" Margin="0,4,0,0">
+            <TextBlock Grid.Column="0" Text="{Binding Durum}" Foreground="Blue" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Text="{Binding ToplamHakedis, StringFormat='TOPLAM HAKEDİŞ: {0:N2} TL'}"
+                       FontWeight="Bold" FontSize="14" Foreground="DarkGreen"/>
+        </Grid>
+    </Grid>
+</UserControl>

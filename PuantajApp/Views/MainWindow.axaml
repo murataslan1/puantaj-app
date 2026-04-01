@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PuantajApp.ViewModels"
+        xmlns:views="using:PuantajApp.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="700"
+        x:Class="PuantajApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Puantaj &amp; Hakedis Uygulamasi"
+        Width="1200" Height="720"
+        MinWidth="900" MinHeight="600">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <TabControl SelectedIndex="{Binding SecilenSekme}">
+        <TabItem Header="Personel">
+            <views:PersonelView DataContext="{Binding PersonelVM}"/>
+        </TabItem>
+        <TabItem Header="PDF Aktar">
+            <views:PdfAktarView DataContext="{Binding PdfAktarVM}"/>
+        </TabItem>
+        <TabItem Header="Puantaj">
+            <views:PuantajView DataContext="{Binding PuantajVM}"/>
+        </TabItem>
+        <TabItem Header="Hakedis">
+            <views:HakedisView DataContext="{Binding HakedisVM}"/>
+        </TabItem>
+        <TabItem Header="Excel Cikti">
+            <views:ExcelCiktiView DataContext="{Binding ExcelCiktiVM}"/>
+        </TabItem>
+        <TabItem Header="Belgeler">
+            <views:BelgeView DataContext="{Binding BelgeVM}"/>
+        </TabItem>
+    </TabControl>
+</Window>

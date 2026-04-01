@@ -1,0 +1,29 @@
+# Build
+bin/
+obj/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Environment
+.env
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Planning
+PLAN.md
+
+# Sensitive documents
+*.pdf
+*.xlsx
