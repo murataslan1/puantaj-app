@@ -1,0 +1,463 @@
+{
+  "Ocak2026": {
+    "max_row": 15,
+    "max_col": 38,
+    "merged": [
+      "A8:B8",
+      "A1:AH1",
+      "A12:AC12",
+      "B5:AF5"
+    ],
+    "col_widths": {
+      "A": 7.88671875,
+      "B": 36.6640625,
+      "C": 16.33203125,
+      "D": 47.5546875,
+      "E": 13.6640625,
+      "F": 13.33203125,
+      "G": 14.88671875,
+      "H": 9.5546875,
+      "I": 9.33203125,
+      "J": 12.6640625,
+      "K": 10.109375,
+      "L": 11.109375,
+      "M": 9.109375,
+      "N": 8.109375,
+      "O": 9.109375,
+      "P": 13.0,
+      "Q": 12.88671875,
+      "R": 9.109375,
+      "S": 12.5546875,
+      "T": 13.0,
+      "U": 9.109375,
+      "V": 12.6640625,
+      "W": 9.88671875,
+      "X": 15.0,
+      "Y": 13.0,
+      "Z": 15.0,
+      "AA": 8.88671875,
+      "AB": 7.44140625,
+      "AC": 13.6640625,
+      "AD": 13.0,
+      "AE": 13.0,
+      "AF": 19.0,
+      "AG": 18.5546875,
+      "AH": 22.44140625,
+      "AI": 35.109375,
+      "AJ": 13.109375,
+      "AK": 13.109375,
+      "AL": 12.44140625
+    },
+    "row_heights": {
+      "1": 81.0,
+      "2": 61.35,
+      "3": 54.9,
+      "4": 54.9,
+      "5": 54.9,
+      "6": 54.9,
+      "7": 45.0,
+      "8": 45.0,
+      "9": 35.1,
+      "10": 35.1,
+      "11": 35.1,
+      "12": 35.1,
+      "13": 35.1,
+      "14": 35.1,
+      "15": 35.1
+    },
+    "cells": {
+      "A1": {
+        "formula": "=CONCATENATE(\"T.C. İÇİŞLERİ BAKANLIĞI NÜFUS VE VATANDAŞLIK İŞLERİ GENEL MÜDÜRLÜĞÜ İLE TÜRKSAT ARASINDA İMZALANAN\n BİLGİ TEKNOLOJİLERİ DANIŞMANLIK VE DESTEK HİZMET ALIMI SÖZLEŞMESİ \nAYLIK HAKEDİŞ \", AI1, \" \", AI2, \" (30.12.2025 Tarihli Sözleşme)\")",
+        "calculated": "T.C. İÇİŞLERİ BAKANLIĞI NÜFUS VE VATANDAŞLIK İŞLERİ GENEL MÜDÜRLÜĞÜ İLE TÜRKSAT ARASINDA İMZALANAN\n BİLGİ TEKNOLOJİLERİ DANIŞMANLIK VE DESTEK HİZMET ALIMI SÖZLEŞMESİ \nAYLIK HAKEDİŞ OCAK 2026 (30.12.2025 Tarihli Sözleşme)"
+      },
+      "AI1": {
+        "calculated": "OCAK",
+        "value": "OCAK"
+      },
+      "AJ1": {
+        "calculated": "İş Günü Ayı",
+        "value": "İş Günü Ayı"
+      },
+      "A2": {
+        "calculated": "No",
+        "value": "No"
+      },
+      "B2": {
+        "calculated": "Danışman Adı Soyadı",
+        "value": "Danışman Adı Soyadı"
+      },
+      "C2": {
+        "calculated": "T.C.",
+        "value": "T.C."
+      },
+      "D2": {
+        "calculated": "Unvanı",
+        "value": "Unvanı"
+      },
+      "E2": {
+        "calculated": "Başlama Tarihi",
+        "value": "Başlama Tarihi"
+      },
+      "F2": {
+        "calculated": "Unvan Değişikliği Tarihi",
+        "value": "Unvan Değişikliği Tarihi"
+      },
+      "G2": {
+        "calculated": "Çıkış Tarihi",
+        "value": "Çıkış Tarihi"
+      },
+      "H2": {
+        "calculated": "Hakedişe Esas İş Günü ",
+        "value": "Hakedişe Esas İş Günü "
+      },
+      "I2": {
+        "calculated": "Hakedişe Esas Çalışma Saati",
+        "value": "Hakedişe Esas Çalışma Saati"
+      },
+      "J2": {
+        "calculated": "Aylık Kullanılan Yıllık İzin (Gün)",
+        "value": "Aylık Kullanılan Yıllık İzin (Gün)"
+      },
+      "K2": {
+        "calculated": "Yıllık İzin Hakkı  (Gün)",
+        "value": "Yıllık İzin Hakkı  (Gün)"
+      },
+      "L2": {
+        "calculated": "Kullanılan Toplam Yıllık İzin (Gün)",
+        "value": "Kullanılan Toplam Yıllık İzin (Gün)"
+      },
+      "M2": {
+        "calculated": "Kalan Yıllık İzin (Gün)",
+        "value": "Kalan Yıllık İzin (Gün)"
+      },
+      "N2": {
+        "calculated": "Ücretsiz\nİzin",
+        "value": "Ücretsiz\nİzin"
+      },
+      "O2": {
+        "calculated": "Yasal İzin\n(Evlilik, ölüm vb.)",
+        "value": "Yasal İzin\n(Evlilik, ölüm vb.)"
+      },
+      "P2": {
+        "calculated": "Fazla Mesai",
+        "value": "Fazla Mesai"
+      },
+      "Q2": {
+        "calculated": "Fazla Mesai Ücreti",
+        "value": "Fazla Mesai Ücreti"
+      },
+      "R2": {
+        "calculated": "Resmi Tatil FM Saat",
+        "value": "Resmi Tatil FM Saat"
+      },
+      "S2": {
+        "calculated": "Resmi Tatil FM Ücret",
+        "value": "Resmi Tatil FM Ücret"
+      },
+      "T2": {
+        "calculated": "Yemek Ücreti(İzin Rapor Düşülmüş)",
+        "value": "Yemek Ücreti(İzin Rapor Düşülmüş)"
+      },
+      "U2": {
+        "calculated": "3 Saat\n ve Üzeri Fazla Mesai",
+        "value": "3 Saat\n ve Üzeri Fazla Mesai"
+      },
+      "V2": {
+        "calculated": "Fazla Mesai Yemek Ücreti",
+        "value": "Fazla Mesai Yemek Ücreti"
+      },
+      "W2": {
+        "calculated": "Kantin Ücreti",
+        "value": "Kantin Ücreti"
+      },
+      "X2": {
+        "calculated": "Gelir Damga İstisnasını Aşan Tutar",
+        "value": "Gelir Damga İstisnasını Aşan Tutar"
+      },
+      "Y2": {
+        "calculated": "Bordradaki Vergi Matrağı",
+        "value": "Bordradaki Vergi Matrağı"
+      },
+      "Z2": {
+        "calculated": "Yemek Gelir ve Damga Vergisi(İstisnayı Aşan)",
+        "value": "Yemek Gelir ve Damga Vergisi(İstisnayı Aşan)"
+      },
+      "AA2": {
+        "calculated": "Rapor (Gün)",
+        "value": "Rapor (Gün)"
+      },
+      "AB2": {
+        "calculated": "İzin (Saat)",
+        "value": "İzin (Saat)"
+      },
+      "AC2": {
+        "calculated": "Yıl İçerisinde Kullanılan Toplam Saatlik İzin",
+        "value": "Yıl İçerisinde Kullanılan Toplam Saatlik İzin"
+      },
+      "AD2": {
+        "calculated": "TSS-GSS Farkı/12",
+        "value": "TSS-GSS Farkı/12"
+      },
+      "AE2": {
+        "calculated": "GSS Farkı Damga Vergisi Yükü",
+        "value": "GSS Farkı Damga Vergisi Yükü"
+      },
+      "AF2": {
+        "calculated": "2026/I. Dönem  Birim Ücreti",
+        "value": "2026/I. Dönem  Birim Ücreti"
+      },
+      "AG2": {
+        "calculated": "Hakedişten Kesilecek Ücret",
+        "value": "Hakedişten Kesilecek Ücret"
+      },
+      "AH2": {
+        "calculated": "Faturalanacak \nAylık Hakediş",
+        "value": "Faturalanacak \nAylık Hakediş"
+      },
+      "AI2": {
+        "calculated": 2026,
+        "value": 2026
+      },
+      "A3": {
+        "calculated": 1,
+        "value": 1
+      },
+      "B3": {
+        "calculated": "Abdul Kadir Akacak",
+        "value": "Abdul Kadir Akacak"
+      },
+      "D3": {
+        "calculated": "Veri Entegrasyon Operatörü 4. Kademe",
+        "value": "Veri Entegrasyon Operatörü 4. Kademe"
+      },
+      "E3": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "H3": {
+        "formula": "=$D$8",
+        "calculated": 21
+      },
+      "I3": {
+        "formula": "=H3*$D$9",
+        "calculated": 168
+      },
+      "J3": {
+        "calculated": 1,
+        "value": 1
+      },
+      "K3": {
+        "calculated": 4,
+        "value": 4
+      },
+      "L3": {
+        "calculated": 1,
+        "value": 1
+      },
+      "M3": {
+        "formula": "=K3-L3",
+        "calculated": 3
+      },
+      "N3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "Q3": {
+        "formula": "=P3*AF3/225*1.5",
+        "calculated": 0
+      },
+      "S3": {
+        "formula": "=R3*AF3/225*2",
+        "calculated": 0
+      },
+      "T3": {
+        "calculated": 5610,
+        "value": 5610
+      },
+      "U3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "V3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "X3": {
+        "formula": "=IF((T3+V3+W3) - ((H3-AA3-J3)*330) > 0,(T3+V3+W3) - ((H3-AA3-J3)*330),0)",
+        "calculated": 0
+      },
+      "Y3": {
+        "formula": "=VLOOKUP(C3,[1]Sheet1!$B:$N,13,0)",
+        "calculated": "#N/A"
+      },
+      "Z3": {
+        "formula": "=ROUND(IF(Y3<=190000, X3*(0.15+0.00759),IF(Y3<=400000, X3*(0.2+0.00759),IF(Y3<=1500000, X3*(0.27+0.00759),IF(Y3<=5300000, X3*(0.35+0.00759),X3*(0.4+0.00759))))),2)",
+        "calculated": "#N/A"
+      },
+      "AA3": {
+        "formula": "=2+1",
+        "calculated": 3
+      },
+      "AE3": {
+        "formula": "=(AD3/0.99241)*0.00759",
+        "calculated": 0
+      },
+      "AF3": {
+        "calculated": 6125.39,
+        "value": 6125.39
+      },
+      "AG3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "AH3": {
+        "formula": "=ROUND((AF3/$D$8*H3),2)+Q3+S3+T3+V3+W3+Z3+AD3+AE3-AG3",
+        "calculated": "#N/A"
+      },
+      "AJ3": {
+        "calculated": "İmza Tarihi",
+        "value": "İmza Tarihi"
+      },
+      "A4": {
+        "calculated": 2,
+        "value": 2
+      },
+      "B4": {
+        "calculated": "Abdulkadir Burak Kömez",
+        "value": "Abdulkadir Burak Kömez"
+      },
+      "D4": {
+        "calculated": "Kişiselleştirme Operatörü 2. Kademe",
+        "value": "Kişiselleştirme Operatörü 2. Kademe"
+      },
+      "E4": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "H4": {
+        "formula": "=$D$8",
+        "calculated": 21
+      },
+      "I4": {
+        "formula": "=H4*$D$9",
+        "calculated": 168
+      },
+      "K4": {
+        "calculated": 6.5,
+        "value": 6.5
+      },
+      "M4": {
+        "formula": "=K4-L4",
+        "calculated": 6.5
+      },
+      "N4": {
+        "calculated": 0,
+        "value": 0
+      },
+      "P4": {
+        "calculated": 99.72,
+        "value": 99.72
+      },
+      "Q4": {
+        "formula": "=P4*AF4/225*1.5",
+        "calculated": 3257.7274176
+      },
+      "R4": {
+        "calculated": 12.7,
+        "value": 12.7
+      },
+      "S4": {
+        "formula": "=R4*AF4/225*2",
+        "calculated": 553.1907768888889
+      },
+      "T4": {
+        "calculated": 6930,
+        "value": 6930
+      },
+      "U4": {
+        "calculated": 12,
+        "value": 12
+      },
+      "V4": {
+        "calculated": 3960,
+        "value": 3960
+      },
+      "X4": {
+        "formula": "=IF((T4+V4+W4) - ((H4-AA4-J4)*330) > 0,(T4+V4+W4) - ((H4-AA4-J4)*330),0)",
+        "calculated": 3960
+      },
+      "Y4": {
+        "formula": "=VLOOKUP(C4,[1]Sheet1!$B:$N,13,0)",
+        "calculated": "#N/A"
+      },
+      "Z4": {
+        "formula": "=ROUND(IF(Y4<=190000, X4*(0.15+0.00759),IF(Y4<=400000, X4*(0.2+0.00759),IF(Y4<=1500000, X4*(0.27+0.00759),IF(Y4<=5300000, X4*(0.35+0.00759),X4*(0.4+0.00759))))),2)",
+        "calculated": "#N/A"
+      },
+      "AE4": {
+        "formula": "=(AD4/0.99241)*0.00759",
+        "calculated": 0
+      },
+      "AF4": {
+        "calculated": 4900.312,
+        "value": 4900.312
+      },
+      "AG4": {
+        "calculated": 0,
+        "value": 0
+      },
+      "AH4": {
+        "formula": "=ROUND((AF4/$D$8*H4),2)+Q4+S4+T4+V4+W4+Z4+AD4+AE4-AG4",
+        "calculated": "#N/A"
+      },
+      "AG5": {
+        "calculated": "Toplam",
+        "value": "Toplam"
+      },
+      "AH5": {
+        "formula": "=ROUND(SUM(AH3:AH4),2)",
+        "calculated": "#N/A"
+      },
+      "M6": {
+        "calculated": " ",
+        "value": " "
+      },
+      "AB7": {
+        "calculated": " ",
+        "value": " "
+      },
+      "AF7": {
+        "calculated": "Not: Fatura edilirken KDV ilave edilecektir.",
+        "value": "Not: Fatura edilirken KDV ilave edilecektir."
+      },
+      "A8": {
+        "formula": "=CONCATENATE(AI1,\" \",AI2,\" AYI İŞ GÜNÜ:\")",
+        "calculated": "OCAK 2026 AYI İŞ GÜNÜ:"
+      },
+      "D8": {
+        "calculated": 21,
+        "value": 21
+      },
+      "A9": {
+        "calculated": "GÜNLÜK ÇALIŞMA SAATİ: ",
+        "value": "GÜNLÜK ÇALIŞMA SAATİ: "
+      },
+      "D9": {
+        "calculated": 8,
+        "value": 8
+      },
+      "A10": {
+        "calculated": "AYLIK ÇALIŞMA SAATİ:",
+        "value": "AYLIK ÇALIŞMA SAATİ:"
+      },
+      "D10": {
+        "formula": "=D8*D9",
+        "calculated": 168
+      },
+      "A12": {
+        "calculated": "Not: Sözleşmenin 10.7 maddesine göre personelin kullandığı saatlik izinlerin çalışma yılı içinde toplam 45 iş saatini geçen kısmı için ilgili personel yönünden hakedişten kesinti yapılır.Sözleşmenin 10.9 maddesine göre personelin tek seferde 3 gün ve üzeri süreyle alacağı sağlık raporları için ilgili personel yönünden hakedişten kesinti yapılır.",
+        "value": "Not: Sözleşmenin 10.7 maddesine göre personelin kullandığı saatlik izinlerin çalışma yılı içinde toplam 45 iş saatini geçen kısmı için ilgili personel yönünden hakedişten kesinti yapılır.Sözleşmenin 10.9 maddesine göre personelin tek seferde 3 gün ve üzeri süreyle alacağı sağlık raporları için ilgili personel yönünden hakedişten kesinti yapılır."
+      }
+    }
+  }
+}

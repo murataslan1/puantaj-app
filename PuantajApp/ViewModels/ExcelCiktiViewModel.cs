@@ -30,8 +30,29 @@ public partial class ExcelCiktiViewModel : ViewModelBase
             var kayitlar = await db.PuantajKayitlar
                 .Where(k => k.Yil == Yil && k.Ay == Ay).ToListAsync();
 
-            ExcelExportService.OlusturPuantajExcel(KayitYolu, Yil, Ay, personeller, kayitlar);
+            ExcelExportService.OlusturPuantajExcel(KayitYolu, Yil, Ay, personeller, kayitlar, YemekBirimUcreti);
             Durum = "Puantaj Excel olusturuldu.";
+        }
+        catch (Exception ex)
+        {
+            Durum = $"Hata: {ex.Message}";
+        }
+    }
+
+    [RelayCommand]
+    private async Task DbSifirlaAsync()
+    {
+        try
+        {
+            // Tum tablolari temizle
+            using var db = new AppDbContext();
+            db.PuantajKayitlar.RemoveRange(db.PuantajKayitlar);
+            db.HakedisEkVeriler.RemoveRange(db.HakedisEkVeriler);
+            db.HakedisParametreler.RemoveRange(db.HakedisParametreler);
+            db.Belgeler.RemoveRange(db.Belgeler);
+            db.Personeller.RemoveRange(db.Personeller);
+            await db.SaveChangesAsync();
+            Durum = "Tum veriler silindi. Temiz baslayabilirsiniz.";
         }
         catch (Exception ex)
         {

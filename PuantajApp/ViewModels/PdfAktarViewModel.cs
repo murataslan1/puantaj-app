@@ -40,6 +40,8 @@ public partial class PdfAktarViewModel : ViewModelBase
 
     private readonly GeminiService _gemini = new();
     private readonly OllamaService _ollama = new();
+    private DoclingService? _docling;
+    [ObservableProperty] private bool _doclingAktif = false;
 
     public PdfAktarViewModel()
     {
@@ -51,22 +53,36 @@ public partial class PdfAktarViewModel : ViewModelBase
             _gemini.SetApiKey(key);
         }
 
-        // Ollama kontrolu (arka planda)
-        _ = CheckOllamaAsync();
+        // Ollama ve Docling kontrolu (arka planda)
+        _ = CheckBackendsAsync();
     }
 
-    private async Task CheckOllamaAsync()
+    private async Task CheckBackendsAsync()
     {
         try
         {
+            // Ollama kontrol
             OllamaAktif = await _ollama.IsAvailableAsync();
-            AiBackend = OllamaAktif
-                ? "Ollama (Yerel AI - Limitsiz)"
-                : _gemini.HasApiKey ? "Gemini API (Bulut)" : "API Key gerekli";
+
+            // Docling kontrol
+            DoclingAktif = await DoclingService.IsAvailableAsync();
+            if (DoclingAktif)
+                _docling = new DoclingService(_gemini);
+
+            // Backend durumu goster
+            if (DoclingAktif && _gemini.HasApiKey)
+                AiBackend = "Docling+Gemini (OCR+AI)";
+            else if (OllamaAktif)
+                AiBackend = "Ollama (Yerel AI - Limitsiz)";
+            else if (_gemini.HasApiKey)
+                AiBackend = "Gemini API (Bulut)";
+            else
+                AiBackend = "API Key gerekli";
         }
         catch
         {
             OllamaAktif = false;
+            DoclingAktif = false;
             AiBackend = _gemini.HasApiKey ? "Gemini API (Bulut)" : "API Key gerekli";
         }
     }
@@ -77,7 +93,12 @@ public partial class PdfAktarViewModel : ViewModelBase
         if (!string.IsNullOrWhiteSpace(value))
         {
             EnvService.Set("GEMINI_API_KEY", value);
-            if (!OllamaAktif)
+            if (DoclingAktif)
+            {
+                _docling = new DoclingService(_gemini);
+                AiBackend = "Docling+Gemini (OCR+AI)";
+            }
+            else if (!OllamaAktif)
                 AiBackend = "Gemini API (Bulut)";
         }
     }
@@ -101,10 +122,10 @@ public partial class PdfAktarViewModel : ViewModelBase
     [RelayCommand]
     private async Task TumunuParseEtAsync()
     {
-        // Ollama veya Gemini hazir mi kontrol et
-        if (!OllamaAktif && !_gemini.HasApiKey)
+        // Backend hazir mi kontrol et
+        if (!DoclingAktif && !OllamaAktif && !_gemini.HasApiKey)
         {
-            Durum = "Ollama kurulu degil ve Gemini API key girilmedi!";
+            Durum = "Docling/Ollama kurulu degil ve Gemini API key girilmedi!";
             return;
         }
 
@@ -117,7 +138,9 @@ public partial class PdfAktarViewModel : ViewModelBase
 
         Isleniyor = true;
         Basarili = Hata = 0;
-        var backend = OllamaAktif ? "Ollama" : "Gemini";
+        var backend = DoclingAktif && _gemini.HasApiKey ? "Docling+Gemini"
+                    : OllamaAktif ? "Ollama"
+                    : "Gemini";
         Durum = $"0/{seciliPdfler.Count} isleniyor ({backend})...";
 
         using var db = new AppDbContext();
@@ -132,7 +155,9 @@ public partial class PdfAktarViewModel : ViewModelBase
             {
                 PuantajParseResult? result;
 
-                if (OllamaAktif)
+                if (DoclingAktif && _docling != null && _gemini.HasApiKey)
+                    result = await _docling.ParsePdfAsync(pdf.DosyaBytes, pdf.DosyaAdi);
+                else if (OllamaAktif)
                     result = await _ollama.ParsePdfAsync(pdf.DosyaBytes, pdf.DosyaAdi);
                 else
                     result = await _gemini.ParsePdfAsync(pdf.DosyaBytes, pdf.DosyaAdi);
@@ -163,8 +188,8 @@ public partial class PdfAktarViewModel : ViewModelBase
 
             Durum = $"{i + 1}/{seciliPdfler.Count} islendi ({backend}). Basarili: {Basarili}, Hata: {Hata}";
 
-            // Gemini icin rate limiting, Ollama icin gerekmez
-            if (!OllamaAktif)
+            // Docling+Gemini ve Gemini icin rate limiting
+            if (!OllamaAktif || (DoclingAktif && _gemini.HasApiKey))
                 await Task.Delay(4500);
         }
 
@@ -236,12 +261,14 @@ public partial class PdfAktarViewModel : ViewModelBase
         if (string.IsNullOrWhiteSpace(adSoyad)) return null;
         var aranan = adSoyad.Trim().ToUpperInvariant();
 
+        // 1. Tam eşleşme
         var tam = personeller.FirstOrDefault(p =>
             p.AdSoyad.ToUpperInvariant() == aranan);
         if (tam != null) return tam;
 
+        // 2. Kelime bazlı eşleşme (mevcut)
         var arananKelimeler = aranan.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        return personeller
+        var kelimeEslesen = personeller
             .Select(p => new
             {
                 Personel = p,
@@ -250,5 +277,41 @@ public partial class PdfAktarViewModel : ViewModelBase
             .Where(x => x.Skor > 0)
             .OrderByDescending(x => x.Skor)
             .FirstOrDefault()?.Personel;
+        if (kelimeEslesen != null) return kelimeEslesen;
+
+        // 3. Levenshtein mesafesi ile bulanık eşleşme (el yazısı hataları için)
+        var enIyi = personeller
+            .Select(p => new
+            {
+                Personel = p,
+                Mesafe = LevenshteinMesafe(aranan, p.AdSoyad.ToUpperInvariant())
+            })
+            .OrderBy(x => x.Mesafe)
+            .FirstOrDefault();
+
+        // İsim uzunluğunun %40'ından az hata varsa eşleştir
+        if (enIyi != null && enIyi.Mesafe <= Math.Max(aranan.Length, enIyi.Personel.AdSoyad.Length) * 0.4)
+            return enIyi.Personel;
+
+        return null;
+    }
+
+    private static int LevenshteinMesafe(string s, string t)
+    {
+        int n = s.Length, m = t.Length;
+        var d = new int[n + 1, m + 1];
+        for (int i = 0; i <= n; i++) d[i, 0] = i;
+        for (int j = 0; j <= m; j++) d[0, j] = j;
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= m; j++)
+            {
+                int cost = s[i - 1] == t[j - 1] ? 0 : 1;
+                d[i, j] = Math.Min(
+                    Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
+                    d[i - 1, j - 1] + cost);
+            }
+        }
+        return d[n, m];
     }
 }

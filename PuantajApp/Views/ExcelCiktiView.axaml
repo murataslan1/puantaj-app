@@ -33,12 +33,16 @@
 
         <!-- Butonlar -->
         <Border Grid.Row="3" Classes="card" Margin="0,0,0,12">
-            <StackPanel Spacing="12">
-                <Button Content="&#x1F4CA; Puantaj Excel Olustur" Classes="primary"
-                        Command="{Binding PuantajExcelOlusturCommand}" HorizontalAlignment="Left"/>
-                <Button Content="&#x1F4B0; Hakedis Kapak Excel Olustur" Classes="primary"
-                        Command="{Binding HakedisExcelOlusturCommand}" HorizontalAlignment="Left"/>
-            </StackPanel>
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Spacing="12">
+                    <Button Content="&#x1F4CA; Puantaj Excel Olustur" Classes="primary"
+                            Command="{Binding PuantajExcelOlusturCommand}" HorizontalAlignment="Left"/>
+                    <Button Content="&#x1F4B0; Hakedis Kapak Excel Olustur" Classes="primary"
+                            Command="{Binding HakedisExcelOlusturCommand}" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <Button Grid.Column="2" Content="&#x1F5D1; DB Sifirla" Classes="danger"
+                        Command="{Binding DbSifirlaCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            </Grid>
         </Border>
 
         <!-- Durum -->

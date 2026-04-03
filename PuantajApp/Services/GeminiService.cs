@@ -12,7 +12,7 @@ public class GeminiService
     private readonly HttpClient _http = new();
     private string? _apiKey;
 
-    private const string MODEL = "gemini-2.5-flash-lite";
+    private const string MODEL = "gemini-2.5-flash";
 
     public void SetApiKey(string apiKey) => _apiKey = apiKey;
 
@@ -51,6 +51,40 @@ public class GeminiService
             }
         };
 
+        return await SendRequestAsync(requestBody);
+    }
+
+    /// <summary>
+    /// Sadece metin (prompt) gonderir. Docling ciktisi icin kullanilir.
+    /// </summary>
+    public async Task<PuantajParseResult?> ParseTextAsync(string prompt)
+    {
+        if (string.IsNullOrWhiteSpace(_apiKey))
+            throw new InvalidOperationException("Gemini API key girilmedi.");
+
+        var requestBody = new
+        {
+            contents = new[]
+            {
+                new
+                {
+                    parts = new object[]
+                    {
+                        new { text = prompt }
+                    }
+                }
+            },
+            generationConfig = new
+            {
+                response_mime_type = "application/json"
+            }
+        };
+
+        return await SendRequestAsync(requestBody);
+    }
+
+    private async Task<PuantajParseResult?> SendRequestAsync(object requestBody)
+    {
         var url = $"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={_apiKey}";
         var json = JsonSerializer.Serialize(requestBody);
 

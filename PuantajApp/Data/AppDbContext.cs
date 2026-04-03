@@ -1,3 +1,4 @@
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using PuantajApp.Models;
 
@@ -5,6 +6,8 @@ namespace PuantajApp.Data;
 
 public class AppDbContext : DbContext
 {
+    public static string DbPath => Path.Combine(Directory.GetCurrentDirectory(), "puantaj.db");
+
     public DbSet<Personel> Personeller { get; set; }
     public DbSet<PuantajKayit> PuantajKayitlar { get; set; }
     public DbSet<Belge> Belgeler { get; set; }

@@ -1,0 +1,2062 @@
+{
+  "pasaport": {
+    "max_row": 34,
+    "max_col": 43,
+    "merged": [
+      "E23:E26",
+      "AM31:AM33",
+      "O15:O18",
+      "J19:J22",
+      "L19:L22",
+      "G7:G10",
+      "AM15:AM17",
+      "I7:I10",
+      "D11:D14",
+      "AO31:AO33",
+      "J27:J30",
+      "A7:A10",
+      "F3:F6",
+      "H11:H14",
+      "M7:M10",
+      "Q23:Q26",
+      "J11:J14",
+      "C31:C34",
+      "AM23:AM25",
+      "K27:K30",
+      "N23:N26",
+      "AO23:AO25",
+      "M27:M30",
+      "P23:P26",
+      "L31:L34",
+      "P7:P10",
+      "AQ23:AQ26",
+      "E11:E14",
+      "O27:O30",
+      "D15:D18",
+      "Q27:Q30",
+      "I19:I22",
+      "N15:N18",
+      "AQ19:AQ22",
+      "P15:P18",
+      "K19:K22",
+      "K3:K6",
+      "H15:H18",
+      "E3:E6",
+      "M19:M22",
+      "O19:O22",
+      "G11:G14",
+      "D19:D22",
+      "AQ11:AQ14",
+      "C12:C14",
+      "H23:H26",
+      "F7:F10",
+      "K11:K14",
+      "M11:M14",
+      "D27:D30",
+      "G23:G26",
+      "P27:P30",
+      "AM3:AM5",
+      "AP19:AP22",
+      "E31:E34",
+      "N3:N6",
+      "P11:P14",
+      "E15:E18",
+      "G15:G18",
+      "A27:A30",
+      "A23:A26",
+      "F31:F34",
+      "P3:P6",
+      "O31:O34",
+      "C7:C10",
+      "AO7:AO9",
+      "E7:E10",
+      "AQ15:AQ18",
+      "N31:N34",
+      "D23:D26",
+      "M23:M26",
+      "G27:G30",
+      "J23:J26",
+      "I27:I30",
+      "AQ27:AQ30",
+      "P31:P34",
+      "O3:O6",
+      "L7:L10",
+      "Q3:Q6",
+      "AP23:AP26",
+      "I11:I14",
+      "N7:N10",
+      "A11:A14",
+      "E19:E22",
+      "J15:J18",
+      "G19:G22",
+      "L15:L18",
+      "G3:G6",
+      "K31:K34",
+      "I3:I6",
+      "M31:M34",
+      "C28:C30",
+      "A3:A6",
+      "AQ3:AQ6",
+      "AO11:AO13",
+      "M15:M18",
+      "Q31:Q34",
+      "I23:I26",
+      "AP27:AP30",
+      "K23:K26",
+      "C20:C22",
+      "F19:F22",
+      "D3:D6",
+      "Q15:Q18",
+      "N19:N22",
+      "P19:P22",
+      "K7:K10",
+      "C23:C26",
+      "H19:H22",
+      "C4:C6",
+      "AP11:AP14",
+      "L27:L30",
+      "O23:O26",
+      "N27:N30",
+      "H3:H6",
+      "AQ31:AQ34",
+      "A31:A34",
+      "J3:J6",
+      "O7:O10",
+      "L11:L14",
+      "Q7:Q10",
+      "A15:A18",
+      "N11:N14",
+      "AO15:AO17",
+      "C15:C18",
+      "F11:F14",
+      "AP3:AP6",
+      "D31:D34",
+      "L3:L6",
+      "AQ7:AQ10",
+      "AM7:AM9",
+      "F15:F18",
+      "H31:H34",
+      "AM27:AM29",
+      "AP31:AP34",
+      "D7:D10",
+      "Q19:Q22",
+      "AO27:AO29",
+      "F23:F26",
+      "AP15:AP18",
+      "E27:E30",
+      "H7:H10",
+      "M3:M6",
+      "L23:L26",
+      "J7:J10",
+      "O11:O14",
+      "Q11:Q14",
+      "AM19:AM21",
+      "A19:A22",
+      "F27:F30",
+      "AO19:AO21",
+      "J31:J34",
+      "H27:H30",
+      "AP7:AP10",
+      "AO3:AO5",
+      "G31:G34",
+      "I31:I34",
+      "I15:I18",
+      "AM11:AM13",
+      "K15:K18"
+    ],
+    "col_widths": {
+      "A": 15.3984375,
+      "B": 12.59765625,
+      "C": 4.8984375,
+      "D": 3.796875,
+      "E": 13.0,
+      "F": 13.0,
+      "G": 3.796875,
+      "H": 13.0,
+      "I": 13.0,
+      "J": 13.0,
+      "K": 13.0,
+      "L": 13.0,
+      "M": 13.0,
+      "N": 8.19921875,
+      "O": 6.796875,
+      "P": 13.0,
+      "Q": 11.69921875,
+      "R": 15.19921875,
+      "S": 25.0,
+      "T": 19.3984375,
+      "U": 13.0,
+      "V": 13.0,
+      "W": 19.3984375,
+      "X": 13.0,
+      "Y": 13.0,
+      "Z": 13.0,
+      "AA": 19.3984375,
+      "AB": 13.0,
+      "AC": 19.3984375,
+      "AD": 13.0,
+      "AE": 13.0,
+      "AF": 13.0,
+      "AG": 19.3984375,
+      "AH": 13.0,
+      "AI": 19.3984375,
+      "AJ": 13.0,
+      "AK": 19.3984375,
+      "AL": 13.0,
+      "AM": 8.296875,
+      "AN": 19.3984375,
+      "AO": 7.0,
+      "AP": 5.69921875,
+      "AQ": 11.69921875
+    },
+    "row_heights": {
+      "1": 167.4
+    },
+    "cells": {
+      "A1": {
+        "calculated": "Adı Soyadı",
+        "value": "Adı Soyadı"
+      },
+      "C1": {
+        "calculated": "Gececi",
+        "value": "Gececi"
+      },
+      "D1": {
+        "calculated": "Hafta İçi",
+        "value": "Hafta İçi"
+      },
+      "E1": {
+        "calculated": "Hafta Sonu",
+        "value": "Hafta Sonu"
+      },
+      "F1": {
+        "calculated": "Hafta İçi Mesai",
+        "value": "Hafta İçi Mesai"
+      },
+      "G1": {
+        "calculated": "Gün",
+        "value": "Gün"
+      },
+      "H1": {
+        "calculated": "Resmi Tatil Mesai",
+        "value": "Resmi Tatil Mesai"
+      },
+      "I1": {
+        "calculated": "İdari İzin",
+        "value": "İdari İzin"
+      },
+      "J1": {
+        "calculated": "Kurum İzni",
+        "value": "Kurum İzni"
+      },
+      "K1": {
+        "calculated": "Mazeret İzni",
+        "value": "Mazeret İzni"
+      },
+      "L1": {
+        "calculated": "Yıllık İzin",
+        "value": "Yıllık İzin"
+      },
+      "M1": {
+        "calculated": "Raporlu",
+        "value": "Raporlu"
+      },
+      "N1": {
+        "calculated": "Toplam Hafta İçi-Sonu Mesai Saati",
+        "value": "Toplam Hafta İçi-Sonu Mesai Saati"
+      },
+      "O1": {
+        "calculated": "Toplam Resmi Tatil Mesai Saati",
+        "value": "Toplam Resmi Tatil Mesai Saati"
+      },
+      "P1": {
+        "calculated": "Toplam İdari İzin Mesai Saati",
+        "value": "Toplam İdari İzin Mesai Saati"
+      },
+      "Q1": {
+        "calculated": "Toplam Yemek Tutarı TL",
+        "value": "Toplam Yemek Tutarı TL"
+      },
+      "R1": {
+        "calculated": "Puantaj",
+        "value": "Puantaj"
+      },
+      "S1": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "T1": {
+        "calculated": "2026-01-02",
+        "value": "2026-01-02"
+      },
+      "U1": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "V1": {
+        "calculated": "2026-01-05",
+        "value": "2026-01-05"
+      },
+      "W1": {
+        "calculated": "2026-01-06",
+        "value": "2026-01-06"
+      },
+      "X1": {
+        "calculated": "2026-01-07",
+        "value": "2026-01-07"
+      },
+      "Y1": {
+        "calculated": "2026-01-08",
+        "value": "2026-01-08"
+      },
+      "Z1": {
+        "calculated": "2026-01-09",
+        "value": "2026-01-09"
+      },
+      "AA1": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB1": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AC1": {
+        "calculated": "2026-01-12",
+        "value": "2026-01-12"
+      },
+      "AD1": {
+        "calculated": "2026-01-13",
+        "value": "2026-01-13"
+      },
+      "AE1": {
+        "calculated": "2026-01-15",
+        "value": "2026-01-15"
+      },
+      "AF1": {
+        "calculated": "2026-01-16",
+        "value": "2026-01-16"
+      },
+      "AG1": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH1": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AI1": {
+        "calculated": "2026-01-19",
+        "value": "2026-01-19"
+      },
+      "AJ1": {
+        "calculated": "2026-01-21",
+        "value": "2026-01-21"
+      },
+      "AK1": {
+        "calculated": "2026-01-24",
+        "value": "2026-01-24"
+      },
+      "AL1": {
+        "calculated": "2026-01-25",
+        "value": "2026-01-25"
+      },
+      "AM1": {
+        "calculated": "Toplam Mesai",
+        "value": "Toplam Mesai"
+      },
+      "AO1": {
+        "calculated": "Tolam Resmi tatil",
+        "value": "Tolam Resmi tatil"
+      },
+      "AP1": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "AQ1": {
+        "calculated": "Yemek Yatırılacak Tutar",
+        "value": "Yemek Yatırılacak Tutar"
+      },
+      "S2": {
+        "calculated": "Hafta İçi-Sonu Mesai",
+        "value": "Hafta İçi-Sonu Mesai"
+      },
+      "AN2": {
+        "calculated": "Resmi Tatil",
+        "value": "Resmi Tatil"
+      },
+      "A3": {
+        "calculated": "AYSEL KÖKSALDI",
+        "value": "AYSEL KÖKSALDI"
+      },
+      "D3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E3": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "G3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M3": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N3": {
+        "formula": "=AM3",
+        "calculated": "2 days, 6:46:00"
+      },
+      "O3": {
+        "formula": "=AO3",
+        "calculated": "0:00:00"
+      },
+      "Q3": {
+        "formula": "=AQ3",
+        "calculated": 2310
+      },
+      "R3": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "S3": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "U3": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "AA3": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB3": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AG3": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH3": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AL3": {
+        "calculated": "2026-01-25",
+        "value": "2026-01-25"
+      },
+      "AM3": {
+        "formula": "=SUM(S5:AL5)",
+        "calculated": "2 days, 6:46:00"
+      },
+      "AO3": {
+        "calculated": "0:00:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb74a1904a0>"
+      },
+      "AP3": {
+        "formula": "=SUM(AM6,AO6)",
+        "calculated": 7
+      },
+      "AQ3": {
+        "formula": "=PRODUCT(AP3*330)",
+        "calculated": 2310
+      },
+      "R4": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "S4": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "U4": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "AA4": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB4": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AG4": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH4": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AL4": {
+        "calculated": "2026-01-25",
+        "value": "2026-01-25"
+      },
+      "R5": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S5": {
+        "formula": "=IF(OR(S3=\"\",S4=\"\"), \"\", IF(S4-S3>TIME(15,0,0), S4-S3-TIME(2,0,0), IF(S4-S3>TIME(11,0,0), S4-S3-TIME(1,30,0), IF(S4-S3>TIME(7,30,0), S4-S3-TIME(1,0,0), IF(S4-S3>TIME(4,0,0), S4-S3-TIME(0,30,0), S4-S3-TIME(0,15,0))))))",
+        "calculated": "07:09:00"
+      },
+      "U5": {
+        "formula": "=IF(OR(U3=\"\",U4=\"\"), \"\", IF(U4-U3>TIME(15,0,0), U4-U3-TIME(2,0,0), IF(U4-U3>TIME(11,0,0), U4-U3-TIME(1,30,0), IF(U4-U3>TIME(7,30,0), U4-U3-TIME(1,0,0), IF(U4-U3>TIME(4,0,0), U4-U3-TIME(0,30,0), U4-U3-TIME(0,15,0))))))",
+        "calculated": "08:05:00"
+      },
+      "AA5": {
+        "formula": "=IF(OR(AA3=\"\",AA4=\"\"), \"\", IF(AA4-AA3>TIME(15,0,0), AA4-AA3-TIME(2,0,0), IF(AA4-AA3>TIME(11,0,0), AA4-AA3-TIME(1,30,0), IF(AA4-AA3>TIME(7,30,0), AA4-AA3-TIME(1,0,0), IF(AA4-AA3>TIME(4,0,0), AA4-AA3-TIME(0,30,0), AA4-AA3-TIME(0,15,0))))))",
+        "calculated": "06:56:00"
+      },
+      "AB5": {
+        "formula": "=IF(OR(AB3=\"\",AB4=\"\"), \"\", IF(AB4-AB3>TIME(15,0,0), AB4-AB3-TIME(2,0,0), IF(AB4-AB3>TIME(11,0,0), AB4-AB3-TIME(1,30,0), IF(AB4-AB3>TIME(7,30,0), AB4-AB3-TIME(1,0,0), IF(AB4-AB3>TIME(4,0,0), AB4-AB3-TIME(0,30,0), AB4-AB3-TIME(0,15,0))))))",
+        "calculated": "08:04:00"
+      },
+      "AG5": {
+        "formula": "=IF(OR(AG3=\"\",AG4=\"\"), \"\", IF(AG4-AG3>TIME(15,0,0), AG4-AG3-TIME(2,0,0), IF(AG4-AG3>TIME(11,0,0), AG4-AG3-TIME(1,30,0), IF(AG4-AG3>TIME(7,30,0), AG4-AG3-TIME(1,0,0), IF(AG4-AG3>TIME(4,0,0), AG4-AG3-TIME(0,30,0), AG4-AG3-TIME(0,15,0))))))",
+        "calculated": "08:39:00"
+      },
+      "AH5": {
+        "formula": "=IF(OR(AH3=\"\",AH4=\"\"), \"\", IF(AH4-AH3>TIME(15,0,0), AH4-AH3-TIME(2,0,0), IF(AH4-AH3>TIME(11,0,0), AH4-AH3-TIME(1,30,0), IF(AH4-AH3>TIME(7,30,0), AH4-AH3-TIME(1,0,0), IF(AH4-AH3>TIME(4,0,0), AH4-AH3-TIME(0,30,0), AH4-AH3-TIME(0,15,0))))))",
+        "calculated": "08:20:00"
+      },
+      "AK5": {
+        "formula": "=IF(OR(AK3=\"\",AK4=\"\"), \"\", IF(AK4-AK3>TIME(15,0,0), AK4-AK3-TIME(2,0,0), IF(AK4-AK3>TIME(11,0,0), AK4-AK3-TIME(1,30,0), IF(AK4-AK3>TIME(7,30,0), AK4-AK3-TIME(1,0,0), IF(AK4-AK3>TIME(4,0,0), AK4-AK3-TIME(0,30,0), AK4-AK3-TIME(0,15,0))))))"
+      },
+      "AL5": {
+        "formula": "=IF(OR(AL3=\"\",AL4=\"\"), \"\", IF(AL4-AL3>TIME(15,0,0), AL4-AL3-TIME(2,0,0), IF(AL4-AL3>TIME(11,0,0), AL4-AL3-TIME(1,30,0), IF(AL4-AL3>TIME(7,30,0), AL4-AL3-TIME(1,0,0), IF(AL4-AL3>TIME(4,0,0), AL4-AL3-TIME(0,30,0), AL4-AL3-TIME(0,15,0))))))",
+        "calculated": "07:33:00"
+      },
+      "AN5": {
+        "formula": "=IF(OR(AN3=\"\",AN4=\"\"), \"\", IF(AN4-AN3>TIME(15,0,0), AN4-AN3-TIME(2,0,0), IF(AN4-AN3>TIME(11,0,0), AN4-AN3-TIME(1,30,0), IF(AN4-AN3>TIME(7,30,0), AN4-AN3-TIME(1,0,0), IF(AN4-AN3>TIME(4,0,0), AN4-AN3-TIME(0,30,0), AN4-AN3-TIME(0,15,0))))))"
+      },
+      "R6": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S6": {
+        "formula": "=IF(OR(S3=\"\", S4=\"\"), 0, IF(ROUND((S4+(S4<S3)-S3)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "U6": {
+        "formula": "=IF(OR(U3=\"\", U4=\"\"), 0, IF(ROUND((U4+(U4<U3)-U3)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AA6": {
+        "formula": "=IF(OR(AA3=\"\", AA4=\"\"), 0, IF(ROUND((AA4+(AA4<AA3)-AA3)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AB6": {
+        "formula": "=IF(OR(AB3=\"\", AB4=\"\"), 0, IF(ROUND((AB4+(AB4<AB3)-AB3)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AG6": {
+        "formula": "=IF(OR(AG3=\"\", AG4=\"\"), 0, IF(ROUND((AG4+(AG4<AG3)-AG3)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AH6": {
+        "formula": "=IF(OR(AH3=\"\", AH4=\"\"), 0, IF(ROUND((AH4+(AH4<AH3)-AH3)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK6": {
+        "formula": "=IF(OR(AK3=\"\", AK4=\"\"), 0, IF(ROUND((AK4+(AK4<AK3)-AK3)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AL6": {
+        "formula": "=IF(OR(AL3=\"\", AL4=\"\"), 0, IF(ROUND((AL4+(AL4<AL3)-AL3)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AM6": {
+        "formula": "=SUM(S6:AL6)",
+        "calculated": 7
+      },
+      "AN6": {
+        "formula": "=IF(OR(AN3=\"\", AN4=\"\"), 0, IF(ROUND((AN4+(AN4<AN3)-AN3)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AO6": {
+        "calculated": 0,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb749711580>"
+      },
+      "A7": {
+        "calculated": "PINAR KURT",
+        "value": "PINAR KURT"
+      },
+      "D7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E7": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F7": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "G7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M7": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N7": {
+        "formula": "=AM7",
+        "calculated": "1 day, 8:38:00"
+      },
+      "O7": {
+        "formula": "=AO7",
+        "calculated": "0:00:00"
+      },
+      "Q7": {
+        "formula": "=AQ7",
+        "calculated": 1320
+      },
+      "R7": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "S7": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "AA7": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB7": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AG7": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AM7": {
+        "formula": "=SUM(S9:AL9)",
+        "calculated": "1 day, 8:38:00"
+      },
+      "AO7": {
+        "calculated": "0:00:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb749700ec0>"
+      },
+      "AP7": {
+        "formula": "=SUM(AM10,AO10)",
+        "calculated": 4
+      },
+      "AQ7": {
+        "formula": "=PRODUCT(AP7*330)",
+        "calculated": 1320
+      },
+      "R8": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "S8": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "AA8": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB8": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AG8": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "R9": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S9": {
+        "formula": "=IF(OR(S7=\"\",S8=\"\"), \"\", IF(S8-S7>TIME(15,0,0), S8-S7-TIME(2,0,0), IF(S8-S7>TIME(11,0,0), S8-S7-TIME(1,30,0), IF(S8-S7>TIME(7,30,0), S8-S7-TIME(1,0,0), IF(S8-S7>TIME(4,0,0), S8-S7-TIME(0,30,0), S8-S7-TIME(0,15,0))))))",
+        "calculated": "07:34:00"
+      },
+      "AA9": {
+        "formula": "=IF(OR(AA7=\"\",AA8=\"\"), \"\", IF(AA8-AA7>TIME(15,0,0), AA8-AA7-TIME(2,0,0), IF(AA8-AA7>TIME(11,0,0), AA8-AA7-TIME(1,30,0), IF(AA8-AA7>TIME(7,30,0), AA8-AA7-TIME(1,0,0), IF(AA8-AA7>TIME(4,0,0), AA8-AA7-TIME(0,30,0), AA8-AA7-TIME(0,15,0))))))",
+        "calculated": "07:28:00"
+      },
+      "AB9": {
+        "formula": "=IF(OR(AB7=\"\",AB8=\"\"), \"\", IF(AB8-AB7>TIME(15,0,0), AB8-AB7-TIME(2,0,0), IF(AB8-AB7>TIME(11,0,0), AB8-AB7-TIME(1,30,0), IF(AB8-AB7>TIME(7,30,0), AB8-AB7-TIME(1,0,0), IF(AB8-AB7>TIME(4,0,0), AB8-AB7-TIME(0,30,0), AB8-AB7-TIME(0,15,0))))))",
+        "calculated": "09:53:00"
+      },
+      "AG9": {
+        "formula": "=IF(OR(AG7=\"\",AG8=\"\"), \"\", IF(AG8-AG7>TIME(15,0,0), AG8-AG7-TIME(2,0,0), IF(AG8-AG7>TIME(11,0,0), AG8-AG7-TIME(1,30,0), IF(AG8-AG7>TIME(7,30,0), AG8-AG7-TIME(1,0,0), IF(AG8-AG7>TIME(4,0,0), AG8-AG7-TIME(0,30,0), AG8-AG7-TIME(0,15,0))))))",
+        "calculated": "07:43:00"
+      },
+      "AK9": {
+        "formula": "=IF(OR(AK7=\"\",AK8=\"\"), \"\", IF(AK8-AK7>TIME(15,0,0), AK8-AK7-TIME(2,0,0), IF(AK8-AK7>TIME(11,0,0), AK8-AK7-TIME(1,30,0), IF(AK8-AK7>TIME(7,30,0), AK8-AK7-TIME(1,0,0), IF(AK8-AK7>TIME(4,0,0), AK8-AK7-TIME(0,30,0), AK8-AK7-TIME(0,15,0))))))"
+      },
+      "AN9": {
+        "formula": "=IF(OR(AN7=\"\",AN8=\"\"), \"\", IF(AN8-AN7>TIME(15,0,0), AN8-AN7-TIME(2,0,0), IF(AN8-AN7>TIME(11,0,0), AN8-AN7-TIME(1,30,0), IF(AN8-AN7>TIME(7,30,0), AN8-AN7-TIME(1,0,0), IF(AN8-AN7>TIME(4,0,0), AN8-AN7-TIME(0,30,0), AN8-AN7-TIME(0,15,0))))))"
+      },
+      "R10": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S10": {
+        "formula": "=IF(OR(S7=\"\", S8=\"\"), 0, IF(ROUND((S8+(S8<S7)-S7)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AA10": {
+        "formula": "=IF(OR(AA7=\"\", AA8=\"\"), 0, IF(ROUND((AA8+(AA8<AA7)-AA7)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AB10": {
+        "formula": "=IF(OR(AB7=\"\", AB8=\"\"), 0, IF(ROUND((AB8+(AB8<AB7)-AB7)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AG10": {
+        "formula": "=IF(OR(AG7=\"\", AG8=\"\"), 0, IF(ROUND((AG8+(AG8<AG7)-AG7)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK10": {
+        "formula": "=IF(OR(AK7=\"\", AK8=\"\"), 0, IF(ROUND((AK8+(AK8<AK7)-AK7)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AM10": {
+        "formula": "=SUM(S10:AL10)",
+        "calculated": 4
+      },
+      "AN10": {
+        "formula": "=IF(OR(AN7=\"\", AN8=\"\"), 0, IF(ROUND((AN8+(AN8<AN7)-AN7)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AO10": {
+        "calculated": 0,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb749737140>"
+      },
+      "A11": {
+        "calculated": "MUSTAFA ÇAVUŞLU",
+        "value": "MUSTAFA ÇAVUŞLU"
+      },
+      "D11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E11": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "G11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M11": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N11": {
+        "formula": "=AM11",
+        "calculated": "1 day, 7:55:00"
+      },
+      "O11": {
+        "formula": "=AO11",
+        "calculated": "7:45:00"
+      },
+      "Q11": {
+        "formula": "=AQ11",
+        "calculated": 1650
+      },
+      "R11": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "AA11": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB11": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AG11": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH11": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AM11": {
+        "formula": "=SUM(S13:AL13)",
+        "calculated": "1 day, 7:55:00"
+      },
+      "AN11": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "AO11": {
+        "calculated": "7:45:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb7497023f0>"
+      },
+      "AP11": {
+        "formula": "=SUM(AM14,AO14)",
+        "calculated": 5
+      },
+      "AQ11": {
+        "formula": "=PRODUCT(AP11*330)",
+        "calculated": 1650
+      },
+      "R12": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "AA12": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB12": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AG12": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH12": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AN12": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "R13": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S13": {
+        "formula": "=IF(OR(S11=\"\",S12=\"\"), \"\", IF(S12-S11>TIME(15,0,0), S12-S11-TIME(2,0,0), IF(S12-S11>TIME(11,0,0), S12-S11-TIME(1,30,0), IF(S12-S11>TIME(7,30,0), S12-S11-TIME(1,0,0), IF(S12-S11>TIME(4,0,0), S12-S11-TIME(0,30,0), S12-S11-TIME(0,15,0))))))"
+      },
+      "U13": {
+        "formula": "=IF(OR(U11=\"\",U12=\"\"), \"\", IF(U12-U11>TIME(15,0,0), U12-U11-TIME(2,0,0), IF(U12-U11>TIME(11,0,0), U12-U11-TIME(1,30,0), IF(U12-U11>TIME(7,30,0), U12-U11-TIME(1,0,0), IF(U12-U11>TIME(4,0,0), U12-U11-TIME(0,30,0), U12-U11-TIME(0,15,0))))))"
+      },
+      "AA13": {
+        "formula": "=IF(OR(AA11=\"\",AA12=\"\"), \"\", IF(AA12-AA11>TIME(15,0,0), AA12-AA11-TIME(2,0,0), IF(AA12-AA11>TIME(11,0,0), AA12-AA11-TIME(1,30,0), IF(AA12-AA11>TIME(7,30,0), AA12-AA11-TIME(1,0,0), IF(AA12-AA11>TIME(4,0,0), AA12-AA11-TIME(0,30,0), AA12-AA11-TIME(0,15,0))))))",
+        "calculated": "07:54:00"
+      },
+      "AB13": {
+        "formula": "=IF(OR(AB11=\"\",AB12=\"\"), \"\", IF(AB12-AB11>TIME(15,0,0), AB12-AB11-TIME(2,0,0), IF(AB12-AB11>TIME(11,0,0), AB12-AB11-TIME(1,30,0), IF(AB12-AB11>TIME(7,30,0), AB12-AB11-TIME(1,0,0), IF(AB12-AB11>TIME(4,0,0), AB12-AB11-TIME(0,30,0), AB12-AB11-TIME(0,15,0))))))",
+        "calculated": "07:56:00"
+      },
+      "AG13": {
+        "formula": "=IF(OR(AG11=\"\",AG12=\"\"), \"\", IF(AG12-AG11>TIME(15,0,0), AG12-AG11-TIME(2,0,0), IF(AG12-AG11>TIME(11,0,0), AG12-AG11-TIME(1,30,0), IF(AG12-AG11>TIME(7,30,0), AG12-AG11-TIME(1,0,0), IF(AG12-AG11>TIME(4,0,0), AG12-AG11-TIME(0,30,0), AG12-AG11-TIME(0,15,0))))))",
+        "calculated": "07:57:00"
+      },
+      "AH13": {
+        "formula": "=IF(OR(AH11=\"\",AH12=\"\"), \"\", IF(AH12-AH11>TIME(15,0,0), AH12-AH11-TIME(2,0,0), IF(AH12-AH11>TIME(11,0,0), AH12-AH11-TIME(1,30,0), IF(AH12-AH11>TIME(7,30,0), AH12-AH11-TIME(1,0,0), IF(AH12-AH11>TIME(4,0,0), AH12-AH11-TIME(0,30,0), AH12-AH11-TIME(0,15,0))))))",
+        "calculated": "08:08:00"
+      },
+      "AK13": {
+        "formula": "=IF(OR(AK11=\"\",AK12=\"\"), \"\", IF(AK12-AK11>TIME(15,0,0), AK12-AK11-TIME(2,0,0), IF(AK12-AK11>TIME(11,0,0), AK12-AK11-TIME(1,30,0), IF(AK12-AK11>TIME(7,30,0), AK12-AK11-TIME(1,0,0), IF(AK12-AK11>TIME(4,0,0), AK12-AK11-TIME(0,30,0), AK12-AK11-TIME(0,15,0))))))"
+      },
+      "AN13": {
+        "formula": "=IF(OR(AN11=\"\",AN12=\"\"), \"\", IF(AN12-AN11>TIME(15,0,0), AN12-AN11-TIME(2,0,0), IF(AN12-AN11>TIME(11,0,0), AN12-AN11-TIME(1,30,0), IF(AN12-AN11>TIME(7,30,0), AN12-AN11-TIME(1,0,0), IF(AN12-AN11>TIME(4,0,0), AN12-AN11-TIME(0,30,0), AN12-AN11-TIME(0,15,0))))))",
+        "calculated": "07:45:00"
+      },
+      "R14": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S14": {
+        "formula": "=IF(OR(S11=\"\", S12=\"\"), 0, IF(ROUND((S12+(S12<S11)-S11)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "U14": {
+        "formula": "=IF(OR(U11=\"\", U12=\"\"), 0, IF(ROUND((U12+(U12<U11)-U11)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AA14": {
+        "formula": "=IF(OR(AA11=\"\", AA12=\"\"), 0, IF(ROUND((AA12+(AA12<AA11)-AA11)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AB14": {
+        "formula": "=IF(OR(AB11=\"\", AB12=\"\"), 0, IF(ROUND((AB12+(AB12<AB11)-AB11)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AG14": {
+        "formula": "=IF(OR(AG11=\"\", AG12=\"\"), 0, IF(ROUND((AG12+(AG12<AG11)-AG11)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AH14": {
+        "formula": "=IF(OR(AH11=\"\", AH12=\"\"), 0, IF(ROUND((AH12+(AH12<AH11)-AH11)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK14": {
+        "formula": "=IF(OR(AK11=\"\", AK12=\"\"), 0, IF(ROUND((AK12+(AK12<AK11)-AK11)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AM14": {
+        "formula": "=SUM(S14:AL14)",
+        "calculated": 4
+      },
+      "AN14": {
+        "formula": "=IF(OR(AN11=\"\", AN12=\"\"), 0, IF(ROUND((AN12+(AN12<AN11)-AN11)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AO14": {
+        "calculated": 1,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb749737f50>"
+      },
+      "A15": {
+        "calculated": "FATMA NUR KAYA",
+        "value": "FATMA NUR KAYA"
+      },
+      "D15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E15": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F15": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "G15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M15": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N15": {
+        "formula": "=AM15",
+        "calculated": "1 day, 8:07:00"
+      },
+      "O15": {
+        "formula": "=AO15",
+        "calculated": "7:15:00"
+      },
+      "Q15": {
+        "formula": "=AQ15",
+        "calculated": 1650
+      },
+      "R15": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "U15": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "AA15": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB15": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AH15": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AM15": {
+        "formula": "=SUM(S17:AL17)",
+        "calculated": "1 day, 8:07:00"
+      },
+      "AN15": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "AO15": {
+        "calculated": "7:15:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb749725070>"
+      },
+      "AP15": {
+        "formula": "=SUM(AM18,AO18)",
+        "calculated": 5
+      },
+      "AQ15": {
+        "formula": "=PRODUCT(AP15*330)",
+        "calculated": 1650
+      },
+      "R16": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "U16": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "AA16": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB16": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AH16": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AN16": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "R17": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S17": {
+        "formula": "=IF(OR(S15=\"\",S16=\"\"), \"\", IF(S16-S15>TIME(15,0,0), S16-S15-TIME(2,0,0), IF(S16-S15>TIME(11,0,0), S16-S15-TIME(1,30,0), IF(S16-S15>TIME(7,30,0), S16-S15-TIME(1,0,0), IF(S16-S15>TIME(4,0,0), S16-S15-TIME(0,30,0), S16-S15-TIME(0,15,0))))))"
+      },
+      "T17": {
+        "formula": "=IF(OR(T15=\"\",T16=\"\"), \"\", IF(T16-T15>TIME(15,0,0), T16-T15-TIME(2,0,0), IF(T16-T15>TIME(11,0,0), T16-T15-TIME(1,30,0), IF(T16-T15>TIME(7,30,0), T16-T15-TIME(1,0,0), IF(T16-T15>TIME(4,0,0), T16-T15-TIME(0,30,0), T16-T15-TIME(0,15,0))))))"
+      },
+      "U17": {
+        "formula": "=IF(OR(U15=\"\",U16=\"\"), \"\", IF(U16-U15>TIME(15,0,0), U16-U15-TIME(2,0,0), IF(U16-U15>TIME(11,0,0), U16-U15-TIME(1,30,0), IF(U16-U15>TIME(7,30,0), U16-U15-TIME(1,0,0), IF(U16-U15>TIME(4,0,0), U16-U15-TIME(0,30,0), U16-U15-TIME(0,15,0))))))",
+        "calculated": "07:35:00"
+      },
+      "AA17": {
+        "formula": "=IF(OR(AA15=\"\",AA16=\"\"), \"\", IF(AA16-AA15>TIME(15,0,0), AA16-AA15-TIME(2,0,0), IF(AA16-AA15>TIME(11,0,0), AA16-AA15-TIME(1,30,0), IF(AA16-AA15>TIME(7,30,0), AA16-AA15-TIME(1,0,0), IF(AA16-AA15>TIME(4,0,0), AA16-AA15-TIME(0,30,0), AA16-AA15-TIME(0,15,0))))))",
+        "calculated": "08:15:00"
+      },
+      "AB17": {
+        "formula": "=IF(OR(AB15=\"\",AB16=\"\"), \"\", IF(AB16-AB15>TIME(15,0,0), AB16-AB15-TIME(2,0,0), IF(AB16-AB15>TIME(11,0,0), AB16-AB15-TIME(1,30,0), IF(AB16-AB15>TIME(7,30,0), AB16-AB15-TIME(1,0,0), IF(AB16-AB15>TIME(4,0,0), AB16-AB15-TIME(0,30,0), AB16-AB15-TIME(0,15,0))))))",
+        "calculated": "08:03:00"
+      },
+      "AG17": {
+        "formula": "=IF(OR(AG15=\"\",AG16=\"\"), \"\", IF(AG16-AG15>TIME(15,0,0), AG16-AG15-TIME(2,0,0), IF(AG16-AG15>TIME(11,0,0), AG16-AG15-TIME(1,30,0), IF(AG16-AG15>TIME(7,30,0), AG16-AG15-TIME(1,0,0), IF(AG16-AG15>TIME(4,0,0), AG16-AG15-TIME(0,30,0), AG16-AG15-TIME(0,15,0))))))"
+      },
+      "AH17": {
+        "formula": "=IF(OR(AH15=\"\",AH16=\"\"), \"\", IF(AH16-AH15>TIME(15,0,0), AH16-AH15-TIME(2,0,0), IF(AH16-AH15>TIME(11,0,0), AH16-AH15-TIME(1,30,0), IF(AH16-AH15>TIME(7,30,0), AH16-AH15-TIME(1,0,0), IF(AH16-AH15>TIME(4,0,0), AH16-AH15-TIME(0,30,0), AH16-AH15-TIME(0,15,0))))))",
+        "calculated": "08:14:00"
+      },
+      "AK17": {
+        "formula": "=IF(OR(AK15=\"\",AK16=\"\"), \"\", IF(AK16-AK15>TIME(15,0,0), AK16-AK15-TIME(2,0,0), IF(AK16-AK15>TIME(11,0,0), AK16-AK15-TIME(1,30,0), IF(AK16-AK15>TIME(7,30,0), AK16-AK15-TIME(1,0,0), IF(AK16-AK15>TIME(4,0,0), AK16-AK15-TIME(0,30,0), AK16-AK15-TIME(0,15,0))))))"
+      },
+      "AN17": {
+        "formula": "=IF(OR(AN15=\"\",AN16=\"\"), \"\", IF(AN16-AN15>TIME(15,0,0), AN16-AN15-TIME(2,0,0), IF(AN16-AN15>TIME(11,0,0), AN16-AN15-TIME(1,30,0), IF(AN16-AN15>TIME(7,30,0), AN16-AN15-TIME(1,0,0), IF(AN16-AN15>TIME(4,0,0), AN16-AN15-TIME(0,30,0), AN16-AN15-TIME(0,15,0))))))",
+        "calculated": "07:15:00"
+      },
+      "R18": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S18": {
+        "formula": "=IF(OR(S15=\"\", S16=\"\"), 0, IF(ROUND((S16+(S16<S15)-S15)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "T18": {
+        "formula": "=IF(OR(T15=\"\", T16=\"\"), 0, IF(ROUND((T16+(T16<T15)-T15)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "U18": {
+        "formula": "=IF(OR(U15=\"\", U16=\"\"), 0, IF(ROUND((U16+(U16<U15)-U15)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AA18": {
+        "formula": "=IF(OR(AA15=\"\", AA16=\"\"), 0, IF(ROUND((AA16+(AA16<AA15)-AA15)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AB18": {
+        "formula": "=IF(OR(AB15=\"\", AB16=\"\"), 0, IF(ROUND((AB16+(AB16<AB15)-AB15)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AG18": {
+        "formula": "=IF(OR(AG15=\"\", AG16=\"\"), 0, IF(ROUND((AG16+(AG16<AG15)-AG15)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AH18": {
+        "formula": "=IF(OR(AH15=\"\", AH16=\"\"), 0, IF(ROUND((AH16+(AH16<AH15)-AH15)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK18": {
+        "formula": "=IF(OR(AK15=\"\", AK16=\"\"), 0, IF(ROUND((AK16+(AK16<AK15)-AK15)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AM18": {
+        "formula": "=SUM(S18:AL18)",
+        "calculated": 4
+      },
+      "AN18": {
+        "formula": "=IF(OR(AN15=\"\", AN16=\"\"), 0, IF(ROUND((AN16+(AN16<AN15)-AN15)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AO18": {
+        "calculated": 1,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb74977dd90>"
+      },
+      "A19": {
+        "calculated": "SÜLEYMAN SARPKAYA",
+        "value": "SÜLEYMAN SARPKAYA"
+      },
+      "D19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E19": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "G19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M19": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N19": {
+        "formula": "=AM19",
+        "calculated": "11:55:00"
+      },
+      "O19": {
+        "formula": "=AO19",
+        "calculated": "7:55:00"
+      },
+      "Q19": {
+        "formula": "=AQ19",
+        "calculated": 990
+      },
+      "R19": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "AG19": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH19": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AM19": {
+        "formula": "=SUM(S21:AL21)",
+        "calculated": "11:55:00"
+      },
+      "AN19": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "AO19": {
+        "calculated": "7:55:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb749735b80>"
+      },
+      "AP19": {
+        "formula": "=SUM(AM22,AO22)",
+        "calculated": 3
+      },
+      "AQ19": {
+        "formula": "=PRODUCT(AP19*330)",
+        "calculated": 990
+      },
+      "R20": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "AG20": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH20": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AN20": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "R21": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S21": {
+        "formula": "=IF(OR(S19=\"\",S20=\"\"), \"\", IF(S20-S19>TIME(15,0,0), S20-S19-TIME(2,0,0), IF(S20-S19>TIME(11,0,0), S20-S19-TIME(1,30,0), IF(S20-S19>TIME(7,30,0), S20-S19-TIME(1,0,0), IF(S20-S19>TIME(4,0,0), S20-S19-TIME(0,30,0), S20-S19-TIME(0,15,0))))))"
+      },
+      "T21": {
+        "formula": "=IF(OR(T19=\"\",T20=\"\"), \"\", IF(T20-T19>TIME(15,0,0), T20-T19-TIME(2,0,0), IF(T20-T19>TIME(11,0,0), T20-T19-TIME(1,30,0), IF(T20-T19>TIME(7,30,0), T20-T19-TIME(1,0,0), IF(T20-T19>TIME(4,0,0), T20-T19-TIME(0,30,0), T20-T19-TIME(0,15,0))))))"
+      },
+      "AA21": {
+        "formula": "=IF(OR(AA19=\"\",AA20=\"\"), \"\", IF(AA20-AA19>TIME(15,0,0), AA20-AA19-TIME(2,0,0), IF(AA20-AA19>TIME(11,0,0), AA20-AA19-TIME(1,30,0), IF(AA20-AA19>TIME(7,30,0), AA20-AA19-TIME(1,0,0), IF(AA20-AA19>TIME(4,0,0), AA20-AA19-TIME(0,30,0), AA20-AA19-TIME(0,15,0))))))"
+      },
+      "AG21": {
+        "formula": "=IF(OR(AG19=\"\",AG20=\"\"), \"\", IF(AG20-AG19>TIME(15,0,0), AG20-AG19-TIME(2,0,0), IF(AG20-AG19>TIME(11,0,0), AG20-AG19-TIME(1,30,0), IF(AG20-AG19>TIME(7,30,0), AG20-AG19-TIME(1,0,0), IF(AG20-AG19>TIME(4,0,0), AG20-AG19-TIME(0,30,0), AG20-AG19-TIME(0,15,0))))))",
+        "calculated": "07:00:00"
+      },
+      "AH21": {
+        "formula": "=IF(OR(AH19=\"\",AH20=\"\"), \"\", IF(AH20-AH19>TIME(15,0,0), AH20-AH19-TIME(2,0,0), IF(AH20-AH19>TIME(11,0,0), AH20-AH19-TIME(1,30,0), IF(AH20-AH19>TIME(7,30,0), AH20-AH19-TIME(1,0,0), IF(AH20-AH19>TIME(4,0,0), AH20-AH19-TIME(0,30,0), AH20-AH19-TIME(0,15,0))))))",
+        "calculated": "04:55:00"
+      },
+      "AK21": {
+        "formula": "=IF(OR(AK19=\"\",AK20=\"\"), \"\", IF(AK20-AK19>TIME(15,0,0), AK20-AK19-TIME(2,0,0), IF(AK20-AK19>TIME(11,0,0), AK20-AK19-TIME(1,30,0), IF(AK20-AK19>TIME(7,30,0), AK20-AK19-TIME(1,0,0), IF(AK20-AK19>TIME(4,0,0), AK20-AK19-TIME(0,30,0), AK20-AK19-TIME(0,15,0))))))"
+      },
+      "AN21": {
+        "formula": "=IF(OR(AN19=\"\",AN20=\"\"), \"\", IF(AN20-AN19>TIME(15,0,0), AN20-AN19-TIME(2,0,0), IF(AN20-AN19>TIME(11,0,0), AN20-AN19-TIME(1,30,0), IF(AN20-AN19>TIME(7,30,0), AN20-AN19-TIME(1,0,0), IF(AN20-AN19>TIME(4,0,0), AN20-AN19-TIME(0,30,0), AN20-AN19-TIME(0,15,0))))))",
+        "calculated": "07:55:00"
+      },
+      "R22": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S22": {
+        "formula": "=IF(OR(S19=\"\", S20=\"\"), 0, IF(ROUND((S20+(S20<S19)-S19)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "T22": {
+        "formula": "=IF(OR(T19=\"\", T20=\"\"), 0, IF(ROUND((T20+(T20<T19)-T19)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AA22": {
+        "formula": "=IF(OR(AA19=\"\", AA20=\"\"), 0, IF(ROUND((AA20+(AA20<AA19)-AA19)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AG22": {
+        "formula": "=IF(OR(AG19=\"\", AG20=\"\"), 0, IF(ROUND((AG20+(AG20<AG19)-AG19)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AH22": {
+        "formula": "=IF(OR(AH19=\"\", AH20=\"\"), 0, IF(ROUND((AH20+(AH20<AH19)-AH19)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK22": {
+        "formula": "=IF(OR(AK19=\"\", AK20=\"\"), 0, IF(ROUND((AK20+(AK20<AK19)-AK19)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AM22": {
+        "formula": "=SUM(S22:AL22)",
+        "calculated": 2
+      },
+      "AN22": {
+        "formula": "=IF(OR(AN19=\"\", AN20=\"\"), 0, IF(ROUND((AN20+(AN20<AN19)-AN19)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AO22": {
+        "calculated": 1,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb74975d340>"
+      },
+      "A23": {
+        "calculated": "MAKBULE EDA YENİCE",
+        "value": "MAKBULE EDA YENİCE"
+      },
+      "D23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E23": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F23": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "G23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M23": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N23": {
+        "formula": "=AM23",
+        "calculated": "1 day, 5:20:00"
+      },
+      "O23": {
+        "formula": "=AO23",
+        "calculated": "0:00:00"
+      },
+      "Q23": {
+        "formula": "=AQ23",
+        "calculated": 990
+      },
+      "R23": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "AA23": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AG23": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH23": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AM23": {
+        "formula": "=SUM(S25:AL25)",
+        "calculated": "1 day, 5:20:00"
+      },
+      "AO23": {
+        "calculated": "0:00:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb74975ea80>"
+      },
+      "AP23": {
+        "formula": "=SUM(AM26,AO26)",
+        "calculated": 3
+      },
+      "AQ23": {
+        "formula": "=PRODUCT(AP23*330)",
+        "calculated": 990
+      },
+      "R24": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "AA24": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AG24": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH24": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "R25": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S25": {
+        "formula": "=IF(OR(S23=\"\",S24=\"\"), \"\", IF(S24-S23>TIME(15,0,0), S24-S23-TIME(2,0,0), IF(S24-S23>TIME(11,0,0), S24-S23-TIME(1,30,0), IF(S24-S23>TIME(7,30,0), S24-S23-TIME(1,0,0), IF(S24-S23>TIME(4,0,0), S24-S23-TIME(0,30,0), S24-S23-TIME(0,15,0))))))"
+      },
+      "T25": {
+        "formula": "=IF(OR(T23=\"\",T24=\"\"), \"\", IF(T24-T23>TIME(15,0,0), T24-T23-TIME(2,0,0), IF(T24-T23>TIME(11,0,0), T24-T23-TIME(1,30,0), IF(T24-T23>TIME(7,30,0), T24-T23-TIME(1,0,0), IF(T24-T23>TIME(4,0,0), T24-T23-TIME(0,30,0), T24-T23-TIME(0,15,0))))))"
+      },
+      "U25": {
+        "formula": "=IF(OR(U23=\"\",U24=\"\"), \"\", IF(U24-U23>TIME(15,0,0), U24-U23-TIME(2,0,0), IF(U24-U23>TIME(11,0,0), U24-U23-TIME(1,30,0), IF(U24-U23>TIME(7,30,0), U24-U23-TIME(1,0,0), IF(U24-U23>TIME(4,0,0), U24-U23-TIME(0,30,0), U24-U23-TIME(0,15,0))))))"
+      },
+      "AA25": {
+        "formula": "=IF(OR(AA23=\"\",AA24=\"\"), \"\", IF(AA24-AA23>TIME(15,0,0), AA24-AA23-TIME(2,0,0), IF(AA24-AA23>TIME(11,0,0), AA24-AA23-TIME(1,30,0), IF(AA24-AA23>TIME(7,30,0), AA24-AA23-TIME(1,0,0), IF(AA24-AA23>TIME(4,0,0), AA24-AA23-TIME(0,30,0), AA24-AA23-TIME(0,15,0))))))",
+        "calculated": "08:20:00"
+      },
+      "AB25": {
+        "formula": "=IF(OR(AB23=\"\",AB24=\"\"), \"\", IF(AB24-AB23>TIME(15,0,0), AB24-AB23-TIME(2,0,0), IF(AB24-AB23>TIME(11,0,0), AB24-AB23-TIME(1,30,0), IF(AB24-AB23>TIME(7,30,0), AB24-AB23-TIME(1,0,0), IF(AB24-AB23>TIME(4,0,0), AB24-AB23-TIME(0,30,0), AB24-AB23-TIME(0,15,0))))))"
+      },
+      "AG25": {
+        "formula": "=IF(OR(AG23=\"\",AG24=\"\"), \"\", IF(AG24-AG23>TIME(15,0,0), AG24-AG23-TIME(2,0,0), IF(AG24-AG23>TIME(11,0,0), AG24-AG23-TIME(1,30,0), IF(AG24-AG23>TIME(7,30,0), AG24-AG23-TIME(1,0,0), IF(AG24-AG23>TIME(4,0,0), AG24-AG23-TIME(0,30,0), AG24-AG23-TIME(0,15,0))))))",
+        "calculated": "13:10:00"
+      },
+      "AH25": {
+        "formula": "=IF(OR(AH23=\"\",AH24=\"\"), \"\", IF(AH24-AH23>TIME(15,0,0), AH24-AH23-TIME(2,0,0), IF(AH24-AH23>TIME(11,0,0), AH24-AH23-TIME(1,30,0), IF(AH24-AH23>TIME(7,30,0), AH24-AH23-TIME(1,0,0), IF(AH24-AH23>TIME(4,0,0), AH24-AH23-TIME(0,30,0), AH24-AH23-TIME(0,15,0))))))",
+        "calculated": "07:50:00"
+      },
+      "AK25": {
+        "formula": "=IF(OR(AK23=\"\",AK24=\"\"), \"\", IF(AK24-AK23>TIME(15,0,0), AK24-AK23-TIME(2,0,0), IF(AK24-AK23>TIME(11,0,0), AK24-AK23-TIME(1,30,0), IF(AK24-AK23>TIME(7,30,0), AK24-AK23-TIME(1,0,0), IF(AK24-AK23>TIME(4,0,0), AK24-AK23-TIME(0,30,0), AK24-AK23-TIME(0,15,0))))))"
+      },
+      "AN25": {
+        "formula": "=IF(OR(AN23=\"\",AN24=\"\"), \"\", IF(AN24-AN23>TIME(15,0,0), AN24-AN23-TIME(2,0,0), IF(AN24-AN23>TIME(11,0,0), AN24-AN23-TIME(1,30,0), IF(AN24-AN23>TIME(7,30,0), AN24-AN23-TIME(1,0,0), IF(AN24-AN23>TIME(4,0,0), AN24-AN23-TIME(0,30,0), AN24-AN23-TIME(0,15,0))))))"
+      },
+      "R26": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S26": {
+        "formula": "=IF(OR(S23=\"\", S24=\"\"), 0, IF(ROUND((S24+(S24<S23)-S23)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "T26": {
+        "formula": "=IF(OR(T23=\"\", T24=\"\"), 0, IF(ROUND((T24+(T24<T23)-T23)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "U26": {
+        "formula": "=IF(OR(U23=\"\", U24=\"\"), 0, IF(ROUND((U24+(U24<U23)-U23)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AA26": {
+        "formula": "=IF(OR(AA23=\"\", AA24=\"\"), 0, IF(ROUND((AA24+(AA24<AA23)-AA23)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AB26": {
+        "formula": "=IF(OR(AB23=\"\", AB24=\"\"), 0, IF(ROUND((AB24+(AB24<AB23)-AB23)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AG26": {
+        "formula": "=IF(OR(AG23=\"\", AG24=\"\"), 0, IF(ROUND((AG24+(AG24<AG23)-AG23)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AH26": {
+        "formula": "=IF(OR(AH23=\"\", AH24=\"\"), 0, IF(ROUND((AH24+(AH24<AH23)-AH23)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK26": {
+        "formula": "=IF(OR(AK23=\"\", AK24=\"\"), 0, IF(ROUND((AK24+(AK24<AK23)-AK23)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AM26": {
+        "formula": "=SUM(S26:AL26)",
+        "calculated": 3
+      },
+      "AN26": {
+        "formula": "=IF(OR(AN23=\"\", AN24=\"\"), 0, IF(ROUND((AN24+(AN24<AN23)-AN23)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AO26": {
+        "calculated": 0,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb749769eb0>"
+      },
+      "A27": {
+        "calculated": "MUSTAFA KÖSLÜOĞLU",
+        "value": "MUSTAFA KÖSLÜOĞLU"
+      },
+      "D27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E27": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "G27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M27": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N27": {
+        "formula": "=AM27",
+        "calculated": "2 days, 4:24:00"
+      },
+      "O27": {
+        "formula": "=AO27",
+        "calculated": "8:13:00"
+      },
+      "Q27": {
+        "formula": "=AQ27",
+        "calculated": 2310
+      },
+      "R27": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "S27": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "U27": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "Y27": {
+        "calculated": "2026-01-08",
+        "value": "2026-01-08"
+      },
+      "AE27": {
+        "calculated": "2026-01-15",
+        "value": "2026-01-15"
+      },
+      "AG27": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH27": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AM27": {
+        "formula": "=SUM(S29:AL29)",
+        "calculated": "2 days, 4:24:00"
+      },
+      "AN27": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "AO27": {
+        "calculated": "8:13:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb7497ba630>"
+      },
+      "AP27": {
+        "formula": "=SUM(AM30,AO30)",
+        "calculated": 7
+      },
+      "AQ27": {
+        "formula": "=PRODUCT(AP27*330)",
+        "calculated": 2310
+      },
+      "R28": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "S28": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "U28": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "Y28": {
+        "calculated": "2026-01-08",
+        "value": "2026-01-08"
+      },
+      "AE28": {
+        "calculated": "2026-01-15",
+        "value": "2026-01-15"
+      },
+      "AG28": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH28": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AN28": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "R29": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S29": {
+        "formula": "=IF(OR(S27=\"\",S28=\"\"), \"\", IF(S28-S27>TIME(15,0,0), S28-S27-TIME(2,0,0), IF(S28-S27>TIME(11,0,0), S28-S27-TIME(1,30,0), IF(S28-S27>TIME(7,30,0), S28-S27-TIME(1,0,0), IF(S28-S27>TIME(4,0,0), S28-S27-TIME(0,30,0), S28-S27-TIME(0,15,0))))))",
+        "calculated": "12:17:00"
+      },
+      "T29": {
+        "formula": "=IF(OR(T27=\"\",T28=\"\"), \"\", IF(T28-T27>TIME(15,0,0), T28-T27-TIME(2,0,0), IF(T28-T27>TIME(11,0,0), T28-T27-TIME(1,30,0), IF(T28-T27>TIME(7,30,0), T28-T27-TIME(1,0,0), IF(T28-T27>TIME(4,0,0), T28-T27-TIME(0,30,0), T28-T27-TIME(0,15,0))))))"
+      },
+      "U29": {
+        "formula": "=IF(OR(U27=\"\",U28=\"\"), \"\", IF(U28-U27>TIME(15,0,0), U28-U27-TIME(2,0,0), IF(U28-U27>TIME(11,0,0), U28-U27-TIME(1,30,0), IF(U28-U27>TIME(7,30,0), U28-U27-TIME(1,0,0), IF(U28-U27>TIME(4,0,0), U28-U27-TIME(0,30,0), U28-U27-TIME(0,15,0))))))",
+        "calculated": "10:03:00"
+      },
+      "Y29": {
+        "formula": "=IF(OR(Y27=\"\",Y28=\"\"), \"\", IF(Y28-Y27>TIME(15,0,0), Y28-Y27-TIME(2,0,0), IF(Y28-Y27>TIME(11,0,0), Y28-Y27-TIME(1,30,0), IF(Y28-Y27>TIME(7,30,0), Y28-Y27-TIME(1,0,0), IF(Y28-Y27>TIME(4,0,0), Y28-Y27-TIME(0,30,0), Y28-Y27-TIME(0,15,0))))))",
+        "calculated": "05:29:00"
+      },
+      "AA29": {
+        "formula": "=IF(OR(AA27=\"\",AA28=\"\"), \"\", IF(AA28-AA27>TIME(15,0,0), AA28-AA27-TIME(2,0,0), IF(AA28-AA27>TIME(11,0,0), AA28-AA27-TIME(1,30,0), IF(AA28-AA27>TIME(7,30,0), AA28-AA27-TIME(1,0,0), IF(AA28-AA27>TIME(4,0,0), AA28-AA27-TIME(0,30,0), AA28-AA27-TIME(0,15,0))))))"
+      },
+      "AE29": {
+        "formula": "=IF(OR(AE27=\"\",AE28=\"\"), \"\", IF(AE28-AE27>TIME(15,0,0), AE28-AE27-TIME(2,0,0), IF(AE28-AE27>TIME(11,0,0), AE28-AE27-TIME(1,30,0), IF(AE28-AE27>TIME(7,30,0), AE28-AE27-TIME(1,0,0), IF(AE28-AE27>TIME(4,0,0), AE28-AE27-TIME(0,30,0), AE28-AE27-TIME(0,15,0))))))",
+        "calculated": "05:29:00"
+      },
+      "AG29": {
+        "formula": "=IF(OR(AG27=\"\",AG28=\"\"), \"\", IF(AG28-AG27>TIME(15,0,0), AG28-AG27-TIME(2,0,0), IF(AG28-AG27>TIME(11,0,0), AG28-AG27-TIME(1,30,0), IF(AG28-AG27>TIME(7,30,0), AG28-AG27-TIME(1,0,0), IF(AG28-AG27>TIME(4,0,0), AG28-AG27-TIME(0,30,0), AG28-AG27-TIME(0,15,0))))))",
+        "calculated": "11:58:00"
+      },
+      "AH29": {
+        "formula": "=IF(OR(AH27=\"\",AH28=\"\"), \"\", IF(AH28-AH27>TIME(15,0,0), AH28-AH27-TIME(2,0,0), IF(AH28-AH27>TIME(11,0,0), AH28-AH27-TIME(1,30,0), IF(AH28-AH27>TIME(7,30,0), AH28-AH27-TIME(1,0,0), IF(AH28-AH27>TIME(4,0,0), AH28-AH27-TIME(0,30,0), AH28-AH27-TIME(0,15,0))))))",
+        "calculated": "07:08:00"
+      },
+      "AK29": {
+        "formula": "=IF(OR(AK27=\"\",AK28=\"\"), \"\", IF(AK28-AK27>TIME(15,0,0), AK28-AK27-TIME(2,0,0), IF(AK28-AK27>TIME(11,0,0), AK28-AK27-TIME(1,30,0), IF(AK28-AK27>TIME(7,30,0), AK28-AK27-TIME(1,0,0), IF(AK28-AK27>TIME(4,0,0), AK28-AK27-TIME(0,30,0), AK28-AK27-TIME(0,15,0))))))"
+      },
+      "AN29": {
+        "formula": "=IF(OR(AN27=\"\",AN28=\"\"), \"\", IF(AN28-AN27>TIME(15,0,0), AN28-AN27-TIME(2,0,0), IF(AN28-AN27>TIME(11,0,0), AN28-AN27-TIME(1,30,0), IF(AN28-AN27>TIME(7,30,0), AN28-AN27-TIME(1,0,0), IF(AN28-AN27>TIME(4,0,0), AN28-AN27-TIME(0,30,0), AN28-AN27-TIME(0,15,0))))))",
+        "calculated": "08:13:00"
+      },
+      "R30": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S30": {
+        "formula": "=IF(OR(S27=\"\", S28=\"\"), 0, IF(ROUND((S28+(S28<S27)-S27)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "T30": {
+        "formula": "=IF(OR(T27=\"\", T28=\"\"), 0, IF(ROUND((T28+(T28<T27)-T27)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "U30": {
+        "formula": "=IF(OR(U27=\"\", U28=\"\"), 0, IF(ROUND((U28+(U28<U27)-U27)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "Y30": {
+        "formula": "=IF(OR(Y27=\"\", Y28=\"\"), 0, IF(ROUND((Y28+(Y28<Y27)-Y27)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AA30": {
+        "formula": "=IF(OR(AA27=\"\", AA28=\"\"), 0, IF(ROUND((AA28+(AA28<AA27)-AA27)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AE30": {
+        "formula": "=IF(OR(AE27=\"\", AE28=\"\"), 0, IF(ROUND((AE28+(AE28<AE27)-AE27)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AG30": {
+        "formula": "=IF(OR(AG27=\"\", AG28=\"\"), 0, IF(ROUND((AG28+(AG28<AG27)-AG27)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AH30": {
+        "formula": "=IF(OR(AH27=\"\", AH28=\"\"), 0, IF(ROUND((AH28+(AH28<AH27)-AH27)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK30": {
+        "formula": "=IF(OR(AK27=\"\", AK28=\"\"), 0, IF(ROUND((AK28+(AK28<AK27)-AK27)*86400,0)>=10800, 1, 0))",
+        "calculated": 0
+      },
+      "AM30": {
+        "formula": "=SUM(S30:AL30)",
+        "calculated": 6
+      },
+      "AN30": {
+        "formula": "=IF(OR(AN27=\"\", AN28=\"\"), 0, IF(ROUND((AN28+(AN28<AN27)-AN27)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AO30": {
+        "calculated": 1,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb7497cd4f0>"
+      },
+      "A31": {
+        "calculated": "ABDULKADİR BURAK KÖMEZ",
+        "value": "ABDULKADİR BURAK KÖMEZ"
+      },
+      "D31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "E31": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "F31": {
+        "formula": "=COUNTA(#REF!)",
+        "calculated": 1
+      },
+      "G31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "H31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "I31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "J31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "K31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "L31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "M31": {
+        "calculated": 0,
+        "value": 0
+      },
+      "N31": {
+        "formula": "=AM31",
+        "calculated": "4 days, 3:43:00"
+      },
+      "O31": {
+        "formula": "=AO31",
+        "calculated": "12:42:00"
+      },
+      "Q31": {
+        "formula": "=AQ31",
+        "calculated": 3960
+      },
+      "R31": {
+        "calculated": "Giriş",
+        "value": "Giriş"
+      },
+      "S31": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "T31": {
+        "calculated": "2026-01-02",
+        "value": "2026-01-02"
+      },
+      "U31": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "V31": {
+        "calculated": "2026-01-05",
+        "value": "2026-01-05"
+      },
+      "AA31": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB31": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AC31": {
+        "calculated": "2026-01-12",
+        "value": "2026-01-12"
+      },
+      "AG31": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH31": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AI31": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AK31": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AM31": {
+        "formula": "=SUM(S33:AL33)",
+        "calculated": "4 days, 3:43:00"
+      },
+      "AN31": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "AO31": {
+        "calculated": "12:42:00",
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb7497a80b0>"
+      },
+      "AP31": {
+        "formula": "=SUM(AM34,AO34)",
+        "calculated": 12
+      },
+      "AQ31": {
+        "formula": "=PRODUCT(AP31*330)",
+        "calculated": 3960
+      },
+      "R32": {
+        "calculated": "Çıkış",
+        "value": "Çıkış"
+      },
+      "S32": {
+        "calculated": "2026-01-03",
+        "value": "2026-01-03"
+      },
+      "T32": {
+        "calculated": "2026-01-02",
+        "value": "2026-01-02"
+      },
+      "U32": {
+        "calculated": "2026-01-04",
+        "value": "2026-01-04"
+      },
+      "V32": {
+        "calculated": "2026-01-05",
+        "value": "2026-01-05"
+      },
+      "AA32": {
+        "calculated": "2026-01-10",
+        "value": "2026-01-10"
+      },
+      "AB32": {
+        "calculated": "2026-01-11",
+        "value": "2026-01-11"
+      },
+      "AC32": {
+        "calculated": "2026-01-12",
+        "value": "2026-01-12"
+      },
+      "AG32": {
+        "calculated": "2026-01-17",
+        "value": "2026-01-17"
+      },
+      "AH32": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AI32": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AK32": {
+        "calculated": "2026-01-18",
+        "value": "2026-01-18"
+      },
+      "AN32": {
+        "calculated": "2026-01-01",
+        "value": "2026-01-01"
+      },
+      "R33": {
+        "calculated": "Süre",
+        "value": "Süre"
+      },
+      "S33": {
+        "formula": "=IF(OR(S31=\"\",S32=\"\"), \"\", IF(S32-S31>TIME(15,0,0), S32-S31-TIME(2,0,0), IF(S32-S31>TIME(11,0,0), S32-S31-TIME(1,30,0), IF(S32-S31>TIME(7,30,0), S32-S31-TIME(1,0,0), IF(S32-S31>TIME(4,0,0), S32-S31-TIME(0,30,0), S32-S31-TIME(0,15,0))))))",
+        "calculated": "12:01:00"
+      },
+      "T33": {
+        "formula": "=IF(OR(T31=\"\",T32=\"\"), \"\", IF(T32-T31>TIME(15,0,0), T32-T31-TIME(2,0,0), IF(T32-T31>TIME(11,0,0), T32-T31-TIME(1,30,0), IF(T32-T31>TIME(7,30,0), T32-T31-TIME(1,0,0), IF(T32-T31>TIME(4,0,0), T32-T31-TIME(0,30,0), T32-T31-TIME(0,15,0))))))",
+        "calculated": "04:07:00"
+      },
+      "U33": {
+        "formula": "=IF(OR(U31=\"\",U32=\"\"), \"\", IF(U32-U31>TIME(15,0,0), U32-U31-TIME(2,0,0), IF(U32-U31>TIME(11,0,0), U32-U31-TIME(1,30,0), IF(U32-U31>TIME(7,30,0), U32-U31-TIME(1,0,0), IF(U32-U31>TIME(4,0,0), U32-U31-TIME(0,30,0), U32-U31-TIME(0,15,0))))))",
+        "calculated": "11:08:00"
+      },
+      "V33": {
+        "formula": "=IF(OR(V31=\"\",V32=\"\"), \"\", IF(V32-V31>TIME(15,0,0), V32-V31-TIME(2,0,0), IF(V32-V31>TIME(11,0,0), V32-V31-TIME(1,30,0), IF(V32-V31>TIME(7,30,0), V32-V31-TIME(1,0,0), IF(V32-V31>TIME(4,0,0), V32-V31-TIME(0,30,0), V32-V31-TIME(0,15,0))))))",
+        "calculated": "05:29:00"
+      },
+      "AA33": {
+        "formula": "=IF(OR(AA31=\"\",AA32=\"\"), \"\", IF(AA32-AA31>TIME(15,0,0), AA32-AA31-TIME(2,0,0), IF(AA32-AA31>TIME(11,0,0), AA32-AA31-TIME(1,30,0), IF(AA32-AA31>TIME(7,30,0), AA32-AA31-TIME(1,0,0), IF(AA32-AA31>TIME(4,0,0), AA32-AA31-TIME(0,30,0), AA32-AA31-TIME(0,15,0))))))",
+        "calculated": "13:00:00"
+      },
+      "AB33": {
+        "formula": "=IF(OR(AB31=\"\",AB32=\"\"), \"\", IF(AB32-AB31>TIME(15,0,0), AB32-AB31-TIME(2,0,0), IF(AB32-AB31>TIME(11,0,0), AB32-AB31-TIME(1,30,0), IF(AB32-AB31>TIME(7,30,0), AB32-AB31-TIME(1,0,0), IF(AB32-AB31>TIME(4,0,0), AB32-AB31-TIME(0,30,0), AB32-AB31-TIME(0,15,0))))))",
+        "calculated": "09:45:00"
+      },
+      "AC33": {
+        "formula": "=IF(OR(AC31=\"\",AC32=\"\"), \"\", IF(AC32-AC31>TIME(15,0,0), AC32-AC31-TIME(2,0,0), IF(AC32-AC31>TIME(11,0,0), AC32-AC31-TIME(1,30,0), IF(AC32-AC31>TIME(7,30,0), AC32-AC31-TIME(1,0,0), IF(AC32-AC31>TIME(4,0,0), AC32-AC31-TIME(0,30,0), AC32-AC31-TIME(0,15,0))))))",
+        "calculated": "05:29:00"
+      },
+      "AG33": {
+        "formula": "=IF(OR(AG31=\"\",AG32=\"\"), \"\", IF(AG32-AG31>TIME(15,0,0), AG32-AG31-TIME(2,0,0), IF(AG32-AG31>TIME(11,0,0), AG32-AG31-TIME(1,30,0), IF(AG32-AG31>TIME(7,30,0), AG32-AG31-TIME(1,0,0), IF(AG32-AG31>TIME(4,0,0), AG32-AG31-TIME(0,30,0), AG32-AG31-TIME(0,15,0))))))",
+        "calculated": "13:09:00"
+      },
+      "AH33": {
+        "formula": "=IF(OR(AH31=\"\",AH32=\"\"), \"\", IF(AH32-AH31>TIME(15,0,0), AH32-AH31-TIME(2,0,0), IF(AH32-AH31>TIME(11,0,0), AH32-AH31-TIME(1,30,0), IF(AH32-AH31>TIME(7,30,0), AH32-AH31-TIME(1,0,0), IF(AH32-AH31>TIME(4,0,0), AH32-AH31-TIME(0,30,0), AH32-AH31-TIME(0,15,0))))))",
+        "calculated": "12:25:00"
+      },
+      "AI33": {
+        "formula": "=IF(OR(AI31=\"\",AI32=\"\"), \"\", IF(AI32-AI31>TIME(15,0,0), AI32-AI31-TIME(2,0,0), IF(AI32-AI31>TIME(11,0,0), AI32-AI31-TIME(1,30,0), IF(AI32-AI31>TIME(7,30,0), AI32-AI31-TIME(1,0,0), IF(AI32-AI31>TIME(4,0,0), AI32-AI31-TIME(0,30,0), AI32-AI31-TIME(0,15,0))))))",
+        "calculated": "05:29:00"
+      },
+      "AK33": {
+        "formula": "=IF(OR(AK31=\"\",AK32=\"\"), \"\", IF(AK32-AK31>TIME(15,0,0), AK32-AK31-TIME(2,0,0), IF(AK32-AK31>TIME(11,0,0), AK32-AK31-TIME(1,30,0), IF(AK32-AK31>TIME(7,30,0), AK32-AK31-TIME(1,0,0), IF(AK32-AK31>TIME(4,0,0), AK32-AK31-TIME(0,30,0), AK32-AK31-TIME(0,15,0))))))",
+        "calculated": "07:41:00"
+      },
+      "AN33": {
+        "formula": "=IF(OR(AN31=\"\",AN32=\"\"), \"\", IF(AN32-AN31>TIME(15,0,0), AN32-AN31-TIME(2,0,0), IF(AN32-AN31>TIME(11,0,0), AN32-AN31-TIME(1,30,0), IF(AN32-AN31>TIME(7,30,0), AN32-AN31-TIME(1,0,0), IF(AN32-AN31>TIME(4,0,0), AN32-AN31-TIME(0,30,0), AN32-AN31-TIME(0,15,0))))))",
+        "calculated": "12:42:00"
+      },
+      "R34": {
+        "calculated": "Yemek Hakkı",
+        "value": "Yemek Hakkı"
+      },
+      "S34": {
+        "formula": "=IF(OR(S31=\"\", S32=\"\"), 0, IF(ROUND((S32+(S32<S31)-S31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "T34": {
+        "formula": "=IF(OR(T31=\"\", T32=\"\"), 0, IF(ROUND((T32+(T32<T31)-T31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "U34": {
+        "formula": "=IF(OR(U31=\"\", U32=\"\"), 0, IF(ROUND((U32+(U32<U31)-U31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "V34": {
+        "formula": "=IF(OR(V31=\"\", V32=\"\"), 0, IF(ROUND((V32+(V32<V31)-V31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AA34": {
+        "formula": "=IF(OR(AA31=\"\", AA32=\"\"), 0, IF(ROUND((AA32+(AA32<AA31)-AA31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AB34": {
+        "formula": "=IF(OR(AB31=\"\", AB32=\"\"), 0, IF(ROUND((AB32+(AB32<AB31)-AB31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AC34": {
+        "formula": "=IF(OR(AC31=\"\", AC32=\"\"), 0, IF(ROUND((AC32+(AC32<AC31)-AC31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AG34": {
+        "formula": "=IF(OR(AG31=\"\", AG32=\"\"), 0, IF(ROUND((AG32+(AG32<AG31)-AG31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AH34": {
+        "formula": "=IF(OR(AH31=\"\", AH32=\"\"), 0, IF(ROUND((AH32+(AH32<AH31)-AH31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AI34": {
+        "formula": "=IF(OR(AI31=\"\", AI32=\"\"), 0, IF(ROUND((AI32+(AI32<AI31)-AI31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AK34": {
+        "formula": "=IF(OR(AK31=\"\", AK32=\"\"), 0, IF(ROUND((AK32+(AK32<AK31)-AK31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AM34": {
+        "formula": "=SUM(S34:AL34)",
+        "calculated": 11
+      },
+      "AN34": {
+        "formula": "=IF(OR(AN31=\"\", AN32=\"\"), 0, IF(ROUND((AN32+(AN32<AN31)-AN31)*86400,0)>=10800, 1, 0))",
+        "calculated": 1
+      },
+      "AO34": {
+        "calculated": 1,
+        "value": "<openpyxl.worksheet.formula.ArrayFormula object at 0x7eb7497ce000>"
+      }
+    }
+  }
+}

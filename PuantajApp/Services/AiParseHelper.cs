@@ -12,9 +12,19 @@ namespace PuantajApp.Services;
 public static class AiParseHelper
 {
     public const string PROMPT = """
-        Bu bir TÜRKSAT Devam Takip Formudur. Formdaki bilgileri asagidaki JSON formatinda cikar.
+        Bu bir TÜRKSAT Devam Takip Formudur. Form EL YAZISI ile doldurulmus olabilir.
+        Formdaki bilgileri asagidaki JSON formatinda cikar.
 
-        ONEMLI KURALLAR:
+        EL YAZISI OKUMA KURALLARI:
+        - Form el yazisi, baskili veya karisik olabilir. Dikkatli oku.
+        - Saatler genellikle 08:00-10:00 arasi giris, 17:00-19:00 arasi cikis olur.
+        - Belirsiz rakamlari baglama gore degerlendir (ornegin giris saati 18:00 olamaz, muhtemelen 08:00'dir).
+        - El yazisinda 1/7, 0/6, 5/3, 9/4 karismasi olabilir, dikkat et.
+        - Imza, kase, mühür gibi alanlari yoksay, sadece tablo verisini oku.
+        - Ustü cizilmis veya düzeltilmis degerlerde son yazilan degeri al.
+        - Formda birden fazla sayfa varsa TÜM sayfalari isle.
+
+        VERI KURALLARI:
         - yil: sayi olarak (ornek: 2026)
         - ay: sayi olarak (ornek: 1 = Ocak, 2 = Subat, ..., 12 = Aralik)
         - gun: SADECE gun numarasi, sayi olarak (ornek: 1, 2, 3, ..., 31)
@@ -23,8 +33,9 @@ public static class AiParseHelper
           NOT: Formda her satirdaki R harfi "resmi tatil" ifadesi icin degildir.
           Sadece izin/rapor kolonunda acikca mi/yi/r yazilmissa bu alani doldur.
           Kisinin calistigi normal gunlerde mi_yi_r = null olmalidir.
-        - fazla_mesai: saat araligi string olarak (ornek: "19:03-23:33"), yoksa null
-        - aciklama: metin veya null
+        - fazla_mesai: saat araligi string olarak (ornek: "19:03-23:33"), yoksa null.
+          Bazen sadece saat yazilabilir (ornek: "3" veya "3 saat"), bu durumda saati string olarak yaz.
+        - aciklama: metin veya null (el yazisi notlari dahil)
         - Sadece formda veri olan gunleri dahil et, bos satirlari atlayabilirsin
 
         TEK bir JSON objesi don (dizi DEGIL). Ornek format:
@@ -36,7 +47,8 @@ public static class AiParseHelper
           "ay": 1,
           "gunler": [
             {"gun": 1, "giris": "09:00", "cikis": "18:00", "mi_yi_r": null, "fazla_mesai": null, "aciklama": null},
-            {"gun": 2, "giris": "09:00", "cikis": "18:00", "mi_yi_r": null, "fazla_mesai": "19:03-23:33", "aciklama": "Calisma"}
+            {"gun": 2, "giris": "09:00", "cikis": "18:00", "mi_yi_r": null, "fazla_mesai": "19:03-23:33", "aciklama": "Calisma"},
+            {"gun": 5, "giris": null, "cikis": null, "mi_yi_r": "yi", "fazla_mesai": null, "aciklama": "Yillik izin"}
           ]
         }
         """;

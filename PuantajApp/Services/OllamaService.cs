@@ -14,7 +14,7 @@ public class OllamaService
 {
     private readonly HttpClient _http = new() { Timeout = TimeSpan.FromMinutes(5) };
     private const string BASE_URL = "http://localhost:11434";
-    private const string MODEL = "llama3.2-vision:11b";
+    private const string MODEL = "llama3.2-vision";
 
     /// <summary>
     /// Ollama'nin kurulu ve calisiyor olup olmadigini kontrol eder.
