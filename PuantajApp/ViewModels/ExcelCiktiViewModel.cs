@@ -31,7 +31,7 @@ public partial class ExcelCiktiViewModel : ViewModelBase
                 .Where(k => k.Yil == Yil && k.Ay == Ay).ToListAsync();
 
             ExcelExportService.OlusturPuantajExcel(KayitYolu, Yil, Ay, personeller, kayitlar, YemekBirimUcreti);
-            Durum = "Puantaj Excel olusturuldu.";
+            Durum = $"Puantaj Excel olusturuldu. (Ay={Ay}, Yil={Yil})";
         }
         catch (Exception ex)
         {
@@ -81,7 +81,7 @@ public partial class ExcelCiktiViewModel : ViewModelBase
             };
 
             ExcelExportService.OlusturHakedisExcel(KayitYolu, Yil, Ay, personeller, kayitlar, ekVeriler, parametreler);
-            Durum = "Hakedis Excel olusturuldu.";
+            Durum = $"Hakedis Excel olusturuldu. (Ay={Ay}, Yil={Yil})";
         }
         catch (Exception ex)
         {

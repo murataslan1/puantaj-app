@@ -1,9 +1,49 @@
 using System;
+using System.Collections.Generic;
 
 namespace PuantajApp.Services;
 
 public static class HesaplamaService
 {
+    /// <summary>
+    /// Türkiye sabit resmi tatil günlerini döner (ay, gün) olarak.
+    /// Ramazan/Kurban bayramları yıla göre değişir, bunlar manuel girilmeli.
+    /// </summary>
+    private static readonly HashSet<(int Ay, int Gun)> SabitResmiTatiller =
+    [
+        (1, 1),   // Yılbaşı
+        (4, 23),  // Ulusal Egemenlik ve Çocuk Bayramı
+        (5, 1),   // Emek ve Dayanışma Günü
+        (5, 19),  // Atatürk'ü Anma, Gençlik ve Spor Bayramı
+        (7, 15),  // Demokrasi ve Milli Birlik Günü
+        (8, 30),  // Zafer Bayramı
+        (10, 29), // Cumhuriyet Bayramı
+    ];
+
+    /// <summary>
+    /// Verilen tarihin sabit resmi tatil olup olmadığını kontrol eder
+    /// </summary>
+    public static bool SabitResmiTatilMi(int ay, int gun)
+    {
+        return SabitResmiTatiller.Contains((ay, gun));
+    }
+
+    /// <summary>
+    /// Gün tipini belirler: mevcut kayıt varsa onu kullanır, yoksa otomatik belirler
+    /// </summary>
+    public static string GunTipiBelirle(DateTime tarih, string? mevcutGunTipi = null)
+    {
+        if (!string.IsNullOrEmpty(mevcutGunTipi))
+            return mevcutGunTipi;
+
+        if (SabitResmiTatilMi(tarih.Month, tarih.Day))
+            return "resmi_tatil";
+
+        return tarih.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday
+            ? "hafta_sonu"
+            : "hafta_ici";
+    }
+
     /// <summary>
     /// Giris-cikis arasindaki net calisma suresini hesaplar (dinlenme dusulur)
     /// </summary>

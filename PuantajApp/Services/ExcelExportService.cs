@@ -85,6 +85,14 @@ public static class ExcelExportService
         int yemekHakkiCol = col++;
         int yemekTutarCol = col;
 
+        // ---- Renk tanımları (referans Excel'den) ----
+        var lightBlue = XLColor.FromHtml("#B4C6E7");       // A-M header
+        var amber = XLColor.FromHtml("#FFC000");            // N-Q header (toplam sütunları)
+        var greenFill = XLColor.FromHtml("#C6EFCE");        // Tarih sütunları
+        var greenFont = XLColor.FromHtml("#006100");        // Tarih font rengi
+        var mediumBlue = XLColor.FromHtml("#8DB4E2");       // Toplam Mesai header
+        var skyBlue = XLColor.FromHtml("#00B0F0");          // Yemek Tutarı
+
         // ---- ROW 1: Başlıklar ----
         ws.Cell(1, 1).Value = "Adı Soyadı";
         ws.Cell(1, 3).Value = "Gececi";
@@ -109,7 +117,7 @@ public static class ExcelExportService
         {
             var tarih = new DateTime(yil, ay, kvp.Key);
             ws.Cell(1, kvp.Value).Value = tarih;
-            ws.Cell(1, kvp.Value).Style.DateFormat.Format = "yyyy-MM-dd";
+            ws.Cell(1, kvp.Value).Style.DateFormat.Format = "MM-dd-yy";
         }
 
         ws.Cell(1, toplamMesaiCol).Value = "Toplam Mesai";
@@ -121,16 +129,77 @@ public static class ExcelExportService
         ws.Row(1).Height = 167;
         for (int c = 1; c <= yemekTutarCol; c++)
         {
-            ws.Cell(1, c).Style.Font.Bold = true;
-            ws.Cell(1, c).Style.Alignment.WrapText = true;
-            ws.Cell(1, c).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+            var cell = ws.Cell(1, c);
+            cell.Style.Font.Bold = true;
+            cell.Style.Font.FontName = "Aptos Narrow";
+            cell.Style.Alignment.WrapText = true;
+            cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            cell.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+            cell.Style.Alignment.TextRotation = 90;
+            cell.Style.Border.LeftBorder = XLBorderStyleValues.Thin;
+            cell.Style.Border.RightBorder = XLBorderStyleValues.Thin;
+            cell.Style.Border.TopBorder = XLBorderStyleValues.Thin;
         }
+
+        // A-M: Açık mavi header, font 11pt
+        for (int c = 1; c <= 13; c++)
+        {
+            ws.Cell(1, c).Style.Font.FontSize = 11;
+            ws.Cell(1, c).Style.Fill.BackgroundColor = lightBlue;
+        }
+
+        // N-Q: Amber header, font 14pt
+        for (int c = 14; c <= 17; c++)
+        {
+            ws.Cell(1, c).Style.Font.FontSize = 14;
+            ws.Cell(1, c).Style.Fill.BackgroundColor = amber;
+        }
+
+        // R + Tarih sütunları: Yeşil header, koyu yeşil font, 14pt
+        ws.Cell(1, 18).Style.Font.FontSize = 14;
+        ws.Cell(1, 18).Style.Fill.BackgroundColor = greenFill;
+        ws.Cell(1, 18).Style.Font.FontColor = greenFont;
+        foreach (var kvp in gunToCol)
+        {
+            var c = kvp.Value;
+            ws.Cell(1, c).Style.Font.FontSize = 14;
+            ws.Cell(1, c).Style.Fill.BackgroundColor = greenFill;
+            ws.Cell(1, c).Style.Font.FontColor = greenFont;
+        }
+
+        // Toplam Mesai: Orta mavi, 14pt
+        ws.Cell(1, toplamMesaiCol).Style.Font.FontSize = 14;
+        ws.Cell(1, toplamMesaiCol).Style.Fill.BackgroundColor = mediumBlue;
+
+        // Toplam RT: Açık mavi, 14pt
+        ws.Cell(1, toplamRtCol).Style.Font.FontSize = 14;
+        ws.Cell(1, toplamRtCol).Style.Fill.BackgroundColor = lightBlue;
+
+        // Yemek Hakkı: Açık mavi, 14pt
+        ws.Cell(1, yemekHakkiCol).Style.Font.FontSize = 14;
+        ws.Cell(1, yemekHakkiCol).Style.Fill.BackgroundColor = lightBlue;
+
+        // Yemek Tutarı: Gök mavisi, 14pt
+        ws.Cell(1, yemekTutarCol).Style.Font.FontSize = 14;
+        ws.Cell(1, yemekTutarCol).Style.Fill.BackgroundColor = skyBlue;
 
         // ---- ROW 2: Kategori etiketleri ----
         if (normalGunler.Count > 0)
+        {
             ws.Cell(2, dateStartCol).Value = "Hafta İçi-Sonu Mesai";
+            ws.Cell(2, dateStartCol).Style.Font.Bold = true;
+            ws.Cell(2, dateStartCol).Style.Font.FontSize = 14;
+            ws.Cell(2, dateStartCol).Style.Font.FontName = "Aptos Narrow";
+            ws.Cell(2, dateStartCol).Style.Fill.BackgroundColor = greenFill;
+            ws.Cell(2, dateStartCol).Style.Font.FontColor = greenFont;
+        }
         if (rtGunlerList.Count > 0)
+        {
             ws.Cell(2, rtStartCol).Value = "Resmi Tatil";
+            ws.Cell(2, rtStartCol).Style.Font.Bold = true;
+            ws.Cell(2, rtStartCol).Style.Font.FontSize = 14;
+            ws.Cell(2, rtStartCol).Style.Font.FontName = "Aptos Narrow";
+        }
 
         // ---- VERİ SATIRLARI: Her kişi 4 satır ----
         int satirNo = 3;
@@ -150,9 +219,21 @@ public static class ExcelExportService
             ws.Cell(sureRow, 18).Value = "Süre";
             ws.Cell(yemekRow, 18).Value = "Yemek Hakkı";
 
+            // 4 satırın tüm hücrelerine temel font uygula
+            for (int c = 1; c <= yemekTutarCol; c++)
+            {
+                for (int r = girisRow; r <= yemekRow; r++)
+                {
+                    ws.Cell(r, c).Style.Font.FontName = "Aptos Narrow";
+                    ws.Cell(r, c).Style.Font.FontSize = 14;
+                }
+            }
+
             // Ad Soyad (4 satır birleştir)
             ws.Cell(girisRow, 1).Value = p.AdSoyad;
             ws.Cell(girisRow, 1).Style.Font.Bold = true;
+            ws.Cell(girisRow, 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Cell(girisRow, 1).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             ws.Range(girisRow, 1, yemekRow, 1).Merge();
 
             // Özet sayılar hesapla
@@ -189,19 +270,32 @@ public static class ExcelExportService
             // N: Toplam Hİ-Sonu Mesai Saati = Toplam Mesai sütunu
             ws.Cell(girisRow, 14).FormulaA1 = CR(girisRow, toplamMesaiCol);
             ws.Cell(girisRow, 14).Style.DateFormat.Format = "[h]:mm";
+            ws.Cell(girisRow, 14).Style.Fill.BackgroundColor = amber;
+            ws.Cell(girisRow, 14).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Cell(girisRow, 14).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             ws.Range(girisRow, 14, yemekRow, 14).Merge();
 
             // O: Toplam RT Mesai Saati
             ws.Cell(girisRow, 15).FormulaA1 = CR(girisRow, toplamRtCol);
             ws.Cell(girisRow, 15).Style.DateFormat.Format = "[h]:mm";
+            ws.Cell(girisRow, 15).Style.Fill.BackgroundColor = amber;
+            ws.Cell(girisRow, 15).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Cell(girisRow, 15).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             ws.Range(girisRow, 15, yemekRow, 15).Merge();
 
             // P: Toplam İdari İzin Mesai Saati
             ws.Cell(girisRow, 16).Value = 0;
+            ws.Cell(girisRow, 16).Style.Fill.BackgroundColor = amber;
+            ws.Cell(girisRow, 16).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Cell(girisRow, 16).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             ws.Range(girisRow, 16, yemekRow, 16).Merge();
 
             // Q: Toplam Yemek Tutarı TL
             ws.Cell(girisRow, 17).FormulaA1 = CR(girisRow, yemekTutarCol);
+            ws.Cell(girisRow, 17).Style.DateFormat.Format = "\"₺\"#,##0.00";
+            ws.Cell(girisRow, 17).Style.Fill.BackgroundColor = amber;
+            ws.Cell(girisRow, 17).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Cell(girisRow, 17).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             ws.Range(girisRow, 17, yemekRow, 17).Merge();
 
             // Giriş/Çıkış DateTime değerleri yaz
@@ -213,13 +307,15 @@ public static class ExcelExportService
                 if (k.GirisSaati != null && TimeSpan.TryParse(k.GirisSaati, out var giris))
                 {
                     ws.Cell(girisRow, dateCol).Value = new DateTime(yil, ay, k.Gun, giris.Hours, giris.Minutes, 0);
-                    ws.Cell(girisRow, dateCol).Style.DateFormat.Format = "yyyy-MM-dd HH:mm";
+                    ws.Cell(girisRow, dateCol).Style.DateFormat.Format = "yyyy/MM/dd\\ HH:mm";
+                    ws.Cell(girisRow, dateCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 }
 
                 if (k.CikisSaati != null && TimeSpan.TryParse(k.CikisSaati, out var cikis))
                 {
                     ws.Cell(cikisRow, dateCol).Value = new DateTime(yil, ay, k.Gun, cikis.Hours, cikis.Minutes, 0);
-                    ws.Cell(cikisRow, dateCol).Style.DateFormat.Format = "yyyy-MM-dd HH:mm";
+                    ws.Cell(cikisRow, dateCol).Style.DateFormat.Format = "yyyy/MM/dd\\ HH:mm";
+                    ws.Cell(cikisRow, dateCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 }
             }
 
@@ -238,12 +334,18 @@ public static class ExcelExportService
                     $"IF({c}-{g}>TIME(7,30,0), {c}-{g}-TIME(1,0,0), " +
                     $"IF({c}-{g}>TIME(4,0,0), {c}-{g}-TIME(0,30,0), " +
                     $"{c}-{g}-TIME(0,15,0))))))";
-                ws.Cell(sureRow, dateCol).Style.DateFormat.Format = "[h]:mm";
+                ws.Cell(sureRow, dateCol).Style.DateFormat.Format = "hh:mm;@";
+                ws.Cell(sureRow, dateCol).Style.Font.Bold = true;
+                ws.Cell(sureRow, dateCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                ws.Cell(sureRow, dateCol).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
 
                 // Yemek Hakkı formülü (>=3 saat = 10800 saniye)
                 ws.Cell(yemekRow, dateCol).FormulaA1 =
                     $"IF(OR({g}=\"\", {c}=\"\"), 0, " +
                     $"IF(ROUND(({c}+({c}<{g})-{g})*86400,0)>=10800, 1, 0))";
+                ws.Cell(yemekRow, dateCol).Style.Font.Bold = true;
+                ws.Cell(yemekRow, dateCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                ws.Cell(yemekRow, dateCol).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             }
 
             // Toplam Mesai: normal gün sürelerinin toplamı
@@ -253,12 +355,17 @@ public static class ExcelExportService
                 string rangeEnd = CR(sureRow, dateStartCol + normalGunler.Count - 1);
                 ws.Cell(girisRow, toplamMesaiCol).FormulaA1 = $"SUM({rangeStart}:{rangeEnd})";
                 ws.Cell(girisRow, toplamMesaiCol).Style.DateFormat.Format = "[h]:mm";
+                ws.Cell(girisRow, toplamMesaiCol).Style.Font.Bold = true;
+                ws.Cell(girisRow, toplamMesaiCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                ws.Cell(girisRow, toplamMesaiCol).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
                 ws.Range(girisRow, toplamMesaiCol, sureRow, toplamMesaiCol).Merge();
 
                 // Normal yemek toplamı
                 string yRangeStart = CR(yemekRow, dateStartCol);
                 string yRangeEnd = CR(yemekRow, dateStartCol + normalGunler.Count - 1);
                 ws.Cell(yemekRow, toplamMesaiCol).FormulaA1 = $"SUM({yRangeStart}:{yRangeEnd})";
+                ws.Cell(yemekRow, toplamMesaiCol).Style.Font.Bold = true;
+                ws.Cell(yemekRow, toplamMesaiCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             }
 
             // Toplam RT
@@ -268,47 +375,68 @@ public static class ExcelExportService
                 string rtRangeEnd = CR(sureRow, rtStartCol + rtGunlerList.Count - 1);
                 ws.Cell(girisRow, toplamRtCol).FormulaA1 = $"SUM({rtRangeStart}:{rtRangeEnd})";
                 ws.Cell(girisRow, toplamRtCol).Style.DateFormat.Format = "[h]:mm";
+                ws.Cell(girisRow, toplamRtCol).Style.Font.Bold = true;
+                ws.Cell(girisRow, toplamRtCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                ws.Cell(girisRow, toplamRtCol).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
                 ws.Range(girisRow, toplamRtCol, sureRow, toplamRtCol).Merge();
 
                 string rtYStart = CR(yemekRow, rtStartCol);
                 string rtYEnd = CR(yemekRow, rtStartCol + rtGunlerList.Count - 1);
                 ws.Cell(yemekRow, toplamRtCol).FormulaA1 = $"SUM({rtYStart}:{rtYEnd})";
+                ws.Cell(yemekRow, toplamRtCol).Style.Font.Bold = true;
+                ws.Cell(yemekRow, toplamRtCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             }
             else
             {
                 ws.Cell(girisRow, toplamRtCol).Value = 0;
+                ws.Cell(girisRow, toplamRtCol).Style.Font.Bold = true;
+                ws.Cell(girisRow, toplamRtCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                ws.Cell(girisRow, toplamRtCol).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
                 ws.Range(girisRow, toplamRtCol, sureRow, toplamRtCol).Merge();
                 ws.Cell(yemekRow, toplamRtCol).Value = 0;
+                ws.Cell(yemekRow, toplamRtCol).Style.Font.Bold = true;
+                ws.Cell(yemekRow, toplamRtCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             }
 
             // Yemek Hakkı: normal + RT yemek toplamı
             string normalYemekRef = CR(yemekRow, toplamMesaiCol);
             string rtYemekRef = CR(yemekRow, toplamRtCol);
             ws.Cell(girisRow, yemekHakkiCol).FormulaA1 = $"SUM({normalYemekRef},{rtYemekRef})";
+            ws.Cell(girisRow, yemekHakkiCol).Style.Font.Bold = true;
+            ws.Cell(girisRow, yemekHakkiCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Cell(girisRow, yemekHakkiCol).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             ws.Range(girisRow, yemekHakkiCol, yemekRow, yemekHakkiCol).Merge();
 
             // Yemek Yatırılacak Tutar
             ws.Cell(girisRow, yemekTutarCol).FormulaA1 =
                 $"PRODUCT({CR(girisRow, yemekHakkiCol)}*{(double)yemekBirimUcreti})";
+            ws.Cell(girisRow, yemekTutarCol).Style.DateFormat.Format = "\"₺\"#,##0.00";
+            ws.Cell(girisRow, yemekTutarCol).Style.Font.Bold = true;
+            ws.Cell(girisRow, yemekTutarCol).Style.Fill.BackgroundColor = skyBlue;
+            ws.Cell(girisRow, yemekTutarCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ws.Cell(girisRow, yemekTutarCol).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             ws.Range(girisRow, yemekTutarCol, yemekRow, yemekTutarCol).Merge();
 
             satirNo += 4;
         }
 
-        // Sütun genişlikleri
+        // Sütun genişlikleri (referans Excel'den)
         ws.Column(1).Width = 15.4;
         ws.Column(2).Width = 12.6;
         ws.Column(3).Width = 4.9;
-        for (int c = 4; c <= 13; c++) ws.Column(c).Width = 13;
+        for (int c = 4; c <= 13; c++) ws.Column(c).Width = 3.8;
         ws.Column(14).Width = 8.2;
         ws.Column(15).Width = 6.8;
         ws.Column(16).Width = 13;
         ws.Column(17).Width = 11.7;
         ws.Column(18).Width = 15.2;
-        for (int c = dateStartCol; c <= yemekTutarCol; c++)
-        {
-            if (ws.Column(c).Width < 13) ws.Column(c).Width = 13;
-        }
+        // Tarih sütunları: 19.4 genişlik (referanstan)
+        foreach (var kvp in gunToCol)
+            ws.Column(kvp.Value).Width = 19.4;
+        ws.Column(toplamMesaiCol).Width = 8.3;
+        ws.Column(toplamRtCol).Width = 7.0;
+        ws.Column(yemekHakkiCol).Width = 5.7;
+        ws.Column(yemekTutarCol).Width = 11.7;
 
         wb.SaveAs(dosyaAdi);
     }

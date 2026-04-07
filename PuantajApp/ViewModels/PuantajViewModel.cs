@@ -96,8 +96,7 @@ public partial class PuantajViewModel : ViewModelBase
                 Yil = Yil,
                 Ay = Ay,
                 KayitId = kayit?.Id,
-                GunTipi = kayit?.GunTipi ?? (tarih.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday
-                    ? "hafta_sonu" : "hafta_ici"),
+                GunTipi = HesaplamaService.GunTipiBelirle(tarih, kayit?.GunTipi),
                 GirisSaati = kayit?.GirisSaati,
                 CikisSaati = kayit?.CikisSaati,
                 IzinTipi = kayit?.IzinTipi,

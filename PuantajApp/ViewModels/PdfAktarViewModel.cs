@@ -165,6 +165,9 @@ public partial class PdfAktarViewModel : ViewModelBase
                 if (result != null)
                 {
                     pdf.ParseResult = result;
+                    // PDF'den gelen ay/yıl bilgisini sekmeye yansıt
+                    if (result.Ay > 0) Ay = result.Ay;
+                    if (result.Yil > 0) Yil = result.Yil;
                     var eslesen = BulEnEslesenPersonel(result.AdSoyad, personeller);
                     pdf.EslesenPersonel = eslesen?.AdSoyad ?? "Eslesmedi";
                     pdf.Durum = eslesen != null ? "Eslesti" : "Eslesmedi";
@@ -213,18 +216,21 @@ public partial class PdfAktarViewModel : ViewModelBase
             return;
         }
 
+        // Parse result'taki ay/yıl bilgisini kullan (PDF'den gelen gerçek değerler)
+        var kayitYil = pdf.ParseResult.Yil > 0 ? pdf.ParseResult.Yil : Yil;
+        var kayitAy = pdf.ParseResult.Ay > 0 ? pdf.ParseResult.Ay : Ay;
+
         var mevcutKayitlar = db.PuantajKayitlar
-            .Where(k => k.PersonelId == eslesen.Id && k.Yil == Yil && k.Ay == Ay);
+            .Where(k => k.PersonelId == eslesen.Id && k.Yil == kayitYil && k.Ay == kayitAy);
         db.PuantajKayitlar.RemoveRange(mevcutKayitlar);
 
-        int gunSayisi = DateTime.DaysInMonth(Yil, Ay);
+        int gunSayisi = DateTime.DaysInMonth(kayitYil, kayitAy);
         foreach (var gun in pdf.ParseResult.Gunler)
         {
             if (gun.Gun < 1 || gun.Gun > gunSayisi) continue;
 
-            var tarih = new DateTime(Yil, Ay, gun.Gun);
-            var gunTipi = tarih.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday
-                ? "hafta_sonu" : "hafta_ici";
+            var tarih = new DateTime(kayitYil, kayitAy, gun.Gun);
+            var gunTipi = HesaplamaService.GunTipiBelirle(tarih);
 
             string? fmGiris = null, fmCikis = null;
             if (!string.IsNullOrEmpty(gun.FazlaMesai))
@@ -236,8 +242,8 @@ public partial class PdfAktarViewModel : ViewModelBase
             db.PuantajKayitlar.Add(new PuantajKayit
             {
                 PersonelId = eslesen.Id,
-                Yil = Yil,
-                Ay = Ay,
+                Yil = kayitYil,
+                Ay = kayitAy,
                 Gun = gun.Gun,
                 GunTipi = gunTipi,
                 GirisSaati = gun.Giris,
@@ -253,7 +259,7 @@ public partial class PdfAktarViewModel : ViewModelBase
 
         await db.SaveChangesAsync();
         pdf.Durum = "Onaylandi";
-        Durum = $"{eslesen.AdSoyad} kayitlari kaydedildi.";
+        Durum = $"{eslesen.AdSoyad} kayitlari kaydedildi. ({kayitAy}/{kayitYil})";
     }
 
     private static Personel? BulEnEslesenPersonel(string adSoyad, System.Collections.Generic.List<Personel> personeller)

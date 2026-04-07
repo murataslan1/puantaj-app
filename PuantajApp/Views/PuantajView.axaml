@@ -12,9 +12,9 @@
         <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">
             <Grid ColumnDefinitions="Auto,90,Auto,90,Auto,*">
                 <TextBlock Grid.Column="0" Text="Ay" Classes="label" Margin="0,0,8,0"/>
-                <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12"/>
+                <NumericUpDown Grid.Column="1" Value="{Binding Ay}" Minimum="1" Maximum="12" FormatString="0"/>
                 <TextBlock Grid.Column="2" Text="Yil" Classes="label" Margin="12,0,8,0"/>
-                <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030"/>
+                <NumericUpDown Grid.Column="3" Value="{Binding Yil}" Minimum="2020" Maximum="2030" FormatString="0"/>
                 <TextBlock Grid.Column="4" Text="Personel" Classes="label" Margin="12,0,8,0"/>
                 <ComboBox Grid.Column="5"
                           ItemsSource="{Binding Personeller}"

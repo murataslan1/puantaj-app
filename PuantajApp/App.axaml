@@ -152,6 +152,9 @@
         <Style Selector="ComboBox">
             <Setter Property="Foreground" Value="{StaticResource HeaderTextBrush}"/>
         </Style>
+        <Style Selector="ComboBoxItem">
+            <Setter Property="Foreground" Value="{StaticResource HeaderTextBrush}"/>
+        </Style>
 
         <!-- TextBox metin rengi fix -->
         <Style Selector="TextBox">
